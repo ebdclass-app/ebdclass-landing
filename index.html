@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EBDClass — Gestão da Escola Bíblica Dominical</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;1,6..12,300;1,6..12,400&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#1A5CFF;--blue-mid:#3B76FF;--blue-light:#EBF0FF;--blue-glow:rgba(26,92,255,0.35);--blue-glow-sm:rgba(26,92,255,0.18);--ink:#0D0F14;--ink2:#1A1C22;--muted:#8A8F9E;--muted-light:#B0B6C6;--border:#E4E7EF;--border-dark:rgba(255,255,255,0.10);--bg:#FAFAFA;--white:#FFFFFF;--dark:#0A0C12;--dark2:#111320;--dark3:#161929;--accent:#00C896;--accent-light:#E6FAF5;--font:'Nunito Sans',sans-serif;--serif:'Playfair Display',serif;--radius:14px;--radius-lg:22px}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--dark);color:var(--white);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
+.section-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--blue-mid);margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.section-label::before{content:'';display:block;width:24px;height:2px;background:var(--blue-mid);border-radius:2px}
+.section-h{font-family:var(--serif);font-size:clamp(40px,4.8vw,64px);font-weight:500;line-height:1.1;letter-spacing:-0.5px;margin-bottom:20px}
+.section-h em{font-style:italic;color:var(--blue-mid)}
+.section-p{font-size:18px;font-weight:400;color:var(--muted-light);line-height:1.85}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 6%;height:70px;background:rgba(10,12,18,0.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-dark);transition:box-shadow 0.3s}
+.logo{font-size:20px;font-weight:700;color:white;text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:-0.3px}
+.logo-mark{width:36px;height:36px;background:var(--blue);border-radius:10px;display:flex;align-items:center;justify-content:center;color:white;font-size:15px;font-weight:800;box-shadow:0 0 16px var(--blue-glow-sm)}
+.logo-text span{color:var(--blue-mid)}
+nav ul{display:flex;gap:36px;list-style:none;align-items:center}
+nav ul a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:15px;font-weight:500;transition:color 0.2s}
+nav ul a:hover{color:white}
+.nav-cta{background:var(--blue)!important;color:white!important;padding:10px 24px!important;border-radius:50px!important;font-weight:700!important;box-shadow:0 0 20px var(--blue-glow-sm)!important;transition:all 0.2s!important}
+.nav-cta:hover{opacity:0.88!important}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding:140px 6% 80px;overflow:hidden;text-align:center}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% -10%,rgba(26,92,255,0.22) 0%,transparent 70%),radial-gradient(ellipse 50% 40% at 80% 80%,rgba(0,200,150,0.07) 0%,transparent 60%),var(--dark);z-index:0}
+.hero-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 0%,black 0%,transparent 80%)}
+.hero-content{position:relative;z-index:1;max-width:860px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:rgba(26,92,255,0.12);border:1px solid rgba(26,92,255,0.3);color:#7BA8FF;padding:7px 18px;border-radius:50px;font-size:13px;font-weight:600;letter-spacing:0.5px;margin-bottom:30px}
+.pill-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:blink 2s infinite;box-shadow:0 0 8px var(--accent)}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+.hero h1{font-family:var(--serif);font-size:clamp(48px,6.5vw,84px);font-weight:500;line-height:1.06;letter-spacing:-1px;color:white;margin-bottom:28px}
+.hero h1 em{font-style:italic;background:linear-gradient(135deg,#6FA8FF 0%,#3B76FF 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:20px;font-weight:400;color:rgba(255,255,255,0.7);line-height:1.75;margin-bottom:42px;max-width:580px;margin-left:auto;margin-right:auto}
+.hero-ctas{display:flex;gap:14px;align-items:center;justify-content:center;margin-bottom:52px;flex-wrap:wrap}
+.btn-blue{background:var(--blue);color:white;padding:16px 36px;border-radius:50px;font-size:16px;font-weight:700;text-decoration:none;transition:all 0.25s;letter-spacing:-0.2px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 0 28px rgba(26,92,255,0.4),0 4px 16px rgba(0,0,0,0.3)}
+.btn-blue:hover{transform:translateY(-2px);box-shadow:0 0 40px rgba(26,92,255,0.6),0 8px 24px rgba(0,0,0,0.4)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.18);color:rgba(255,255,255,0.8);padding:15px 30px;border-radius:50px;font-size:15px;font-weight:500;text-decoration:none;transition:all 0.2s;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.04)}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.4);color:white;background:rgba(255,255,255,0.08)}
+.hero-proof{display:flex;align-items:center;justify-content:center;gap:20px;flex-wrap:wrap}
+.proof-avatars{display:flex}
+.proof-av{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-left:-9px;background:var(--dark3);color:var(--blue-mid)}
+.proof-av:first-child{margin-left:0}
+.proof-text{font-size:15px;color:rgba(255,255,255,0.6)}
+.proof-text strong{color:rgba(255,255,255,0.95);font-weight:700}
+.preview-section{padding:0 6% 96px;position:relative;z-index:1;max-width:1100px;margin:-20px auto 0}
+.app-frame{background:var(--dark2);border:1px solid rgba(255,255,255,0.09);border-radius:20px;box-shadow:0 0 0 1px rgba(26,92,255,0.15),0 24px 80px rgba(0,0,0,0.5),0 0 80px rgba(26,92,255,0.08);overflow:hidden;animation:floatUp 0.8s ease-out 0.2s both}
+@keyframes floatUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.frame-bar{background:rgba(255,255,255,0.04);border-bottom:1px solid rgba(255,255,255,0.07);padding:12px 18px;display:flex;align-items:center;gap:14px}
+.frame-dots{display:flex;gap:7px}
+.fdot{width:11px;height:11px;border-radius:50%}
+.fdot-r{background:#FF5F57}.fdot-y{background:#FEBC2E}.fdot-g{background:#28C840}
+.frame-url{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.08);border-radius:7px;padding:5px 14px;font-size:11px;color:rgba(255,255,255,0.35);flex:1;max-width:260px}
+.app-inner{padding:24px;display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.app-left,.app-right{display:flex;flex-direction:column;gap:16px}
+.app-top{display:flex;justify-content:space-between;align-items:flex-start}
+.app-greeting{font-size:15px;font-weight:700;color:white;margin-bottom:2px}
+.app-date{font-size:11px;color:rgba(255,255,255,0.4)}
+.export-btn{display:flex;align-items:center;gap:6px;background:rgba(26,92,255,0.15);color:#7BA8FF;border:1px solid rgba(26,92,255,0.25);padding:7px 14px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;font-family:var(--font)}
+.metrics-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.mc{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px;transition:border-color 0.2s}
+.mc:hover{border-color:rgba(26,92,255,0.3)}
+.mc-lbl{font-size:10px;color:rgba(255,255,255,0.35);font-weight:600;margin-bottom:6px;text-transform:uppercase;letter-spacing:0.5px}
+.mc-val{font-size:24px;font-weight:700;color:white;line-height:1;letter-spacing:-0.5px}
+.mc-chg{font-size:10px;color:var(--accent);font-weight:700;margin-top:4px}
+.classes-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;overflow:hidden}
+.cb-head{display:grid;grid-template-columns:1.6fr 1fr 64px;padding:10px 16px;font-size:10px;font-weight:700;color:rgba(255,255,255,0.3);text-transform:uppercase;letter-spacing:0.5px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.cb-row{display:grid;grid-template-columns:1.6fr 1fr 64px;padding:12px 16px;font-size:12px;align-items:center;border-bottom:1px solid rgba(255,255,255,0.05);transition:background 0.15s}
+.cb-row:last-child{border-bottom:none}
+.cb-row:hover{background:rgba(255,255,255,0.04)}
+.cb-name{font-weight:600;color:rgba(255,255,255,0.9)}
+.cb-teacher{color:rgba(255,255,255,0.38);font-size:11px}
+.tag{display:inline-block;padding:3px 9px;border-radius:50px;font-size:10px;font-weight:700}
+.tag-g{background:rgba(0,200,150,0.15);color:#00C896;border:1px solid rgba(0,200,150,0.2)}
+.tag-y{background:rgba(255,185,0,0.12);color:#FFB900;border:1px solid rgba(255,185,0,0.2)}
+.tag-r{background:rgba(255,80,80,0.12);color:#FF6060;border:1px solid rgba(255,80,80,0.2)}
+.mini-chart{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:14px;padding:16px;flex:1}
+.mini-chart-title{font-size:11px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:14px}
+.bars{display:flex;align-items:flex-end;gap:8px;height:80px}
+.bar-col{display:flex;flex-direction:column;align-items:center;gap:5px;flex:1}
+.bar-fill{width:100%;border-radius:5px 5px 0 0;background:linear-gradient(180deg,var(--blue-mid),rgba(26,92,255,0.4))}
+.bar-fill.hi{background:linear-gradient(180deg,var(--accent),rgba(0,200,150,0.4))}
+.bar-lbl{font-size:9px;color:rgba(255,255,255,0.3);font-weight:600}
+.alert-box{background:rgba(0,200,150,0.07);border:1px solid rgba(0,200,150,0.18);border-radius:14px;padding:14px 16px;display:flex;align-items:flex-start;gap:10px}
+.alert-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.alert-text-title{font-size:12px;font-weight:700;color:var(--accent);margin-bottom:2px}
+.alert-text-sub{font-size:11px;color:rgba(255,255,255,0.4);line-height:1.5}
+.logos-strip{background:white;padding:40px 6%;border-top:1px solid var(--border);text-align:center}
+.logos-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:24px}
+.logos-row{display:flex;justify-content:center;align-items:center;gap:56px;flex-wrap:wrap}
+.church-tag{font-size:15px;font-weight:700;color:#C8CDD8;letter-spacing:-0.2px;font-family:var(--font)}
+.features-section{background:white;padding:96px 6%}
+.features-inner{max-width:1160px;margin:0 auto}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.feat{padding:28px 26px;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg);transition:all 0.25s;position:relative;overflow:hidden}
+.feat::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:0;transition:opacity 0.25s}
+.feat:hover{border-color:rgba(26,92,255,0.2);box-shadow:0 12px 40px rgba(26,92,255,0.08);transform:translateY(-4px);background:white}
+.feat:hover::before{opacity:1}
+.feat-icon{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:18px;background:var(--blue-light);border:1px solid rgba(26,92,255,0.15)}
+.feat-icon.green{background:var(--accent-light);border-color:rgba(0,200,150,0.2)}
+.feat-icon.neutral{background:#F0F0F8;border-color:#E0E0EE}
+.feat-title{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--ink);letter-spacing:-0.2px}
+.feat-desc{font-size:15px;color:var(--muted);line-height:1.75;font-weight:400}
+.steps-section{background:var(--dark2);padding:96px 6%;position:relative;overflow:hidden}
+.steps-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 100%,rgba(26,92,255,0.1) 0%,transparent 70%);pointer-events:none}
+.steps-inner{max-width:1100px;margin:0 auto;text-align:center}
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;position:relative}
+.step-connector{position:absolute;top:40px;left:calc(16.6% + 28px);right:calc(16.6% + 28px);height:1px;background:linear-gradient(90deg,var(--blue-glow-sm),var(--blue-mid),var(--blue-glow-sm));pointer-events:none}
+.step{padding:36px 24px;border:1px solid rgba(255,255,255,0.07);border-radius:var(--radius-lg);background:rgba(255,255,255,0.03);transition:all 0.25s}
+.step:hover{border-color:rgba(26,92,255,0.3);background:rgba(26,92,255,0.05);box-shadow:0 0 30px rgba(26,92,255,0.1)}
+.step-circle{width:56px;height:56px;border-radius:50%;background:rgba(26,92,255,0.12);border:1px solid rgba(26,92,255,0.3);display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:18px;font-weight:800;color:var(--blue-mid);position:relative;z-index:1;transition:all 0.25s}
+.step:hover .step-circle{background:var(--blue);border-color:var(--blue);color:white;box-shadow:0 0 24px var(--blue-glow)}
+.step-title{font-size:19px;font-weight:700;margin-bottom:12px;color:white}
+.step-desc{font-size:15px;color:rgba(255,255,255,0.6);line-height:1.75}
+.pricing-section{background:white;padding:96px 6%}
+.pricing-inner{max-width:1100px;margin:0 auto}
+.pricing-header{text-align:center}
+.pricing-header .section-label{justify-content:center}
+.pricing-header .section-h{color:var(--ink)}
+.pricing-header .section-p{color:var(--muted);margin:0 auto 40px;max-width:480px}
+.toggle-row{display:flex;justify-content:center;margin-bottom:52px}
+.toggle-wrap{display:inline-flex;background:var(--bg);border:1px solid var(--border);border-radius:50px;padding:4px}
+.tog{padding:10px 26px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;color:var(--muted);border:none;background:transparent;transition:all 0.2s;font-family:var(--font)}
+.tog.on{background:white;color:var(--ink);box-shadow:0 1px 6px rgba(0,0,0,0.1)}
+.save-pill{background:var(--accent-light);color:var(--accent);font-size:11px;font-weight:700;padding:2px 8px;border-radius:50px;margin-left:6px}
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start}
+.plan{border:1px solid var(--border);border-radius:var(--radius-lg);padding:34px 28px;background:var(--bg);position:relative;transition:all 0.25s}
+.plan:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08)}
+.plan.best{background:var(--dark2);border-color:rgba(26,92,255,0.5);border-width:1.5px;transform:scale(1.03);box-shadow:0 0 0 1px rgba(26,92,255,0.2),0 20px 60px rgba(26,92,255,0.18),0 40px 80px rgba(0,0,0,0.2)}
+.best-label{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--blue);color:white;font-size:11px;font-weight:800;padding:4px 16px;border-radius:50px;white-space:nowrap;letter-spacing:0.5px;box-shadow:0 0 16px var(--blue-glow-sm)}
+.plan-name{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:14px}
+.plan.best .plan-name{color:rgba(255,255,255,0.6)}
+.plan-price-row{display:flex;align-items:baseline;gap:2px;margin-bottom:4px}
+.plan-curr{font-size:18px;font-weight:600;color:var(--ink2)}
+.plan.best .plan-curr{color:rgba(255,255,255,0.7)}
+.plan-price-val{font-size:52px;font-weight:800;color:var(--ink);letter-spacing:-2px;line-height:1}
+.plan.best .plan-price-val{color:white}
+.plan-per{font-size:14px;color:var(--muted);margin-bottom:8px}
+.plan.best .plan-per{color:rgba(255,255,255,0.5)}
+.plan-range{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:24px;padding-bottom:24px;border-bottom:1px solid var(--border)}
+.plan.best .plan-range{color:#7BA8FF;border-color:rgba(255,255,255,0.1)}
+.plan-features{list-style:none;margin-bottom:28px}
+.plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:var(--ink2);padding:7px 0;font-weight:400}
+.plan.best .plan-features li{color:rgba(255,255,255,0.85)}
+.plan-features li::before{content:'✓';color:var(--accent);font-size:13px;font-weight:800;flex-shrink:0;margin-top:2px}
+.plan-btn-blue{display:block;text-align:center;padding:15px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;background:var(--blue);color:white;transition:all 0.2s;font-family:var(--font);border:none;cursor:pointer;width:100%;box-shadow:0 0 24px var(--blue-glow-sm);letter-spacing:-0.2px}
+.plan-btn-blue:hover{opacity:0.88;box-shadow:0 0 32px var(--blue-glow)}
+.plan-btn-line{display:block;text-align:center;padding:14px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;border:1.5px solid var(--border);color:var(--ink2);transition:all 0.2s;font-family:var(--font);cursor:pointer;background:transparent;width:100%}
+.plan-btn-line:hover{border-color:var(--blue);color:var(--blue)}
+.testimonials-section{background:var(--dark);padding:96px 0;overflow:hidden;position:relative}
+.testimonials-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(26,92,255,0.06) 0%,transparent 70%)}
+.test-header{text-align:center;padding:0 6%;margin-bottom:52px;position:relative;z-index:1}
+.marquee-outer{overflow:hidden;width:100%;position:relative}
+.marquee-outer::before,.marquee-outer::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none}
+.marquee-outer::before{left:0;background:linear-gradient(90deg,var(--dark),transparent)}
+.marquee-outer::after{right:0;background:linear-gradient(-90deg,var(--dark),transparent)}
+.marquee-track{display:flex;gap:18px;width:max-content;animation:scrollMarquee 40s linear infinite}
+.marquee-track:hover{animation-play-state:paused}
+@keyframes scrollMarquee{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tcard{width:340px;flex-shrink:0;border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:28px;background:rgba(255,255,255,0.04);transition:all 0.25s}
+.tcard:hover{border-color:rgba(26,92,255,0.3);background:rgba(26,92,255,0.06);transform:translateY(-3px)}
+.stars{font-size:15px;color:#F5A623;letter-spacing:2px;margin-bottom:14px}
+.tcard-text{font-size:16px;color:rgba(255,255,255,0.78);line-height:1.75;font-style:italic;font-weight:400;margin-bottom:20px}
+.tcard-author{display:flex;align-items:center;gap:12px}
+.tcard-av{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;border:1px solid rgba(255,255,255,0.1)}
+.av-b{background:rgba(26,92,255,0.2);color:#7BA8FF}
+.av-g{background:rgba(0,200,150,0.15);color:var(--accent)}
+.av-n{background:rgba(100,100,160,0.2);color:#A0A0D0}
+.tcard-name{font-size:14px;font-weight:700;color:rgba(255,255,255,0.95)}
+.tcard-role{font-size:13px;color:rgba(255,255,255,0.45);margin-top:2px}
+.faq-section{background:white;padding:96px 6%}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq-header{text-align:center;margin-bottom:52px}
+.faq-header .section-label{justify-content:center}
+.faq-header .section-h{color:var(--ink)}
+.faq-item{border-bottom:1px solid var(--border);padding:24px 0;cursor:pointer}
+.faq-q{font-size:17px;font-weight:600;display:flex;justify-content:space-between;align-items:center;gap:16px;color:var(--ink)}
+.faq-ico{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:19px;color:var(--muted);font-weight:300;transition:all 0.25s;line-height:1}
+.faq-item.open .faq-ico{background:var(--blue);border-color:var(--blue);color:white;transform:rotate(45deg);box-shadow:0 0 12px var(--blue-glow-sm)}
+.faq-a{font-size:16px;color:var(--muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s;font-weight:400}
+.faq-item.open .faq-a{max-height:220px;padding-top:14px}
+.cta-section{background:var(--dark2);padding:120px 6%;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(26,92,255,0.15) 0%,transparent 70%)}
+.cta-section::after{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(26,92,255,0.4),transparent)}
+.cta-inner{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.cta-section .section-label{justify-content:center}
+.cta-section .section-h{color:white;font-size:clamp(40px,5vw,64px);margin-bottom:18px}
+.cta-p{font-size:19px;font-weight:400;color:rgba(255,255,255,0.65);margin-bottom:42px}
+.cta-note{font-size:14px;color:rgba(255,255,255,0.45);margin-top:18px}
+footer{background:var(--dark);border-top:1px solid rgba(255,255,255,0.07);padding:44px 6%;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+.footer-logo{font-size:19px;font-weight:700;color:white;text-decoration:none;display:flex;align-items:center;gap:10px}
+.footer-logo span{color:var(--blue-mid)}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap}
+.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:14px;transition:color 0.2s}
+.footer-links a:hover{color:rgba(255,255,255,0.9)}
+.footer-copy{font-size:13px;color:rgba(255,255,255,0.35)}
+@media(max-width:900px){.app-inner{grid-template-columns:1fr}.app-right{display:none}.features-grid,.plans-grid,.steps-grid{grid-template-columns:1fr}.plan.best{transform:none}nav ul li:not(:last-child){display:none}.step-connector{display:none}footer{flex-direction:column;text-align:center}.tcard{width:290px}}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+<nav id="navbar">
+  <a href="#" class="logo"><div class="logo-mark">E</div><span class="logo-text">EBD<span>Class</span></span></a>
+  <ul>
+    <li><a href="#recursos">Recursos</a></li>
+    <li><a href="#como-funciona">Como funciona</a></li>
+    <li><a href="#planos">Planos</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#planos" class="nav-cta">Teste grátis</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="pill"><div class="pill-dot"></div>Relatórios em tempo real por campo e setor</div>
+    <h1>Sua EBD organizada<br>de verdade, <em>finalmente.</em></h1>
+    <p class="hero-sub">Chamadas digitais, relatórios automáticos e controle por turma, setor e campo. Tudo que o secretário precisa — sem papel, sem caneta.</p>
+    <div class="hero-ctas">
+      <a href="#planos" class="btn-blue">Começar grátis →</a>
+      <a href="#como-funciona" class="btn-ghost">▶ Ver demonstração</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-avatars">
+        <div class="proof-av">RS</div><div class="proof-av">JF</div><div class="proof-av">MO</div>
+        <div class="proof-av" style="background:rgba(26,92,255,0.2);color:#7BA8FF;font-size:10px;">+</div>
+      </div>
+      <div class="proof-text"><strong>+500 igrejas</strong> já usam o EBDClass</div>
+    </div>
+  </div>
+</section>
+
+<div class="preview-section">
+  <div class="app-frame">
+    <div class="frame-bar">
+      <div class="frame-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
+      <div class="frame-url">app.ebdclass.com.br</div>
+    </div>
+    <div class="app-inner">
+      <div class="app-left">
+        <div class="app-top">
+          <div><div class="app-greeting">Dashboard — Trimestre 2</div><div class="app-date">Domingo, 27 de Abril · Igreja Sede</div></div>
+          <button class="export-btn">↓ Exportar PDF</button>
+        </div>
+        <div class="metrics-row">
+          <div class="mc"><div class="mc-lbl">Alunos</div><div class="mc-val">247</div><div class="mc-chg">↑ +12</div></div>
+          <div class="mc"><div class="mc-lbl">Presença</div><div class="mc-val">189</div><div class="mc-chg">76,5%</div></div>
+          <div class="mc"><div class="mc-lbl">Turmas</div><div class="mc-val">14</div><div class="mc-chg">↑ 2 novas</div></div>
+          <div class="mc"><div class="mc-lbl">Professores</div><div class="mc-val">18</div><div class="mc-chg">16 online</div></div>
+        </div>
+        <div class="classes-box">
+          <div class="cb-head"><div>Turma</div><div>Professor</div><div>Freq.</div></div>
+          <div class="cb-row"><div class="cb-name">Adolescentes I</div><div class="cb-teacher">Pr. João Silva</div><div><span class="tag tag-g">91%</span></div></div>
+          <div class="cb-row"><div class="cb-name">Jovens II</div><div class="cb-teacher">Diac. Maria Lima</div><div><span class="tag tag-g">84%</span></div></div>
+          <div class="cb-row"><div class="cb-name">Adultos A</div><div class="cb-teacher">Pres. Carlos Faria</div><div><span class="tag tag-y">67%</span></div></div>
+          <div class="cb-row"><div class="cb-name">Crianças I</div><div class="cb-teacher">Evang. Ana Costa</div><div><span class="tag tag-r">52%</span></div></div>
+        </div>
+      </div>
+      <div class="app-right">
+        <div class="mini-chart">
+          <div class="mini-chart-title">Frequência mensal</div>
+          <div class="bars">
+            <div class="bar-col"><div class="bar-fill" style="height:52px"></div><div class="bar-lbl">Fev</div></div>
+            <div class="bar-col"><div class="bar-fill" style="height:64px"></div><div class="bar-lbl">Mar</div></div>
+            <div class="bar-col"><div class="bar-fill hi" style="height:80px"></div><div class="bar-lbl">Abr</div></div>
+            <div class="bar-col"><div class="bar-fill" style="height:58px"></div><div class="bar-lbl">Mai</div></div>
+            <div class="bar-col"><div class="bar-fill" style="height:70px"></div><div class="bar-lbl">Jun</div></div>
+          </div>
+        </div>
+        <div class="metrics-row">
+          <div class="mc"><div class="mc-lbl">Bíblias</div><div class="mc-val">83%</div><div class="mc-chg">trouxeram</div></div>
+          <div class="mc"><div class="mc-lbl">Revistas</div><div class="mc-val">76%</div><div class="mc-chg">com revistas</div></div>
+        </div>
+        <div class="alert-box">
+          <div class="alert-icon">🔔</div>
+          <div><div class="alert-text-title">Alerta de ausência</div><div class="alert-text-sub">3 alunos faltaram 2 domingos seguidos. Clique para ver detalhes.</div></div>
+        </div>
+        <div class="mc" style="padding:14px 16px;">
+          <div class="mc-lbl">🎂 Aniversariantes esta semana</div>
+          <div style="margin-top:8px;display:flex;flex-direction:column;gap:6px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12px;color:rgba(255,255,255,0.75);font-weight:600;">Ana Paula Santos</span><span style="font-size:10px;color:rgba(255,255,255,0.35);">Amanhã</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><span style="font-size:12px;color:rgba(255,255,255,0.75);font-weight:600;">Carlos Eduardo</span><span style="font-size:10px;color:rgba(255,255,255,0.35);">Qui, 01</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="logos-strip">
+  <div class="logos-label">Igrejas que confiam no EBDClass</div>
+  <div class="logos-row">
+    <span class="church-tag">AD Madureira</span><span class="church-tag">AD Belém</span>
+    <span class="church-tag">IEADLP</span><span class="church-tag">Igreja Batista</span><span class="church-tag">CGADB</span>
+  </div>
+</div>
+
+<div id="recursos" class="features-section">
+  <div class="features-inner">
+    <div class="reveal">
+      <div class="section-label" style="color:var(--blue);">Recursos</div>
+      <h2 class="section-h" style="color:var(--ink);">Tudo que sua escola<br>bíblica <em>precisa</em></h2>
+      <p class="section-p" style="margin-bottom:0;max-width:500px;color:var(--muted);">Cada recurso foi pensado para eliminar retrabalho e devolver tempo para o que realmente importa.</p>
+    </div>
+    <div class="features-grid" style="margin-top:52px;">
+      <div class="feat reveal" style="transition-delay:0.05s"><div class="feat-icon">📋</div><div class="feat-title">Chamada digital por turma</div><div class="feat-desc">Cada professor faz a chamada pelo celular. O secretário recebe tudo em tempo real, sem recolher papéis.</div></div>
+      <div class="feat reveal" style="transition-delay:0.1s"><div class="feat-icon green">📊</div><div class="feat-title">Relatórios automáticos</div><div class="feat-desc">Relatório trimestral e anual gerado automaticamente. Exporta em PDF com um clique.</div></div>
+      <div class="feat reveal" style="transition-delay:0.15s"><div class="feat-icon neutral">🏆</div><div class="feat-title">Ranking de alunos</div><div class="feat-desc">Frequência, pontuação e dedicação de cada aluno. Identifique quem precisa de mais atenção.</div></div>
+      <div class="feat reveal" style="transition-delay:0.2s"><div class="feat-icon">🏛️</div><div class="feat-title">Gestão por campo e setor</div><div class="feat-desc">Visão consolidada de todas as congregações. O pastor de campo acompanha tudo em um painel.</div></div>
+      <div class="feat reveal" style="transition-delay:0.25s"><div class="feat-icon green">🔔</div><div class="feat-title">Alertas de ausência</div><div class="feat-desc">Aluno faltou 2 domingos seguidos? O sistema alerta automaticamente o professor ou secretário.</div></div>
+      <div class="feat reveal" style="transition-delay:0.3s"><div class="feat-icon neutral">🎂</div><div class="feat-title">Aniversariantes</div><div class="feat-desc">Receba toda semana a lista de aniversariantes e fortaleça o vínculo com seus alunos.</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="como-funciona" class="steps-section">
+  <div class="steps-inner">
+    <div class="reveal">
+      <div class="section-label" style="justify-content:center;">Como funciona</div>
+      <h2 class="section-h">Simples do início <em>ao fim</em></h2>
+      <p class="section-p" style="max-width:460px;margin:0 auto;">Configure em 2 minutos e já use no próximo domingo. Sem instalação, sem treinamento longo.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-connector"></div>
+      <div class="step reveal" style="transition-delay:0.05s"><div class="step-circle">1</div><div class="step-title">Cadastre sua igreja</div><div class="step-desc">Crie sua conta em 2 minutos. Adicione as turmas e professores e comece já no próximo domingo.</div></div>
+      <div class="step reveal" style="transition-delay:0.15s"><div class="step-circle">2</div><div class="step-title">Professores fazem a chamada</div><div class="step-desc">Cada professor acessa pelo celular e registra a presença com um toque. Sem instalar nada.</div></div>
+      <div class="step reveal" style="transition-delay:0.25s"><div class="step-circle">3</div><div class="step-title">Relatório pronto na hora</div><div class="step-desc">O secretário acompanha em tempo real e exporta o relatório final em PDF com um clique.</div></div>
+    </div>
+  </div>
+</div>
+
+<div id="planos" class="pricing-section">
+  <div class="pricing-inner">
+    <div class="pricing-header reveal">
+      <div class="section-label" style="justify-content:center;color:var(--blue);">Planos</div>
+      <h2 class="section-h" style="color:var(--ink);">Preço justo para <em>cada igreja</em></h2>
+      <p class="section-p">Cobramos por faixa de alunos. Você paga exatamente pelo tamanho da sua escola bíblica.</p>
+      <div class="toggle-row">
+        <div class="toggle-wrap">
+          <button class="tog on" onclick="setMode(this,'m')">Mensal</button>
+          <button class="tog" onclick="setMode(this,'a')">Anual <span class="save-pill">−20%</span></button>
+        </div>
+      </div>
+    </div>
+    <div class="plans-grid reveal">
+      <div class="plan">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price-row"><span class="plan-curr">R$</span><span class="plan-price-val" id="p1">37</span></div>
+        <div class="plan-per">por mês</div><div class="plan-range">Até 50 alunos</div>
+        <ul class="plan-features"><li>Chamada digital ilimitada</li><li>Relatórios trimestrais em PDF</li><li>Até 5 professores</li><li>Ranking de presença</li><li>Suporte via e-mail</li></ul>
+        <button class="plan-btn-line">Testar 15 dias grátis</button>
+      </div>
+      <div class="plan best">
+        <div class="best-label">Mais popular</div>
+        <div class="plan-name">Pro</div>
+        <div class="plan-price-row"><span class="plan-curr">R$</span><span class="plan-price-val" id="p2">79</span></div>
+        <div class="plan-per">por mês</div><div class="plan-range">Até 200 alunos</div>
+        <ul class="plan-features"><li>Tudo do Starter</li><li>Professores ilimitados</li><li>Alertas de ausência</li><li>Aniversariantes automático</li><li>Ranking com pontuação</li><li>Suporte via WhatsApp</li></ul>
+        <button class="plan-btn-blue">Testar 15 dias grátis</button>
+      </div>
+      <div class="plan">
+        <div class="plan-name">Campo</div>
+        <div class="plan-price-row"><span class="plan-curr">R$</span><span class="plan-price-val" id="p3">147</span></div>
+        <div class="plan-per">por mês</div><div class="plan-range">Alunos ilimitados</div>
+        <ul class="plan-features"><li>Tudo do Pro</li><li>Múltiplas congregações</li><li>Relatório consolidado do campo</li><li>Painel do pastor de campo</li><li>Suporte dedicado</li></ul>
+        <button class="plan-btn-line">Testar 15 dias grátis</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="testimonials-section">
+  <div class="test-header reveal">
+    <div class="section-label" style="justify-content:center;">Depoimentos</div>
+    <h2 class="section-h">O que dizem os <em>secretários</em></h2>
+    <p class="section-p" style="max-width:440px;margin:0 auto;">Quem experimentou não volta para papel e caneta.</p>
+  </div>
+  <div class="marquee-outer">
+    <div class="marquee-track">
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Levava mais de 2 horas fechando o relatório todo domingo. Agora está pronto antes de eu chegar em casa."</div><div class="tcard-author"><div class="tcard-av av-b">RS</div><div><div class="tcard-name">Rosângela Santos</div><div class="tcard-role">Secretária EBD · AD Fortaleza</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os professores adoraram. Nunca mais perdemos chamada. O pastor fica muito satisfeito com os relatórios."</div><div class="tcard-author"><div class="tcard-av av-g">JF</div><div><div class="tcard-name">José Ferreira</div><div class="tcard-role">Secretário do Campo · AD Goiânia</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Simples, rápido e completo. Indicaria para qualquer secretário que ainda usa cadernos e canetas."</div><div class="tcard-author"><div class="tcard-av av-n">MO</div><div><div class="tcard-name">Miriam Oliveira</div><div class="tcard-role">Secretária EBD · Igreja Batista Central</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"A gestão do campo ficou muito mais fácil. Consigo ver todas as congregações de uma vez só."</div><div class="tcard-author"><div class="tcard-av av-b">PL</div><div><div class="tcard-name">Pastor Levi Carvalho</div><div class="tcard-role">Pastor de Campo · IEADLP Recife</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os alertas de ausência foram um diferencial enorme. A gente consegue visitar o aluno antes que ele suma."</div><div class="tcard-author"><div class="tcard-av av-g">CM</div><div><div class="tcard-name">Cleide Moura</div><div class="tcard-role">Secretária EBD · AD Belém SP</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Antes eu passava a semana preenchendo planilha. Hoje o sistema faz tudo e eu foco no ministério."</div><div class="tcard-author"><div class="tcard-av av-n">AR</div><div><div class="tcard-name">Augusto Ramos</div><div class="tcard-role">Secretário Geral · Congregação Madureira BH</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Levava mais de 2 horas fechando o relatório todo domingo. Agora está pronto antes de eu chegar em casa."</div><div class="tcard-author"><div class="tcard-av av-b">RS</div><div><div class="tcard-name">Rosângela Santos</div><div class="tcard-role">Secretária EBD · AD Fortaleza</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os professores adoraram. Nunca mais perdemos chamada. O pastor fica muito satisfeito com os relatórios."</div><div class="tcard-author"><div class="tcard-av av-g">JF</div><div><div class="tcard-name">José Ferreira</div><div class="tcard-role">Secretário do Campo · AD Goiânia</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Simples, rápido e completo. Indicaria para qualquer secretário que ainda usa cadernos e canetas."</div><div class="tcard-author"><div class="tcard-av av-n">MO</div><div><div class="tcard-name">Miriam Oliveira</div><div class="tcard-role">Secretária EBD · Igreja Batista Central</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"A gestão do campo ficou muito mais fácil. Consigo ver todas as congregações de uma vez só."</div><div class="tcard-author"><div class="tcard-av av-b">PL</div><div><div class="tcard-name">Pastor Levi Carvalho</div><div class="tcard-role">Pastor de Campo · IEADLP Recife</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os alertas de ausência foram um diferencial enorme. A gente consegue visitar o aluno antes que ele suma."</div><div class="tcard-author"><div class="tcard-av av-g">CM</div><div><div class="tcard-name">Cleide Moura</div><div class="tcard-role">Secretária EBD · AD Belém SP</div></div></div></div>
+      <div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Antes eu passava a semana preenchendo planilha. Hoje o sistema faz tudo e eu foco no ministério."</div><div class="tcard-author"><div class="tcard-av av-n">AR</div><div><div class="tcard-name">Augusto Ramos</div><div class="tcard-role">Secretário Geral · Congregação Madureira BH</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<div id="faq" class="faq-section">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <div class="section-label" style="color:var(--blue);justify-content:center;">FAQ</div>
+      <h2 class="section-h" style="color:var(--ink);">Perguntas <em>frequentes</em></h2>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Preciso instalar algum aplicativo? <div class="faq-ico">+</div></div><div class="faq-a">Não. O EBDClass é 100% web. Professores e secretários acessam pelo navegador do celular ou computador, sem instalar nada.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Como funciona o período gratuito? <div class="faq-ico">+</div></div><div class="faq-a">São 15 dias de teste completo, sem necessidade de cartão de crédito. Você usa todos os recursos do plano escolhido e decide se continua.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Posso ter várias congregações na mesma conta? <div class="faq-ico">+</div></div><div class="faq-a">Sim. No plano Campo você gerencia todas as congregações do campo, com painel consolidado e relatórios por setor e filial.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Tenho fidelidade ou contrato? <div class="faq-ico">+</div></div><div class="faq-a">Não. Os planos são mensais ou anuais pré-pagos. Você pode cancelar quando quiser, sem multa.</div></div>
+    <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Quais formas de pagamento são aceitas? <div class="faq-ico">+</div></div><div class="faq-a">Cartão de crédito para planos mensais ou anuais, além de Pix e boleto para planos anuais.</div></div>
+  </div>
+</div>
+
+<section class="cta-section">
+  <div class="cta-inner reveal">
+    <div class="section-label" style="justify-content:center;">Comece hoje</div>
+    <h2 class="section-h">15 dias grátis.<br><em>Sem cartão. Sem stress.</em></h2>
+    <p class="cta-p">Configure em 2 minutos e já use no próximo domingo.</p>
+    <a href="#planos" class="btn-blue" style="font-size:16px;padding:17px 42px;margin:0 auto;">Criar minha conta grátis →</a>
+    <div class="cta-note">✓ Sem fidelidade &nbsp;·&nbsp; ✓ Suporte via WhatsApp &nbsp;·&nbsp; ✓ Cancele quando quiser</div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="footer-logo"><div class="logo-mark" style="width:30px;height:30px;font-size:13px;">E</div>EBD<span>Class</span></a>
+  <div class="footer-links">
+    <a href="#">Recursos</a><a href="#">Planos</a><a href="#">Ajuda</a>
+    <a href="#">Privacidade</a><a href="#">Termos de uso</a><a href="#">WhatsApp</a>
+  </div>
+  <div class="footer-copy">© 2025 EBDClass</div>
+</footer>
+
+<script>
+const prices={m:[37,79,147],a:[30,63,117]};
+function setMode(btn,mode){
+  document.querySelectorAll('.tog').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  ['p1','p2','p3'].forEach((id,i)=>{
+    const el=document.getElementById(id);
+    el.style.transform='scale(0.8)';el.style.opacity='0';
+    setTimeout(()=>{el.textContent=prices[mode][i];el.style.transition='all 0.2s';el.style.transform='scale(1)';el.style.opacity='1';},150);
+  });
+}
+function toggleFaq(el){
+  const wasOpen=el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
+  if(!wasOpen)el.classList.add('open');
+}
+window.addEventListener('scroll',()=>{
+  document.getElementById('navbar').style.boxShadow=window.scrollY>30?'0 1px 30px rgba(0,0,0,0.3)':'none';
+});
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
