@@ -273,6 +273,59 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
 }
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease}
 .reveal.visible{opacity:1;transform:none}
+
+/* ANTES / DEPOIS */
+.before-after-section{background:white;padding:96px 6%}
+.before-after-inner{max-width:1000px;margin:0 auto}
+.ba-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:52px}
+.ba-card{border-radius:var(--radius-lg);padding:36px 32px}
+.ba-card.before{background:#FFF4F4;border:1.5px solid rgba(200,50,50,0.15)}
+.ba-card.after{background:var(--blue-light);border:1.5px solid rgba(9,47,125,0.18)}
+.ba-label{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:8px}
+.ba-label.bad{color:#C03030}
+.ba-label.good{color:var(--blue)}
+.ba-label-dot{width:8px;height:8px;border-radius:50%}
+.ba-label.bad .ba-label-dot{background:#C03030}
+.ba-label.good .ba-label-dot{background:var(--blue)}
+.ba-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.ba-list li{font-size:16px;font-weight:500;display:flex;align-items:center;gap:12px;color:var(--ink2)}
+.ba-list li::before{content:'';width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:800}
+.ba-card.before .ba-list li::before{content:'✕';background:rgba(200,50,50,0.1);color:#C03030}
+.ba-card.after .ba-list li::before{content:'✓';background:rgba(9,47,125,0.12);color:var(--blue)}
+.ba-arrow{display:flex;align-items:center;justify-content:center;font-size:32px;color:var(--muted-light)}
+
+/* PASTOR BLOCK */
+.pastor-section{background:var(--bg);padding:96px 6%}
+.pastor-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.pastor-visual{background:var(--blue);border-radius:var(--radius-lg);padding:36px;position:relative;overflow:hidden}
+.pastor-visual::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 20% 20%,rgba(26,92,255,0.4),transparent 70%)}
+.pastor-mock{position:relative;z-index:1}
+.pastor-mock-title{font-size:12px;font-weight:700;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
+.pastor-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.pastor-stat{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:12px;padding:14px}
+.pastor-stat-label{font-size:10px;color:rgba(255,255,255,0.45);font-weight:600;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.pastor-stat-val{font-size:22px;font-weight:700;color:white;line-height:1}
+.pastor-stat-sub{font-size:10px;color:rgba(0,200,150,0.9);font-weight:700;margin-top:4px}
+.pastor-church-list{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:12px;overflow:hidden}
+.pastor-church-row{display:flex;justify-content:space-between;align-items:center;padding:11px 14px;border-bottom:1px solid rgba(255,255,255,0.07);font-size:12px}
+.pastor-church-row:last-child{border-bottom:none}
+.pastor-church-name{color:rgba(255,255,255,0.85);font-weight:600}
+.pastor-church-pct{font-size:10px;font-weight:700;padding:2px 8px;border-radius:50px}
+.pct-g{background:rgba(0,200,150,0.15);color:#00C896}
+.pct-y{background:rgba(255,185,0,0.15);color:#FFB900}
+.pastor-text .section-label{justify-content:flex-start}
+.pastor-text .section-h{font-size:clamp(32px,3.5vw,48px)}
+.pastor-list{list-style:none;margin-top:28px;display:flex;flex-direction:column;gap:16px}
+.pastor-list li{display:flex;align-items:flex-start;gap:14px;font-size:16px;color:var(--muted);line-height:1.65}
+.pastor-list-icon{width:38px;height:38px;border-radius:11px;background:var(--blue-light);border:1px solid rgba(9,47,125,0.15);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;margin-top:1px}
+.pastor-list strong{display:block;font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px}
+
+@media(max-width:900px){
+  .ba-grid{grid-template-columns:1fr}
+  .ba-arrow{transform:rotate(90deg)}
+  .pastor-inner{grid-template-columns:1fr}
+  .pastor-visual{order:2}
+}
 </style>
 </head>
 <body>
@@ -294,9 +347,9 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
   <div class="hero-content">
     <div class="pill"><div class="pill-dot"></div>Relatórios em tempo real por campo e setor</div>
     <h1>Sua EBD organizada<br>de verdade, <em>finalmente.</em></h1>
-    <p class="hero-sub">Chamadas digitais, relatórios automáticos e controle por turma, setor e campo. Tudo que o secretário precisa — sem papel, sem caneta.</p>
+    <p class="hero-sub">Pare de perder horas todo domingo com papel, planilhas e relatórios manuais. Automatize chamadas, presença e acompanhamento da sua Escola Bíblica em um único sistema.</p>
     <div class="hero-ctas">
-      <a href="https://app.ebdclass.com.br/cadastro" class="btn-blue">Começar grátis →</a>
+      <a href="https://app.ebdclass.com.br/cadastro" class="btn-blue">Organizar minha EBD grátis →</a>
       <a href="https://app.ebdclass.com.br/demo" class="btn-ghost">▶ Ver demonstração</a>
     </div>
     <div class="hero-proof">
@@ -374,6 +427,43 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
   </div>
 </div>
 
+
+<div class="before-after-section reveal">
+  <div class="before-after-inner">
+    <div style="text-align:center;margin-bottom:0;">
+      <div class="section-label" style="justify-content:center;">A diferença na prática</div>
+      <h2 class="section-h" style="text-align:center;">O domingo que você conhece<br>x o domingo que você <em>merece</em></h2>
+      <p class="section-p" style="text-align:center;max-width:480px;margin:0 auto;">Veja o que muda quando a sua EBD sai do papel e entra no EBDClass.</p>
+    </div>
+    <div class="ba-grid">
+      <div class="ba-card before reveal">
+        <div class="ba-label bad"><div class="ba-label-dot"></div>Antes do EBDClass</div>
+        <ul class="ba-list">
+          <li>Chamada feita em papel — e perdida na bolsa</li>
+          <li>Relatório manual que leva horas para fechar</li>
+          <li>Frequência calculada na calculadora ou no Excel</li>
+          <li>Pastor esperando os dados até segunda-feira</li>
+          <li>Aluno sumindo sem ninguém perceber</li>
+          <li>Histórico de presença? Nenhum.</li>
+          <li>Secretário exausto todo domingo</li>
+        </ul>
+      </div>
+      <div class="ba-card after reveal">
+        <div class="ba-label good"><div class="ba-label-dot"></div>Com o EBDClass</div>
+        <ul class="ba-list">
+          <li>Chamada feita no celular em menos de 3 minutos</li>
+          <li>Relatório gerado automaticamente — em PDF</li>
+          <li>Frequência calculada em tempo real, por turma</li>
+          <li>Pastor acompanha tudo ao vivo no painel</li>
+          <li>Alerta automático quando aluno falta 2 domingos</li>
+          <li>Histórico completo desde o primeiro domingo</li>
+          <li>Secretário com tempo para o que importa</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="recursos" class="features-section">
   <div class="features-inner">
     <div class="reveal">
@@ -388,6 +478,64 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
       <div class="feat reveal" style="transition-delay:0.2s"><div class="feat-icon">🏛️</div><div class="feat-title">Gestão por campo e setor</div><div class="feat-desc">Visão consolidada de todas as congregações em um único painel. O pastor de campo acompanha frequência, alunos e relatórios de cada igreja sem precisar ligar ou esperar o domingo. Tudo atualizado em tempo real.</div></div>
       <div class="feat reveal" style="transition-delay:0.25s"><div class="feat-icon green">🔔</div><div class="feat-title">Alertas de ausência</div><div class="feat-desc">O sistema detecta automaticamente quando um aluno falta 2 ou mais domingos seguidos e alerta o professor ou secretário. Assim a liderança pode visitar e cuidar do aluno antes que ele se afaste da igreja.</div></div>
       <div class="feat reveal" style="transition-delay:0.3s"><div class="feat-icon neutral">🎂</div><div class="feat-title">Aniversariantes da semana</div><div class="feat-desc">Todo início de semana você recebe automaticamente a lista de alunos que fazem aniversário nos próximos dias. Uma ligação ou mensagem no momento certo fortalece vínculos e mostra que a igreja se importa.</div></div>
+    </div>
+  </div>
+</div>
+
+
+<div class="pastor-section">
+  <div class="pastor-inner">
+    <div class="pastor-visual reveal">
+      <div class="pastor-mock">
+        <div class="pastor-mock-title">Painel do Pastor de Campo</div>
+        <div class="pastor-stat-row">
+          <div class="pastor-stat">
+            <div class="pastor-stat-label">Total de alunos</div>
+            <div class="pastor-stat-val">847</div>
+            <div class="pastor-stat-sub">↑ +34 este trimestre</div>
+          </div>
+          <div class="pastor-stat">
+            <div class="pastor-stat-label">Frequência média</div>
+            <div class="pastor-stat-val">74%</div>
+            <div class="pastor-stat-sub">↑ +6% vs anterior</div>
+          </div>
+          <div class="pastor-stat">
+            <div class="pastor-stat-label">Igrejas ativas</div>
+            <div class="pastor-stat-val">7</div>
+            <div class="pastor-stat-sub">todas reportando</div>
+          </div>
+          <div class="pastor-stat">
+            <div class="pastor-stat-label">Turmas</div>
+            <div class="pastor-stat-val">43</div>
+            <div class="pastor-stat-sub">↑ 3 novas</div>
+          </div>
+        </div>
+        <div class="pastor-church-list">
+          <div class="pastor-church-row"><span class="pastor-church-name">Igreja Sede</span><span class="pastor-church-pct pct-g">82%</span></div>
+          <div class="pastor-church-row"><span class="pastor-church-name">Congregação Morada Nova</span><span class="pastor-church-pct pct-g">78%</span></div>
+          <div class="pastor-church-row"><span class="pastor-church-name">Congregação Vila União</span><span class="pastor-church-pct pct-y">61%</span></div>
+          <div class="pastor-church-row"><span class="pastor-church-name">Congregação Parque Sul</span><span class="pastor-church-pct pct-g">75%</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pastor-text reveal">
+      <div class="section-label">Para a liderança</div>
+      <h2 class="section-h">O pastor acompanha<br>tudo em <em>tempo real</em></h2>
+      <p class="section-p">Sem precisar ligar, esperar ou ir até cada congregação. O painel do campo consolida tudo em um único lugar — frequência, crescimento, alertas e relatórios de cada igreja.</p>
+      <ul class="pastor-list">
+        <li>
+          <div class="pastor-list-icon">📊</div>
+          <div><strong>Visão consolidada do campo</strong>Frequência, alunos e turmas de todas as congregações em um único painel atualizado em tempo real.</div>
+        </li>
+        <li>
+          <div class="pastor-list-icon">🔔</div>
+          <div><strong>Alertas de queda de frequência</strong>Saiba imediatamente quando uma congregação ou turma apresenta queda e aja antes que vire problema.</div>
+        </li>
+        <li>
+          <div class="pastor-list-icon">📄</div>
+          <div><strong>Relatório do campo em PDF</strong>Gere o relatório completo de todas as igrejas com um clique — pronto para reunião de pastores ou prestação de contas.</div>
+        </li>
+      </ul>
     </div>
   </div>
 </div>
@@ -568,7 +716,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
     <div class="section-label" style="justify-content:center;">Comece hoje</div>
     <h2 class="section-h">15 dias grátis.<br><em>Sem cartão. Sem stress.</em></h2>
     <p class="cta-p">Configure em 2 minutos e já use no próximo domingo.</p>
-    <a href="https://app.ebdclass.com.br/cadastro" class="btn-white">Criar minha conta grátis →</a>
+    <a href="https://app.ebdclass.com.br/cadastro" class="btn-white">Testar na minha igreja →</a>
     <div class="cta-note">✓ Sem fidelidade &nbsp;·&nbsp; ✓ Suporte via WhatsApp &nbsp;·&nbsp; ✓ Cancele quando quiser</div>
   </div>
 </section>
