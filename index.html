@@ -132,9 +132,9 @@ nav ul a:hover{color:var(--blue)}
 .church-tag{font-size:15px;font-weight:700;color:rgba(255,255,255,0.9);letter-spacing:-0.2px;font-family:var(--font)}
 
 /* FEATURES */
-.features-section{background:white;padding:96px 6%}
+.features-section{background:white;padding:56px 6%}
 .features-inner{max-width:1160px;margin:0 auto}
-.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:32px;align-items:stretch}
 .feat{padding:28px 26px;border:2px solid #092F7D;border-radius:var(--radius-lg);background:var(--bg);transition:all 0.25s;position:relative;overflow:hidden}
 .feat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--blue),transparent);opacity:0;transition:opacity 0.25s}
 .feat:hover{border-color:rgba(9,47,125,0.25);box-shadow:0 12px 40px rgba(9,47,125,0.08);transform:translateY(-4px);background:white}
@@ -201,7 +201,7 @@ nav ul a:hover{color:var(--blue)}
 .plan-btn-line:hover{border-color:var(--blue);color:var(--blue);background:var(--blue-light)}
 
 /* TESTIMONIALS */
-.testimonials-section{background:var(--bg);padding:96px 0;overflow:hidden;position:relative}
+.testimonials-section{background:var(--bg);padding:56px 0;overflow:hidden;position:relative}
 .testimonials-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(9,47,125,0.04) 0%,transparent 70%)}
 .test-header{text-align:center;padding:0 6%;margin-bottom:52px;position:relative;z-index:1}
 .marquee-outer{overflow:hidden;width:100%;position:relative}
@@ -224,7 +224,7 @@ nav ul a:hover{color:var(--blue)}
 .tcard-role{font-size:13px;color:#5A6785;margin-top:2px}
 
 /* FAQ */
-.faq-section{background:var(--bg);padding:96px 6%}
+.faq-section{background:var(--bg);padding:56px 6%}
 .faq-inner{max-width:720px;margin:0 auto}
 .faq-header{text-align:center;margin-bottom:52px}
 .faq-header .section-label{justify-content:center}
@@ -625,13 +625,13 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
       <h2 class="section-h">Tudo que sua escola<br>bíblica <em>precisa</em></h2>
       <p class="section-p" style="margin-bottom:0;max-width:500px;">Cada recurso foi pensado para eliminar retrabalho e devolver tempo para o que realmente importa.</p>
     </div>
-    <div class="features-grid" style="margin-top:52px;">
-      <div class="feat reveal" style="transition-delay:0.05s"><div class="feat-icon">📋</div><div class="feat-title">Chamada digital por turma</div><div class="feat-desc">Cada professor faz a chamada pelo celular com um toque por aluno. O secretário recebe tudo em tempo real, sem precisar recolher papéis ou esperar o fim da aula. Bíblia e revista também são registrados automaticamente.</div></div>
-      <div class="feat reveal" style="transition-delay:0.1s"><div class="feat-icon green">📊</div><div class="feat-title">Relatórios automáticos</div><div class="feat-desc">Relatório semanal, trimestral e anual gerado automaticamente pelo sistema — com frequência por aluno, por turma e por congregação. Exporta em PDF com um clique, pronto para apresentar ao pastor ou ao campo.</div></div>
-      <div class="feat reveal" style="transition-delay:0.15s"><div class="feat-icon neutral">🏆</div><div class="feat-title">Ranking de alunos</div><div class="feat-desc">Acompanhe frequência, pontuação e dedicação de cada aluno individualmente. Identifique quem precisa de mais atenção pastoral e quem merece reconhecimento. O ranking motiva e o secretário lidera com dados.</div></div>
-      <div class="feat reveal" style="transition-delay:0.2s"><div class="feat-icon">🏛️</div><div class="feat-title">Gestão por campo e setor</div><div class="feat-desc">Visão consolidada de todas as congregações em um único painel. O pastor de campo acompanha frequência, alunos e relatórios de cada igreja sem precisar ligar ou esperar o domingo. Tudo atualizado em tempo real.</div></div>
-      <div class="feat reveal" style="transition-delay:0.25s"><div class="feat-icon green">🔔</div><div class="feat-title">Alertas de ausência</div><div class="feat-desc">O sistema detecta automaticamente quando um aluno falta 2 ou mais domingos seguidos e alerta o professor ou secretário. Assim a liderança pode visitar e cuidar do aluno antes que ele se afaste da igreja.</div></div>
-      <div class="feat reveal" style="transition-delay:0.3s"><div class="feat-icon neutral">🎂</div><div class="feat-title">Aniversariantes da semana</div><div class="feat-desc">Todo início de semana você recebe automaticamente a lista de alunos que fazem aniversário nos próximos dias. Uma ligação ou mensagem no momento certo fortalece vínculos e mostra que a igreja se importa.</div></div>
+    <div class="features-grid" style="margin-top:28px;">
+      <div class="feat reveal" style="transition-delay:0.05s"><div class="feat-icon">📋</div><div class="feat-title">Chamada digital por turma</div><div class="feat-desc">Professor faz chamada no celular em segundos. Secretário recebe tudo em tempo real. Bíblia e revista também registrados automaticamente.</div></div>
+      <div class="feat reveal" style="transition-delay:0.1s"><div class="feat-icon green">📊</div><div class="feat-title">Relatórios automáticos</div><div class="feat-desc">Relatório semanal, trimestral e anual gerado pelo sistema. Frequência por aluno, turma e congregação. Exporta em PDF com um clique.</div></div>
+      <div class="feat reveal" style="transition-delay:0.15s"><div class="feat-icon neutral">🏆</div><div class="feat-title">Ranking de alunos</div><div class="feat-desc">Frequência, pontuação e dedicação de cada aluno. Identifique quem precisa de atenção e quem merece reconhecimento.</div></div>
+      <div class="feat reveal" style="transition-delay:0.2s"><div class="feat-icon">🏛️</div><div class="feat-title">Gestão por campo e setor</div><div class="feat-desc">Todas as congregações em um único painel. Pastor acompanha frequência e relatórios de cada igreja em tempo real, sem ligar ou esperar.</div></div>
+      <div class="feat reveal" style="transition-delay:0.25s"><div class="feat-icon green">🔔</div><div class="feat-title">Alertas de ausência</div><div class="feat-desc">Sistema detecta quando um aluno falta 2 domingos seguidos e alerta o professor ou secretário para agir antes que ele se afaste.</div></div>
+      <div class="feat reveal" style="transition-delay:0.3s"><div class="feat-icon neutral">🎂</div><div class="feat-title">Aniversariantes da semana</div><div class="feat-desc">Toda semana, lista automática de aniversariantes dos próximos dias. Uma mensagem no momento certo fortalece vínculos.</div></div>
     </div>
   </div>
 </div>
