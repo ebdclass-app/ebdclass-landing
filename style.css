@@ -74,7 +74,7 @@ nav ul a:hover{color:var(--blue)}
 .proof-text strong{color:var(--ink);font-weight:700}
 
 /* PREVIEW */
-.preview-section{padding:0 max(6%,calc(50% - 480px)) 96px;position:relative;z-index:1;max-width:1200px;margin:-20px auto 0}
+.preview-section{padding:0 max(6%,calc(50% - 480px)) 96px;position:relative;z-index:1;margin:-20px auto 0}
 .app-frame{background:white;border:1px solid var(--border);border-radius:20px;box-shadow:0 0 0 1px rgba(9,47,125,0.08),0 24px 80px rgba(9,47,125,0.12),0 4px 16px rgba(0,0,0,0.06);overflow:hidden;animation:floatUp 0.8s ease-out 0.2s both}
 @keyframes floatUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 .frame-bar{background:var(--bg);border-bottom:1px solid var(--border);padding:12px 18px;display:flex;align-items:center;gap:14px}
