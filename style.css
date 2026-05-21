@@ -313,12 +313,12 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
 
   /* PLANOS — carrossel */
   .pricing-section{padding:60px 5%}
-  .plans-carousel-wrap{padding:0 24px}
-  .plans-carousel .plans-grid{display:flex;flex-wrap:nowrap;gap:16px}
-  .plans-carousel .plans-grid .plan{min-width:calc(100vw - 80px);scroll-snap-align:center;flex-shrink:0}
+  .plans-carousel-wrap{padding:0 32px}
+  .plans-carousel .plans-grid{display:flex;flex-wrap:nowrap;gap:12px}
+  .plans-carousel .plans-grid .plan{min-width:calc(100vw - 110px);max-width:calc(100vw - 110px);scroll-snap-align:center;flex-shrink:0}
   .plans-arrow{display:flex}
   .plan.best{transform:none}
-  .plan{padding:28px 22px 22px}
+  .plan{padding:24px 18px 20px}
   .plan-price-val{font-size:44px}
 
   /* DEPOIMENTOS */
