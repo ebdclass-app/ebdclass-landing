@@ -435,3 +435,4 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
 .faq-card-a{font-size:15px;color:var(--muted);line-height:1.8;max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s;padding:0 20px}
 .faq-card.open .faq-card-a{max-height:300px;padding:0 20px 18px}
 .faq-card-a a{color:var(--blue)}
+
