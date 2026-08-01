@@ -12,20 +12,23 @@
 <!-- Menu mobile (hambúrguer) — CSS-only, sem JS. Prefixo mnav- para não colidir. -->
 <style>
 .mnav-toggle{display:none}
-.mnav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210}
-.mnav-burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform 0.3s,opacity 0.3s}
+.mnav-burger{display:none}
 @media(max-width:900px){
-  .mnav-burger{display:flex}
-  /* Esconde a lista horizontal padrão e reusa como painel deslizante */
-  nav ul{position:fixed;top:70px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-dark);padding:8px 6% 20px;box-shadow:0 12px 30px rgba(9,47,125,0.12);max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;padding-top:0;padding-bottom:0}
-  /* Anula a regra do style.css que escondia os itens no mobile */
-  nav ul li:not(:last-child){display:block}
-  nav ul li{width:100%}
-  nav ul li a{display:block;padding:14px 4px;font-size:16px;border-bottom:1px solid var(--border-dark)}
+  /* Impede qualquer vazamento horizontal */
+  html,body{overflow-x:hidden}
+  nav{flex-wrap:nowrap}
+  /* Botão hambúrguer */
+  .mnav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210;flex-shrink:0}
+  .mnav-burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform 0.3s,opacity 0.3s}
+  /* Painel do menu: dropdown fixo abaixo do nav, sem empurrar o layout */
+  nav ul{position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-dark);box-shadow:0 12px 30px rgba(9,47,125,0.12);max-height:0;overflow:hidden;padding:0 6%;transition:max-height 0.35s ease,padding 0.35s ease;pointer-events:none}
+  /* Restaura os itens que o style.css escondia no mobile */
+  nav ul li{display:block!important;width:100%}
+  nav ul li a{display:block;padding:15px 4px;font-size:16px;border-bottom:1px solid var(--border-dark)}
   nav ul li:last-child a{border-bottom:none}
-  /* Botões Entrar / Teste grátis ocupam largura total e ficam centralizados */
   nav ul .nav-login,nav ul .nav-cta{text-align:center;margin-top:12px;border-bottom:none!important}
-  .mnav-toggle:checked ~ ul{max-height:520px;padding-top:8px;padding-bottom:20px}
+  /* Aberto */
+  .mnav-toggle:checked ~ ul{max-height:80vh;padding:8px 6% 20px;pointer-events:auto}
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(2){opacity:0}
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
