@@ -14,22 +14,20 @@
 .mnav-toggle{display:none}
 .mnav-burger{display:none}
 @media(max-width:900px){
-  /* Impede qualquer vazamento horizontal */
   html,body{overflow-x:hidden}
   nav{flex-wrap:nowrap}
-  /* Botão hambúrguer */
   .mnav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210;flex-shrink:0}
-  .mnav-burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform 0.3s,opacity 0.3s}
-  /* Painel do menu: dropdown fixo abaixo do nav, sem empurrar o layout */
-  nav ul{position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:rgba(255,255,255,0.98);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-dark);box-shadow:0 12px 30px rgba(9,47,125,0.12);max-height:0;overflow:hidden;padding:0 6%;transition:max-height 0.35s ease,padding 0.35s ease;pointer-events:none}
-  /* Restaura os itens que o style.css escondia no mobile */
-  nav ul li{display:block!important;width:100%!important;opacity:1!important;visibility:visible!important;max-height:none!important}
-  nav ul li a{display:block!important;padding:15px 4px!important;font-size:16px!important;color:#0D1933!important;opacity:1!important;visibility:visible!important;border-bottom:1px solid var(--border-dark)}
-  nav ul li:last-child a{border-bottom:none}
-  nav ul .nav-login,nav ul .nav-cta{text-align:center;margin-top:12px;border-bottom:none!important}
+  .mnav-burger span{display:block;height:2px;width:100%;background:#0D1933;border-radius:2px;transition:transform 0.3s,opacity 0.3s}
+  /* Painel fechado: some de vez */
+  nav ul{display:none!important;position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid rgba(9,47,125,0.12);box-shadow:0 12px 30px rgba(9,47,125,0.15);padding:8px 6% 20px;margin:0;max-height:85vh;overflow-y:auto;z-index:205}
+  /* Painel aberto: aparece como coluna */
+  .mnav-toggle:checked ~ ul{display:flex!important}
+  nav ul li{display:block!important;width:100%!important}
+  nav ul li a{display:block!important;padding:16px 4px!important;font-size:16px!important;color:#0D1933!important;border-bottom:1px solid rgba(9,47,125,0.12)!important}
+  nav ul li:last-child a{border-bottom:none!important}
+  nav ul .nav-login,nav ul .nav-cta{text-align:center;margin-top:12px}
   nav ul .nav-cta{color:#fff!important}
-  /* Aberto */
-  .mnav-toggle:checked ~ ul{max-height:80vh;padding:8px 6% 20px;pointer-events:auto}
+  /* Hambúrguer vira X */
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(2){opacity:0}
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
