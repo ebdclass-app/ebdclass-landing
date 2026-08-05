@@ -6,159 +6,188 @@
 <title>Política de Privacidade — EBDClass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
-<!-- Estilos em style.css — editar lá, não aqui -->
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+.pg-hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#0A2878 0%,#0D1933 60%,#091428 100%);padding:130px max(6%,calc(50% - 440px)) 70px;text-align:center}
+.pg-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(26,92,255,0.25),transparent 62%);pointer-events:none}
+.pg-hero-in{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.pg-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px}
+.pg-tag .pg-dot{width:6px;height:6px;background:#00C896;border-radius:50%;box-shadow:0 0 8px #00C896}
+.pg-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,4.6vw,54px);font-weight:500;line-height:1.08;letter-spacing:-1px;color:#fff;margin-bottom:14px}
+.pg-hero h1 em{font-style:italic;color:#7DFFCC}
+.pg-meta{font-size:14px;color:rgba(255,255,255,0.55)}
+.pg-body{max-width:760px;margin:0 auto;padding:64px max(6%,calc(50% - 380px)) 90px}
+.pg-highlight{background:#EBF0FF;border:1px solid #C9D6F0;border-radius:16px;padding:22px 26px;margin-bottom:44px}
+.pg-highlight p{font-size:15px;color:#1E2D4A;line-height:1.7;margin:0}
+.pg-sec{margin-bottom:38px}
+.pg-sec h2{font-size:21px;font-weight:800;color:#0D1933;margin-bottom:14px;letter-spacing:-0.3px}
+.pg-sec h3{font-size:15px;font-weight:800;color:#092F7D;margin:18px 0 8px}
+.pg-sec p{font-size:15px;color:#5A6785;line-height:1.8;margin-bottom:12px}
+.pg-sec ul{list-style:none;padding:0;margin:0 0 12px}
+.pg-sec li{position:relative;padding-left:24px;font-size:15px;color:#5A6785;line-height:1.7;margin-bottom:9px}
+.pg-sec li::before{content:'';position:absolute;left:2px;top:10px;width:7px;height:7px;border-radius:50%;background:#00C896}
+.pg-sec a{color:#092F7D;font-weight:700}
+.pg-sec strong{color:#1E2D4A}
+.pg-cta{background:linear-gradient(120deg,#092F7D,#0D1933);border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:36px}
+.pg-cta strong{font-size:17px;color:#fff;display:block;margin-bottom:4px}
+.pg-cta p{font-size:14px;color:rgba(255,255,255,0.65);margin:0}
+.pg-cta a{background:#fff;color:#092F7D;padding:13px 26px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 max(6%,calc(50% - 480px));height:70px;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(9,47,125,0.12)}
+.pg-mtoggle{display:none}.pg-burger{display:none}
+@media(max-width:900px){
+  .pg-body{padding:44px 6% 70px}
+  .pg-cta{padding:24px}
+  .pg-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210;flex-shrink:0}
+  .pg-burger span{display:block;height:2px;width:100%;background:#0D1933;border-radius:2px;transition:transform .3s,opacity .3s}
+  #navbar ul{display:none!important;position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid rgba(9,47,125,0.12);box-shadow:0 12px 30px rgba(9,47,125,0.15);padding:8px 6% 20px;margin:0;z-index:205}
+  #navbar .pg-mtoggle:checked ~ ul{display:flex!important}
+  #navbar ul li{display:block!important;width:100%!important}
+  #navbar ul li a{display:block!important;padding:15px 4px!important;font-size:16px!important;color:#0D1933!important;border-bottom:1px solid rgba(9,47,125,0.12)!important}
+  #navbar ul li:last-child a{border-bottom:none!important}
+  .pg-mtoggle:checked ~ .pg-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .pg-mtoggle:checked ~ .pg-burger span:nth-child(2){opacity:0}
+  .pg-mtoggle:checked ~ .pg-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
+</style>
 </head>
 <body>
 <nav id="navbar">
-<a href="index.html" class="logo">
-<img src="logo.png" alt="EBDClass" class="logo-img">
-</a>
+<a href="index.html" class="logo"><img src="logo.png" alt="EBDClass" class="logo-img"></a>
+<input type="checkbox" id="pg-mtoggle" class="pg-mtoggle">
+<label for="pg-mtoggle" class="pg-burger"><span></span><span></span><span></span></label>
 <ul>
 <li><a href="index.html#recursos">Recursos</a></li>
-<li><a href="index.html#como-funciona">Como funciona</a></li>
 <li><a href="index.html#planos">Planos</a></li>
 <li><a href="index.html#faq">FAQ</a></li>
 <li><a href="https://app.ebdclass.com.br/login" class="nav-login">Entrar</a></li>
 <li><a href="https://app.ebdclass.com.br/cadastro" class="nav-cta">Teste grátis</a></li>
 </ul>
 </nav>
-<div style="height:70px"></div>
-<div class="page-hero">
-<div class="page-hero-label">Política de Privacidade</div>
-<h1>Seus dados estão <em>seguros aqui.</em></h1>
-<div class="page-hero-meta">Última atualização: Julho de 2026 · Em conformidade com a LGPD</div>
-</div>
-<div class="page-body">
 
-<div class="doc-section">
-<div class="highlight-box">
+<div class="pg-hero">
+<div class="pg-hero-in">
+<div class="pg-tag"><span class="pg-dot"></span>Privacidade</div>
+<h1>Seus dados estão <em>seguros aqui</em></h1>
+<div class="pg-meta">Última atualização: Julho de 2026 · Em conformidade com a LGPD</div>
+</div>
+</div>
+
+<div class="pg-body">
+<div class="pg-highlight">
 <p>Esta Política de Privacidade descreve como o <strong>EBDClass</strong> coleta, usa e protege as informações dos seus usuários, em conformidade com a <strong>Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD)</strong>.</p>
 </div>
-</div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>1. Quem somos</h2>
-<p>O EBDClass é um sistema SaaS de gestão da Escola Bíblica Dominical desenvolvido e operado por <strong>Samuel Soares</strong>, com sede em Teresina, Piauí, Brasil. Para dúvidas sobre esta política, entre em contato pelo e-mail <a href="mailto:ebdclass.app@gmail.com">ebdclass.app@gmail.com</a> ou pelo WhatsApp <a href="https://wa.me/5586988197951">(86) 98819-7951</a>.</p>
+<p>O EBDClass é um sistema de gestão da Escola Bíblica Dominical desenvolvido e operado por <strong>Samuel Soares</strong>, em Teresina, Piauí. Para dúvidas sobre esta política, fale pelo e-mail <a href="mailto:ebdclass.app@gmail.com">ebdclass.app@gmail.com</a> ou pelo WhatsApp <a href="https://wa.me/5586988197951">(86) 98819-7951</a>.</p>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>2. Dados que coletamos</h2>
-<h3>Dados fornecidos pelo usuário</h3>
+<h3>Fornecidos por você</h3>
 <ul>
-<li>Nome completo e endereço de e-mail (cadastro e login)</li>
+<li>Nome e e-mail (cadastro e login)</li>
 <li>Nome da igreja, cidade e estado</li>
-<li>Informações de pagamento (processadas por terceiros — nunca armazenamos dados de cartão)</li>
+<li>Informações de pagamento (processadas por terceiros — nunca guardamos dados de cartão)</li>
 <li>Nomes e dados dos alunos e professores cadastrados pela igreja</li>
 <li>Registros de chamada, frequência e presença</li>
 </ul>
-<h3>Dados coletados automaticamente</h3>
+<h3>Coletados automaticamente</h3>
 <ul>
-<li>Endereço IP e tipo de navegador (para segurança e diagnóstico)</li>
-<li>Páginas acessadas e horário de acesso (logs de uso)</li>
-<li>Dispositivo utilizado (mobile ou desktop)</li>
+<li>Endereço IP e navegador, para segurança e diagnóstico</li>
+<li>Páginas acessadas e horário de acesso</li>
+<li>Tipo de dispositivo usado</li>
 </ul>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>3. Como usamos seus dados</h2>
-<p>Utilizamos suas informações exclusivamente para:</p>
+<p>Usamos suas informações apenas para:</p>
 <ul>
-<li>Fornecer e manter o funcionamento do sistema EBDClass</li>
+<li>Manter o funcionamento do sistema</li>
 <li>Processar pagamentos e emitir cobranças</li>
 <li>Enviar comunicações sobre sua conta (confirmações, alertas, suporte)</li>
-<li>Melhorar a experiência do produto com base no uso agregado e anonimizado</li>
-<li>Cumprir obrigações legais e regulatórias</li>
+<li>Melhorar o produto com base no uso agregado e anonimizado</li>
+<li>Cumprir obrigações legais</li>
 </ul>
 <p><strong>Não vendemos, alugamos nem compartilhamos seus dados pessoais com terceiros para fins comerciais.</strong></p>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>4. Compartilhamento de dados</h2>
-<p>Seus dados podem ser compartilhados apenas nas seguintes situações:</p>
+<p>Seus dados podem ser compartilhados somente nestas situações:</p>
 <ul>
-<li><strong>Supabase (infraestrutura de banco de dados):</strong> armazenamento seguro dos dados, com servidores localizados em São Paulo, Brasil</li>
-<li><strong>Processadores de pagamento:</strong> para transações financeiras, seguindo os padrões PCI-DSS</li>
+<li><strong>Infraestrutura (Supabase):</strong> armazenamento seguro, com servidores em São Paulo, Brasil</li>
+<li><strong>Processadores de pagamento:</strong> para as transações, seguindo o padrão PCI-DSS</li>
 <li><strong>Obrigação legal:</strong> quando exigido por autoridade competente, mediante ordem judicial</li>
 </ul>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>5. Segurança dos dados</h2>
-<p>Adotamos as seguintes medidas de segurança:</p>
 <ul>
 <li>Criptografia em trânsito (HTTPS/TLS) e em repouso</li>
-<li>Isolamento total entre contas de igrejas diferentes (Row Level Security)</li>
-<li>Backups automáticos diários com retenção de 30 dias</li>
+<li>Isolamento total entre contas de igrejas diferentes</li>
+<li>Backups automáticos diários</li>
 <li>Autenticação segura com tokens de sessão</li>
 <li>Monitoramento contínuo de acessos suspeitos</li>
 </ul>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>6. Seus direitos (LGPD)</h2>
-<p>Como titular dos dados, você tem direito a:</p>
+<p>Como titular dos dados, você pode:</p>
 <ul>
-<li>Confirmar a existência de tratamento dos seus dados</li>
-<li>Acessar os dados que temos sobre você</li>
-<li>Corrigir dados incompletos, inexatos ou desatualizados</li>
-<li>Solicitar a anonimização, bloqueio ou eliminação dos dados</li>
-<li>Solicitar a portabilidade dos dados para outro serviço</li>
+<li>Confirmar se tratamos seus dados e acessá-los</li>
+<li>Corrigir dados incompletos ou desatualizados</li>
+<li>Pedir anonimização, bloqueio ou exclusão</li>
+<li>Solicitar a portabilidade para outro serviço</li>
 <li>Revogar o consentimento a qualquer momento</li>
 </ul>
-<p>Para exercer qualquer desses direitos, entre em contato pelo e-mail <a href="mailto:ebdclass.app@gmail.com">ebdclass.app@gmail.com</a>. Respondemos em até 15 dias úteis.</p>
+<p>Para exercer esses direitos, escreva para <a href="mailto:ebdclass.app@gmail.com">ebdclass.app@gmail.com</a>. Respondemos em até 15 dias úteis.</p>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>7. Retenção de dados</h2>
-<p>Mantemos seus dados enquanto sua conta estiver ativa. Após o cancelamento, os dados ficam disponíveis para exportação por <strong>90 dias</strong>, sendo excluídos permanentemente ao término desse prazo — salvo obrigação legal de retenção.</p>
+<p>Mantemos seus dados enquanto a conta estiver ativa. Após o cancelamento, eles ficam disponíveis para exportação por <strong>90 dias</strong> e depois são excluídos permanentemente — salvo obrigação legal de retenção.</p>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>8. Cookies</h2>
-<p>Utilizamos apenas cookies essenciais para o funcionamento do sistema (autenticação de sessão). Não utilizamos cookies de rastreamento publicitário ou de terceiros para fins de marketing.</p>
+<p>Usamos apenas cookies essenciais para o funcionamento do sistema (autenticação de sessão). Não usamos cookies de rastreamento publicitário.</p>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>9. Menores de idade</h2>
-<p>O EBDClass é contratado por igrejas e secretários adultos responsáveis. Os dados de alunos menores de idade são cadastrados e gerenciados pela própria instituição religiosa, que assume a responsabilidade pelo tratamento adequado conforme a LGPD.</p>
+<p>O EBDClass é contratado por igrejas e secretários adultos. Os dados de alunos menores são cadastrados e gerenciados pela própria instituição religiosa, responsável pelo tratamento adequado conforme a LGPD.</p>
 </div>
 
-<div class="doc-section">
+<div class="pg-sec">
 <h2>10. Alterações nesta política</h2>
-<p>Podemos atualizar esta política periodicamente. Alterações relevantes serão comunicadas por e-mail ou aviso no sistema com antecedência mínima de 15 dias. O uso continuado do serviço após a vigência das alterações implica aceite das novas condições.</p>
+<p>Podemos atualizar esta política periodicamente. Mudanças relevantes serão avisadas por e-mail ou no sistema, com no mínimo 15 dias de antecedência. O uso continuado após a vigência implica aceite das novas condições.</p>
 <p><strong>Última atualização:</strong> Julho de 2026.</p>
-<div class="contact-card">
+</div>
+
+<div class="pg-cta">
 <div>
 <strong>Dúvidas sobre privacidade?</strong>
-<p>Entre em contato com nossa equipe — respondemos em até 15 dias úteis.</p>
+<p>Fale com a nossa equipe — respondemos em até 15 dias úteis.</p>
 </div>
 <a href="mailto:ebdclass.app@gmail.com">Enviar e-mail →</a>
 </div>
 </div>
 
+<footer>
+<a href="index.html" class="footer-logo"><img src="logo.png" alt="EBDClass" class="footer-logo-img" style="filter:brightness(0) invert(1)!important"></a>
+<div class="footer-links">
+<a href="index.html#recursos">Recursos</a><a href="index.html#planos">Planos</a><a href="ajuda.html">Ajuda</a>
+<a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://wa.me/5586988197951" target="_blank">WhatsApp</a>
 </div>
-<footer style="background:var(--ink);padding:44px max(6%,calc(50% - 480px));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;">
-<a href="index.html" style="text-decoration:none;display:flex;align-items:center;">
-<img src="logo.png" alt="EBDClass" style="height:28px;width:auto;filter:brightness(0) invert(1)!important">
-</a>
-<div style="display:flex;gap:28px;flex-wrap:wrap;">
-<a href="index.html#recursos" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-family:var(--font);">Recursos</a>
-<a href="index.html#planos" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-family:var(--font);">Planos</a>
-<a href="ajuda.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-family:var(--font);">Ajuda</a>
-<a href="privacidade.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-family:var(--font);">Privacidade</a>
-<a href="termos.html" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-family:var(--font);">Termos de uso</a>
-<a href="https://wa.me/5586988197951" target="_blank" style="color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;font-family:var(--font);">WhatsApp</a>
-</div>
-<div style="font-size:13px;color:rgba(255,255,255,0.65);font-family:var(--font);">© 2026 EBDClass</div>
+<div class="footer-copy">© 2026 EBDClass</div>
 </footer>
 <script>
-function toggleFaq(el){
-  const wasOpen=el.classList.contains('open');
-  document.querySelectorAll('.faq-card').forEach(f=>f.classList.remove('open'));
-  if(!wasOpen)el.classList.add('open');
-}
+document.querySelectorAll('#navbar ul a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('pg-mtoggle').checked=false;}));
 </script>
 </body>
 </html>
