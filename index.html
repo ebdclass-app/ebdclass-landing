@@ -156,6 +156,28 @@
   .nc-grid{grid-template-columns:1fr;gap:12px}
 }
 </style>
+<!-- BLOCO 4: segurança — prefixo ns- -->
+<style>
+.ns-sec{background:linear-gradient(165deg,#0A2878 0%,#0D1933 60%,#091428 100%);padding:96px max(6%,calc(50% - 540px));position:relative;overflow:hidden}
+.ns-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(26,92,255,0.22),transparent 65%);pointer-events:none}
+.ns-in{max-width:1080px;margin:0 auto;position:relative;z-index:1}
+.ns-head{text-align:center;max-width:620px;margin:0 auto 56px}
+.ns-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
+.ns-label::before{content:'';width:24px;height:2px;background:rgba(255,255,255,0.4)}
+.ns-h{font-family:'Playfair Display',serif;font-size:clamp(32px,4.2vw,54px);font-weight:500;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin-bottom:16px}
+.ns-h em{font-style:italic;color:#7DFFCC}
+.ns-sub{font-size:17px;color:rgba(255,255,255,0.68);line-height:1.75}
+.ns-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.ns-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:30px 28px;transition:background .25s,border-color .25s}
+.ns-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.25)}
+.ns-ic{width:50px;height:50px;border-radius:13px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.ns-ct{font-size:19px;font-weight:800;color:#fff;margin-bottom:9px;letter-spacing:-0.2px}
+.ns-cd{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.7}
+@media(max-width:900px){
+  .ns-sec{padding:64px 6%}
+  .ns-grid{grid-template-columns:1fr;gap:12px}
+}
+</style>
 </head>
 <body>
 <nav id="navbar">
@@ -365,6 +387,38 @@ Salvar alterações
 <div class="step reveal" style="transition-delay:0.05s"><div class="step-circle">1</div><div class="step-title">Cadastre sua igreja</div><div class="step-desc">Crie sua conta em 2 minutos. Adicione as turmas, os professores e as congregações. O sistema já vem configurado para o modelo da EBD brasileira.</div></div>
 <div class="step reveal" style="transition-delay:0.15s"><div class="step-circle">2</div><div class="step-title">Professores fazem a chamada</div><div class="step-desc">Cada professor acessa pelo celular e registra presença, bíblia e revista com um toque por aluno. Leva menos de 3 minutos. Sem instalar nada.</div></div>
 <div class="step reveal" style="transition-delay:0.25s"><div class="step-circle">3</div><div class="step-title">Relatório pronto na hora</div><div class="step-desc">O secretário acompanha todas as turmas em tempo real e exporta o relatório completo em PDF com um clique — pronto para o pastor ou para o campo.</div></div>
+</div>
+</div>
+</div>
+
+<div class="ns-sec">
+<div class="ns-in">
+<div class="ns-head">
+<div class="ns-label">Segurança</div>
+<h2 class="ns-h">Os dados da sua igreja <em>protegidos</em></h2>
+<p class="ns-sub">Nomes, presenças e histórico dos seus alunos ficam guardados com o mesmo cuidado que um banco tem com os seus. Ninguém de fora acessa.</p>
+</div>
+<div class="ns-grid">
+<div class="ns-card">
+<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+<div class="ns-ct">Cada igreja isolada</div>
+<div class="ns-cd">Os dados de uma igreja nunca aparecem para outra. Cada conta enxerga apenas os próprios alunos, turmas e relatórios.</div>
+</div>
+<div class="ns-card">
+<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
+<div class="ns-ct">Criptografia de ponta</div>
+<div class="ns-cd">Todas as informações trafegam e ficam guardadas criptografadas, do mesmo jeito que os aplicativos de banco protegem os seus dados.</div>
+</div>
+<div class="ns-card">
+<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div>
+<div class="ns-ct">De acordo com a LGPD</div>
+<div class="ns-cd">Seguimos a Lei Geral de Proteção de Dados. Você pode exportar ou pedir a exclusão dos dados da sua igreja quando quiser.</div>
+</div>
+<div class="ns-card">
+<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M21 12a9 9 0 1 1-9-9c2.5 0 4.8 1 6.4 2.6L21 8"/><path d="M21 3v5h-5"/></svg></div>
+<div class="ns-ct">Backup automático</div>
+<div class="ns-cd">Todo dia o sistema faz uma cópia de segurança. Se algo acontecer com seu aparelho, nada se perde — está tudo na nuvem.</div>
+</div>
 </div>
 </div>
 </div>
