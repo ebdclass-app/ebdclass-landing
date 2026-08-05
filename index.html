@@ -236,6 +236,40 @@
   .np-guar{gap:20px}
 }
 </style>
+<!-- BLOCO 5b: antes/depois — prefixo nab- -->
+<style>
+.nab-sec{background:#fff;padding:96px max(6%,calc(50% - 540px))}
+.nab-in{max-width:1080px;margin:0 auto}
+.nab-head{text-align:center;max-width:600px;margin:0 auto 52px}
+.nab-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#092F7D;margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
+.nab-label::before{content:'';width:24px;height:2px;background:#092F7D}
+.nab-h{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,52px);font-weight:500;line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px;color:#0D1933}
+.nab-h em{font-style:italic;color:#092F7D}
+.nab-sub{font-size:17px;color:#5A6785;line-height:1.7}
+.nab-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:stretch}
+.nab-card{border-radius:22px;padding:36px 32px}
+.nab-before{background:#FFF5F5;border:1px solid rgba(200,60,60,0.16)}
+.nab-after{background:linear-gradient(160deg,#0A2878,#0D1933);border:none}
+.nab-tag{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:22px}
+.nab-tag.bad{color:#C0392B}
+.nab-tag.good{color:#7DFFCC}
+.nab-dot{width:8px;height:8px;border-radius:50%}
+.nab-tag.bad .nab-dot{background:#C0392B}
+.nab-tag.good .nab-dot{background:#00C896}
+.nab-list{list-style:none;display:flex;flex-direction:column;gap:16px}
+.nab-list li{display:flex;align-items:flex-start;gap:12px;font-size:16px;line-height:1.5;font-weight:500}
+.nab-before li{color:#7A4A47}
+.nab-after li{color:rgba(255,255,255,0.92)}
+.nab-li-ic{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.nab-before .nab-li-ic{background:rgba(200,60,60,0.1)}
+.nab-after .nab-li-ic{background:rgba(0,200,150,0.18)}
+.nab-arrow{display:flex;align-items:center;justify-content:center;color:#B8C4DE}
+@media(max-width:900px){
+  .nab-sec{padding:64px 6%}
+  .nab-grid{grid-template-columns:1fr;gap:16px}
+  .nab-arrow{transform:rotate(90deg);padding:4px 0}
+}
+</style>
 </head>
 <body>
 <nav id="navbar">
@@ -562,29 +596,40 @@ Salvar alterações
 </div>
 </div>
 
-<section class="testimonials-section">
-<div class="test-header reveal">
-<div class="section-label" style="justify-content:center;">Depoimentos</div>
-<h2 class="section-h">O que dizem os <em>secretários</em></h2>
-<p class="section-p" style="max-width:440px;margin:0 auto;">Quem experimentou não volta para papel e caneta.</p>
+<div class="nab-sec">
+<div class="nab-in">
+<div class="nab-head">
+<div class="nab-label">O antes e o depois</div>
+<h2 class="nab-h">Do caderno bagunçado ao <em>relatório pronto</em></h2>
+<p class="nab-sub">O que muda na rotina da secretaria quando a EBD sai do papel e entra no EBDClass.</p>
 </div>
-<div class="marquee-outer">
-<div class="marquee-track">
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Levava mais de 2 horas fechando o relatório todo domingo. Agora está pronto antes de eu chegar em casa."</div><div class="tcard-author"><div class="tcard-av av-b">RS</div><div><div class="tcard-name">Rosângela Santos</div><div class="tcard-role">Secretária EBD · AD Fortaleza</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os professores adoraram. Nunca mais perdemos chamada. O pastor fica muito satisfeito com os relatórios."</div><div class="tcard-author"><div class="tcard-av av-g">JF</div><div><div class="tcard-name">José Ferreira</div><div class="tcard-role">Secretário do Campo · AD Goiânia</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Simples, rápido e completo. Indicaria para qualquer secretário que ainda usa cadernos e canetas."</div><div class="tcard-author"><div class="tcard-av av-n">MO</div><div><div class="tcard-name">Miriam Oliveira</div><div class="tcard-role">Secretária EBD · Igreja Batista Central</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"A gestão do campo ficou muito mais fácil. Consigo ver todas as congregações de uma vez só."</div><div class="tcard-author"><div class="tcard-av av-b">PL</div><div><div class="tcard-name">Pastor Levi Carvalho</div><div class="tcard-role">Pastor de Campo · IEADLP Recife</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os alertas de ausência foram um diferencial enorme. A gente consegue visitar o aluno antes que ele suma."</div><div class="tcard-author"><div class="tcard-av av-g">CM</div><div><div class="tcard-name">Cleide Moura</div><div class="tcard-role">Secretária EBD · AD Belém SP</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Antes eu passava a semana preenchendo planilha. Hoje o sistema faz tudo e eu foco no ministério."</div><div class="tcard-author"><div class="tcard-av av-n">AR</div><div><div class="tcard-name">Augusto Ramos</div><div class="tcard-role">Secretário Geral · Congregação Madureira BH</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Levava mais de 2 horas fechando o relatório todo domingo. Agora está pronto antes de eu chegar em casa."</div><div class="tcard-author"><div class="tcard-av av-b">RS</div><div><div class="tcard-name">Rosângela Santos</div><div class="tcard-role">Secretária EBD · AD Fortaleza</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os professores adoraram. Nunca mais perdemos chamada. O pastor fica muito satisfeito com os relatórios."</div><div class="tcard-author"><div class="tcard-av av-g">JF</div><div><div class="tcard-name">José Ferreira</div><div class="tcard-role">Secretário do Campo · AD Goiânia</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Simples, rápido e completo. Indicaria para qualquer secretário que ainda usa cadernos e canetas."</div><div class="tcard-author"><div class="tcard-av av-n">MO</div><div><div class="tcard-name">Miriam Oliveira</div><div class="tcard-role">Secretária EBD · Igreja Batista Central</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"A gestão do campo ficou muito mais fácil. Consigo ver todas as congregações de uma vez só."</div><div class="tcard-author"><div class="tcard-av av-b">PL</div><div><div class="tcard-name">Pastor Levi Carvalho</div><div class="tcard-role">Pastor de Campo · IEADLP Recife</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Os alertas de ausência foram um diferencial enorme. A gente consegue visitar o aluno antes que ele suma."</div><div class="tcard-author"><div class="tcard-av av-g">CM</div><div><div class="tcard-name">Cleide Moura</div><div class="tcard-role">Secretária EBD · AD Belém SP</div></div></div></div>
-<div class="tcard"><div class="stars">★★★★★</div><div class="tcard-text">"Antes eu passava a semana preenchendo planilha. Hoje o sistema faz tudo e eu foco no ministério."</div><div class="tcard-author"><div class="tcard-av av-n">AR</div><div><div class="tcard-name">Augusto Ramos</div><div class="tcard-role">Secretário Geral · Congregação Madureira BH</div></div></div></div>
+<div class="nab-grid">
+<div class="nab-card nab-before">
+<div class="nab-tag bad"><span class="nab-dot"></span>Sem o EBDClass</div>
+<ul class="nab-list">
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Domingo perdido somando presença na mão</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Chamada em papel que se perde ou rasga</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Relatório do pastor sempre atrasado</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Aluno some e ninguém percebe a tempo</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C0392B" stroke-width="3"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></span>Cada congregação com seu caderno separado</li>
+</ul>
+</div>
+<div class="nab-arrow">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+</div>
+<div class="nab-card nab-after">
+<div class="nab-tag good"><span class="nab-dot"></span>Com o EBDClass</div>
+<ul class="nab-list">
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Chamada em 3 minutos, direto no celular</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Tudo salvo na nuvem, nada se perde</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Relatório pronto na hora, é só exportar</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Alerta automático quando o aluno falta</li>
+<li><span class="nab-li-ic"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Sede e congregações num painel só</li>
+</ul>
 </div>
 </div>
-</section>
+</div>
+</div>
 
 <div id="faq" class="faq-section">
 <div class="faq-inner">
