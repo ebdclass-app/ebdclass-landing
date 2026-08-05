@@ -17,7 +17,7 @@
 .pg-hero h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,58px);font-weight:500;line-height:1.08;letter-spacing:-1px;color:#fff;margin-bottom:16px}
 .pg-hero h1 em{font-style:italic;color:#7DFFCC}
 .pg-hero-sub{font-size:17px;color:rgba(255,255,255,0.7);line-height:1.7}
-.pg-body{max-width:800px;margin:0 auto;padding:72px max(6%,calc(50% - 400px)) 90px}
+.pg-body{width:100%;max-width:820px;margin:0 auto;padding:72px 24px 90px}
 .pg-contact{background:linear-gradient(120deg,#092F7D,#0D1933);border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
 .pg-contact strong{font-size:17px;color:#fff;display:block;margin-bottom:4px}
 .pg-contact p{font-size:14px;color:rgba(255,255,255,0.65);margin:0}
@@ -51,6 +51,10 @@
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(2){opacity:0}
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
+body{display:block!important}
+.pg-body,.pg-highlight,.pg-contact,.pg-cta,.pg-faq,.pg-sec{width:auto;box-sizing:border-box}
+.pg-body *{min-width:0}
+@media(max-width:900px){.pg-body{padding:44px 18px 70px}}
 </style>
 </head>
 <body>
