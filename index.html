@@ -566,7 +566,7 @@ Salvar alterações
 <div class="np-grid">
 <div class="np-card">
 <div class="np-nm">Até 50 alunos</div>
-<div class="np-price"><span class="np-cur">R$</span><span class="np-val">34</span><span class="np-cents">,90</span></div>
+<div class="np-price" data-mv="34" data-mc=",90" data-av="418" data-ac=",80"><span class="np-cur">R$</span><span class="np-val">34</span><span class="np-cents">,90</span></div>
 <div class="np-per">por mês</div>
 <div class="np-desc">Ideal para igrejas locais que querem acabar com papel e planilha.</div>
 <ul class="np-feats">
@@ -583,7 +583,7 @@ Salvar alterações
 <div class="np-card best">
 <div class="np-badge">Mais popular</div>
 <div class="np-nm">Até 200 alunos</div>
-<div class="np-price"><span class="np-cur">R$</span><span class="np-val">64</span><span class="np-cents">,90</span></div>
+<div class="np-price" data-mv="64" data-mc=",90" data-av="778" data-ac=",80"><span class="np-cur">R$</span><span class="np-val">64</span><span class="np-cents">,90</span></div>
 <div class="np-per">por mês</div>
 <div class="np-desc">Para igrejas em crescimento que precisam de controle completo.</div>
 <ul class="np-feats">
@@ -598,7 +598,7 @@ Salvar alterações
 </div>
 <div class="np-card">
 <div class="np-nm">Até 500 alunos</div>
-<div class="np-price"><span class="np-cur">R$</span><span class="np-val">109</span><span class="np-cents">,90</span></div>
+<div class="np-price" data-mv="109" data-mc=",90" data-av="1.318" data-ac=",80"><span class="np-cur">R$</span><span class="np-val">109</span><span class="np-cents">,90</span></div>
 <div class="np-per">por mês</div>
 <div class="np-desc">Gestão completa para igrejas maiores com muitas turmas.</div>
 <ul class="np-feats">
@@ -733,6 +733,17 @@ function pmode(btn,mode){
   document.querySelectorAll('.np-tb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.pann .np-tag').forEach(t=>{t.style.display=mode==='a'?'none':'';});
+  document.querySelectorAll('.np-price').forEach(p=>{
+    const val=p.querySelector('.np-val'), cents=p.querySelector('.np-cents');
+    const per=p.parentNode.querySelector('.np-per');
+    if(mode==='a'){
+      val.textContent=p.dataset.av; cents.textContent=p.dataset.ac;
+      if(per)per.textContent='por ano';
+    }else{
+      val.textContent=p.dataset.mv; cents.textContent=p.dataset.mc;
+      if(per)per.textContent='por mês';
+    }
+  });
 }
 function tf(el){
   const open=el.classList.contains('open');
