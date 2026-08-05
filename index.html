@@ -33,6 +33,65 @@
   .mnav-toggle:checked ~ .mnav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
 </style>
+<!-- HERO redesenhado (Bloco 1) — estilos isolados prefixados nh- para não colidir com style.css -->
+<style>
+.nh{position:relative;overflow:hidden;padding:120px max(6%,calc(50% - 600px)) 90px}
+.nh-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 55% at 78% 25%,rgba(26,92,255,0.10),transparent 60%),radial-gradient(ellipse 50% 45% at 12% 75%,rgba(0,200,150,0.07),transparent 55%),#F4F7FF}
+.nh-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(9,47,125,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(9,47,125,0.045) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%);mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%)}
+.nh-wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:56px;align-items:center;max-width:1200px;margin:0 auto}
+.nh-left{max-width:560px}
+.nh-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(9,47,125,0.07);border:1px solid rgba(9,47,125,0.18);color:#092F7D;padding:7px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:0.3px;margin-bottom:26px}
+.nh-dot{width:6px;height:6px;background:#00C896;border-radius:50%;box-shadow:0 0 8px #00C896}
+.nh h1{font-family:'Playfair Display',serif;font-size:clamp(42px,5.2vw,68px);font-weight:500;line-height:1.05;letter-spacing:-1px;margin-bottom:24px;color:#0D1933}
+.nh h1 em{font-style:italic;color:#092F7D}
+.nh-sub{font-size:19px;color:#5A6785;line-height:1.7;margin-bottom:36px;max-width:480px}
+.nh-cta{display:inline-flex;align-items:center;gap:8px;background:#092F7D;color:#fff;padding:16px 34px;border-radius:50px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 24px rgba(9,47,125,0.32);transition:transform .2s,box-shadow .2s}
+.nh-cta:hover{transform:translateY(-2px);box-shadow:0 8px 34px rgba(9,47,125,0.42);color:#fff}
+.nh-proof{display:flex;align-items:center;gap:14px;margin-top:34px}
+.nh-avs{display:flex}
+.nh-avs span{width:32px;height:32px;border-radius:50%;border:2px solid #F4F7FF;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:800;color:#fff}
+.nh-avs span:first-child{margin-left:0}
+.nh-ptxt{font-size:14px;color:#5A6785}
+.nh-ptxt b{color:#0D1933}
+.nh-right{display:flex;justify-content:center;position:relative}
+.nh-phone{position:relative;width:290px;height:600px;background:#0A0C14;border-radius:44px;padding:10px;box-shadow:0 30px 70px rgba(9,47,125,0.28),0 8px 20px rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.08)}
+.nh-notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#0A0C14;border-radius:0 0 16px 16px;z-index:5}
+.nh-screen{width:100%;height:100%;background:#F4F7FF;border-radius:36px;overflow:hidden;position:relative}
+.nh-ahead{background:linear-gradient(160deg,#0A2878,#0D1933);padding:16px 16px 14px;display:flex;align-items:center;justify-content:space-between}
+.nh-alogo{display:flex;align-items:center;gap:6px;color:#fff;font-weight:800;font-size:14px}
+.nh-alogo svg{width:20px;height:20px}
+.nh-adate{font-size:8.5px;color:rgba(255,255,255,0.6)}
+.nh-abody{padding:14px}
+.nh-acls{font-size:11px;font-weight:800;color:#0D1933;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.nh-acls span{font-size:9px;font-weight:600;color:#8A98B4;margin-left:auto}
+.nh-stu{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid;border-radius:14px;padding:9px 10px;margin-bottom:8px}
+.nh-stu-p{border-color:rgba(0,200,150,0.5)}
+.nh-stu-f{border-color:rgba(220,60,60,0.4)}
+.nh-sav{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
+.nh-sname{font-size:12.5px;font-weight:600;color:#0D1933;flex:1}
+.nh-btns{display:flex;gap:5px}
+.nh-pf{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1.5px solid #D4DCF0;color:#8A98B4;background:#fff}
+.nh-pf.on-p{background:#00C896;border-color:#00C896;color:#fff}
+.nh-pf.on-f{background:#E5484D;border-color:#E5484D;color:#fff}
+.nh-asave{margin-top:12px;background:linear-gradient(90deg,#1A5CFF,#00C896);color:#fff;text-align:center;padding:13px;border-radius:14px;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:7px}
+.nh-float{position:absolute;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 12px 30px rgba(9,47,125,0.16);border:1px solid rgba(9,47,125,0.08);display:flex;align-items:center;gap:10px;z-index:6}
+.nh-f1{top:60px;left:-38px}
+.nh-f2{bottom:80px;right:-30px}
+.nh-fic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nh-fic.g{background:#00C896}
+.nh-fic.b{background:#EBF0FF}
+.nh-ft{font-size:12px;font-weight:800;color:#0D1933;line-height:1.2}
+.nh-fs{font-size:10px;color:#5A6785;margin-top:1px}
+@media(max-width:900px){
+  .nh{padding:100px 6% 60px}
+  .nh-wrap{grid-template-columns:1fr;gap:56px;text-align:center}
+  .nh-left{max-width:none;margin:0 auto}
+  .nh-sub{margin-left:auto;margin-right:auto}
+  .nh-proof{justify-content:center}
+  .nh-f1{left:-14px}
+  .nh-f2{right:-14px}
+}
+</style>
 </head>
 <body>
 <nav id="navbar">
@@ -53,270 +112,76 @@
 </ul>
 </nav>
 
-<section class="hero">
-<div class="hero-bg"></div><div class="hero-grid"></div>
-<div class="hero-content">
-<div class="pill"><div class="pill-dot"></div>Relatórios em tempo real por campo e setor</div>
-<h1>Sua EBD organizada<br>de verdade, <em>finalmente.</em></h1>
-<p class="hero-sub">Pare de perder horas todo domingo com papel, planilhas e relatórios manuais. Automatize chamadas, presença e acompanhamento da sua Escola Bíblica em um único sistema.</p>
-<div class="hero-ctas">
-<a href="https://app.ebdclass.com.br/cadastro" class="btn-blue">Organizar minha EBD grátis →</a>
+<section class="nh">
+<div class="nh-bg"></div><div class="nh-grid"></div>
+<div class="nh-wrap">
+<div class="nh-left">
+<div class="nh-pill"><div class="nh-dot"></div>Feito para a Escola Bíblica Dominical</div>
+<h1>A chamada da sua EBD em <em>3 minutos.</em></h1>
+<p class="nh-sub">Chega de papel e planilha no domingo. O professor faz a chamada no celular, o secretário vê tudo em tempo real e o relatório fica pronto sozinho.</p>
+<a href="https://app.ebdclass.com.br/cadastro" class="nh-cta">Organizar minha EBD grátis →</a>
+<div class="nh-proof">
+<div class="nh-avs">
+<span style="background:#1A5CFF">AB</span><span style="background:#00A87A">AP</span><span style="background:#C0397D">PL</span><span style="background:#092F7D">+</span>
 </div>
-<div class="hero-proof">
-<div class="proof-avatars">
-<div class="proof-av">RS</div><div class="proof-av">JF</div><div class="proof-av">MO</div>
-<div class="proof-av" style="background:var(--blue);color:white;font-size:10px;">+</div>
+<div class="nh-ptxt"><b>Igrejas de todo o Brasil</b> já organizam a EBD aqui</div>
 </div>
-<div class="proof-text"><strong>+500 igrejas</strong> já usam o EBDClass</div>
+</div>
+<div class="nh-right">
+<div class="nh-float nh-f1">
+<div class="nh-fic g">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+</div>
+<div><div class="nh-ft">Chamada salva</div><div class="nh-fs">há poucos segundos</div></div>
+</div>
+<div class="nh-float nh-f2">
+<div class="nh-fic b">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+</div>
+<div><div class="nh-ft">141 alunos</div><div class="nh-fs">10 turmas ativas</div></div>
+</div>
+<div class="nh-phone">
+<div class="nh-notch"></div>
+<div class="nh-screen">
+<div class="nh-ahead">
+<div class="nh-alogo">
+<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+EBD Class
+</div>
+<div class="nh-adate">Domingo, 27 abr</div>
+</div>
+<div class="nh-abody">
+<div class="nh-acls">Juvenis <span>3 presentes</span></div>
+<div class="nh-stu nh-stu-p">
+<div class="nh-sav" style="background:#1A5CFF">AB</div>
+<div class="nh-sname">Aglaé Benício</div>
+<div class="nh-btns"><div class="nh-pf on-p">P</div><div class="nh-pf">F</div></div>
+</div>
+<div class="nh-stu nh-stu-p">
+<div class="nh-sav" style="background:#00A87A">AP</div>
+<div class="nh-sname">Airismar Pereira</div>
+<div class="nh-btns"><div class="nh-pf on-p">P</div><div class="nh-pf">F</div></div>
+</div>
+<div class="nh-stu nh-stu-f">
+<div class="nh-sav" style="background:#C0397D">JS</div>
+<div class="nh-sname">Julia Soares</div>
+<div class="nh-btns"><div class="nh-pf">P</div><div class="nh-pf on-f">F</div></div>
+</div>
+<div class="nh-stu nh-stu-p">
+<div class="nh-sav" style="background:#6040C0">PL</div>
+<div class="nh-sname">Paloma Leite</div>
+<div class="nh-btns"><div class="nh-pf on-p">P</div><div class="nh-pf">F</div></div>
+</div>
+<div class="nh-asave">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+Salvar alterações
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </section>
-
-<div class="preview-section">
-<div class="app-frame">
-<div class="frame-bar">
-<div class="frame-dots"><div class="fdot fdot-r"></div><div class="fdot fdot-y"></div><div class="fdot fdot-g"></div></div>
-<div class="frame-url">app.ebdclass.com.br</div>
-</div>
-<div class="app-inner" style="display:block;padding:20px;">
-
-<!-- Header -->
-<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;">
-<div>
-<div style="font-size:15px;font-weight:800;color:#0D1933;">Dashboard</div>
-<div style="font-size:11px;color:#5A6785;margin-top:2px;text-transform:capitalize;">domingo, 27 de abril · Igreja Sede</div>
-</div>
-</div>
-
-<!-- Label Hoje -->
-<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#3D4D6A;margin-bottom:8px;">Hoje</div>
-
-<!-- 4 Cards de métricas -->
-<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px;">
-<div style="background:white;border:1px solid #D4DCF0;border-top:3px solid #092F7D;border-radius:12px;padding:12px;">
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#5A6785;margin-bottom:8px;">Total de alunos</div>
-<div style="display:flex;align-items:flex-start;justify-content:space-between;">
-<div>
-<div style="font-size:22px;font-weight:800;color:#0D1933;line-height:1;">247</div>
-<div style="font-size:9px;color:#0D1933;font-weight:600;margin-top:4px;">14 turmas ativas</div>
-</div>
-<div style="width:30px;height:30px;border-radius:8px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-</div>
-</div>
-</div>
-<div style="background:white;border:1px solid #D4DCF0;border-top:3px solid #00A87A;border-radius:12px;padding:12px;">
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#5A6785;margin-bottom:8px;">Presentes hoje</div>
-<div style="display:flex;align-items:flex-start;justify-content:space-between;">
-<div>
-<div style="font-size:22px;font-weight:800;color:#0D1933;line-height:1;">189</div>
-<div style="font-size:9px;color:#0D1933;font-weight:600;margin-top:4px;">76% frequência</div>
-</div>
-<div style="width:30px;height:30px;border-radius:8px;background:#E6FAF5;display:flex;align-items:center;justify-content:center;">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="2.5"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-</div>
-</div>
-</div>
-<div style="background:white;border:1px solid #D4DCF0;border-top:3px solid #E07A00;border-radius:12px;padding:12px;">
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#5A6785;margin-bottom:8px;">Ausentes hoje</div>
-<div style="display:flex;align-items:flex-start;justify-content:space-between;">
-<div>
-<div style="font-size:22px;font-weight:800;color:#0D1933;line-height:1;">58</div>
-<div style="font-size:9px;color:#0D1933;font-weight:600;margin-top:4px;">chamada registrada</div>
-</div>
-<div style="width:30px;height:30px;border-radius:8px;background:#FFF4E6;display:flex;align-items:center;justify-content:center;">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#E07A00" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-</div>
-</div>
-</div>
-<div style="background:white;border:1px solid #D4DCF0;border-top:3px solid #6040C0;border-radius:12px;padding:12px;">
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:#5A6785;margin-bottom:8px;">Turmas ativas</div>
-<div style="display:flex;align-items:flex-start;justify-content:space-between;">
-<div>
-<div style="font-size:22px;font-weight:800;color:#0D1933;line-height:1;">14</div>
-<div style="font-size:9px;color:#0D1933;font-weight:600;margin-top:4px;">12 de 14 com chamada</div>
-</div>
-<div style="width:30px;height:30px;border-radius:8px;background:#F0EEFF;display:flex;align-items:center;justify-content:center;">
-<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#6040C0" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Bloco trimestral escuro -->
-<div style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#8A98B4;margin-bottom:8px;">2º Trimestre · acumulado</div>
-<div style="background:linear-gradient(135deg,#0A2878 0%,#0D1933 60%,#091428 100%);border-radius:12px;padding:14px;margin-bottom:14px;">
-<div style="display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-bottom:12px;">
-<div style="text-align:center;">
-<div style="font-size:16px;font-weight:800;color:#9DC4FF;line-height:1;">8</div>
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;color:white;margin-top:3px;">Domingos</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1px;">de 13 no tri.</div>
-</div>
-<div style="text-align:center;">
-<div style="font-size:16px;font-weight:800;color:#7DFFCC;line-height:1;">1.512</div>
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;color:white;margin-top:3px;">Presenças</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1px;">no trimestre</div>
-</div>
-<div style="text-align:center;">
-<div style="font-size:16px;font-weight:800;color:#FF9999;line-height:1;">464</div>
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;color:white;margin-top:3px;">Ausências</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1px;">no trimestre</div>
-</div>
-<div style="text-align:center;">
-<div style="font-size:16px;font-weight:800;color:#7DFFCC;line-height:1;">76%</div>
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;color:white;margin-top:3px;">Frequência</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1px;">média trimestral</div>
-</div>
-<div style="text-align:center;">
-<div style="font-size:16px;font-weight:800;color:#C4B5FF;line-height:1;">62%</div>
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;color:white;margin-top:3px;">Progresso</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1px;">8/13 domingos</div>
-</div>
-<div style="text-align:center;">
-<div style="font-size:16px;font-weight:800;color:#7DFFCC;line-height:1;">R$ 847</div>
-<div style="font-size:8px;font-weight:700;text-transform:uppercase;color:white;margin-top:3px;">Ofertas</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.5);margin-top:1px;">total no tri.</div>
-</div>
-</div>
-<!-- Barra de progresso -->
-<div style="background:rgba(255,255,255,0.1);border-radius:99px;height:5px;overflow:hidden;">
-<div style="height:100%;width:62%;background:linear-gradient(90deg,#60A5FA,#34D399);border-radius:99px;"></div>
-</div>
-<div style="font-size:8px;color:rgba(255,255,255,0.4);text-align:right;margin-top:4px;">8 de 13 domingos registrados</div>
-</div>
-
-<!-- Grid: tabela turmas + coluna direita -->
-<div style="display:grid;grid-template-columns:1fr 280px;gap:12px;">
-
-<!-- Tabela de turmas -->
-<div style="background:white;border:2px solid rgba(9,47,125,0.22);border-radius:12px;overflow:hidden;">
-<div style="display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:1px solid #EBF0FF;">
-<div style="font-size:11px;font-weight:800;color:#0D1933;">Turmas · chamada de hoje</div>
-<div style="font-size:9px;color:#8A98B4;">27/04/2025</div>
-</div>
-<div>
-<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:1px solid #F4F7FF;gap:10px;">
-<div style="width:28px;height:28px;border-radius:7px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-</div>
-<div style="flex:1;min-width:0;">
-<div style="font-size:11px;font-weight:600;color:#0D1933;">Adolescentes I</div>
-<div style="font-size:9px;color:#3D4D6A;">18 alunos</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;">
-<div style="width:60px;height:4px;border-radius:99px;background:#EBF0FF;overflow:hidden;"><div style="height:100%;width:91%;background:#00A87A;border-radius:99px;"></div></div>
-<span style="font-size:10px;font-weight:700;color:#00A87A;width:28px;text-align:right;">91%</span>
-<span style="font-size:9px;padding:2px 6px;border-radius:99px;background:#E6FAF5;color:#00A87A;font-weight:700;">OK</span>
-</div>
-</div>
-<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:1px solid #F4F7FF;gap:10px;">
-<div style="width:28px;height:28px;border-radius:7px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-</div>
-<div style="flex:1;min-width:0;">
-<div style="font-size:11px;font-weight:600;color:#0D1933;">Jovens II</div>
-<div style="font-size:9px;color:#3D4D6A;">22 alunos</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;">
-<div style="width:60px;height:4px;border-radius:99px;background:#EBF0FF;overflow:hidden;"><div style="height:100%;width:84%;background:#00A87A;border-radius:99px;"></div></div>
-<span style="font-size:10px;font-weight:700;color:#00A87A;width:28px;text-align:right;">84%</span>
-<span style="font-size:9px;padding:2px 6px;border-radius:99px;background:#E6FAF5;color:#00A87A;font-weight:700;">OK</span>
-</div>
-</div>
-<div style="display:flex;align-items:center;padding:9px 14px;border-bottom:1px solid #F4F7FF;gap:10px;">
-<div style="width:28px;height:28px;border-radius:7px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-</div>
-<div style="flex:1;min-width:0;">
-<div style="font-size:11px;font-weight:600;color:#0D1933;">Adultos A</div>
-<div style="font-size:9px;color:#3D4D6A;">30 alunos</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;">
-<div style="width:60px;height:4px;border-radius:99px;background:#EBF0FF;overflow:hidden;"><div style="height:100%;width:67%;background:#E07A00;border-radius:99px;"></div></div>
-<span style="font-size:10px;font-weight:700;color:#E07A00;width:28px;text-align:right;">67%</span>
-<span style="font-size:9px;padding:2px 6px;border-radius:99px;background:#FFF4E6;color:#E07A00;font-weight:700;">OK</span>
-</div>
-</div>
-<div style="display:flex;align-items:center;padding:9px 14px;gap:10px;">
-<div style="width:28px;height:28px;border-radius:7px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-</div>
-<div style="flex:1;min-width:0;">
-<div style="font-size:11px;font-weight:600;color:#0D1933;">Crianças I</div>
-<div style="font-size:9px;color:#3D4D6A;">25 alunos</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;">
-<div style="width:60px;height:4px;border-radius:99px;background:#EBF0FF;overflow:hidden;"><div style="height:100%;width:52%;background:#C03030;border-radius:99px;"></div></div>
-<span style="font-size:10px;font-weight:700;color:#C03030;width:28px;text-align:right;">52%</span>
-<span style="font-size:9px;padding:2px 6px;border-radius:99px;background:#FFF0F0;color:#C03030;font-weight:700;">Baixo</span>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Coluna direita: alertas + aniversariantes -->
-<div style="display:flex;flex-direction:column;gap:10px;">
-<!-- Alertas -->
-<div style="background:white;border:2px solid rgba(9,47,125,0.22);border-radius:12px;overflow:hidden;">
-<div style="display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid #EBF0FF;">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#E07A00" stroke-width="2.5"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-<span style="font-size:10px;font-weight:800;color:#0D1933;">Alertas de ausência</span>
-<span style="margin-left:auto;font-size:8px;font-weight:700;padding:1px 6px;border-radius:99px;background:#FFF4E6;color:#E07A00;">3</span>
-</div>
-<div style="padding:4px 0;">
-<div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid #F4F7FF;">
-<div style="width:28px;height:28px;border-radius:99px;background:#FFF4E6;color:#E07A00;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">JS</div>
-<div>
-<div style="font-size:10px;font-weight:600;color:#0D1933;">João Silva</div>
-<div style="font-size:9px;font-weight:700;color:#C03030;">3 faltas seguidas</div>
-</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid #F4F7FF;">
-<div style="width:28px;height:28px;border-radius:99px;background:#FFF4E6;color:#E07A00;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">ML</div>
-<div>
-<div style="font-size:10px;font-weight:600;color:#0D1933;">Maria Lima</div>
-<div style="font-size:9px;font-weight:700;color:#C03030;">2 faltas seguidas</div>
-</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;padding:7px 12px;">
-<div style="width:28px;height:28px;border-radius:99px;background:#FFF4E6;color:#E07A00;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">PC</div>
-<div>
-<div style="font-size:10px;font-weight:600;color:#0D1933;">Pedro Costa</div>
-<div style="font-size:9px;font-weight:700;color:#C03030;">2 faltas seguidas</div>
-</div>
-</div>
-</div>
-</div>
-
-<!-- Aniversariantes -->
-<div style="background:white;border:2px solid rgba(9,47,125,0.22);border-radius:12px;overflow:hidden;">
-<div style="display:flex;align-items:center;gap:6px;padding:10px 12px;border-bottom:1px solid #EBF0FF;">
-<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#C050A0" stroke-width="2.5"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-<span style="font-size:10px;font-weight:800;color:#0D1933;">Aniversariantes</span>
-</div>
-<div style="padding:4px 0;">
-<div style="display:flex;align-items:center;gap:8px;padding:7px 12px;border-bottom:1px solid #F4F7FF;">
-<div style="width:28px;height:28px;border-radius:99px;background:#FDF0F8;color:#C050A0;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">AP</div>
-<div style="flex:1;">
-<div style="font-size:10px;font-weight:600;color:#0D1933;">Ana Paula Santos</div>
-</div>
-<div style="font-size:9px;color:#8A98B4;">Amanhã</div>
-</div>
-<div style="display:flex;align-items:center;gap:8px;padding:7px 12px;">
-<div style="width:28px;height:28px;border-radius:99px;background:#FDF0F8;color:#C050A0;font-size:8px;font-weight:800;display:flex;align-items:center;justify-content:center;flex-shrink:0;">CE</div>
-<div style="flex:1;">
-<div style="font-size:10px;font-weight:600;color:#0D1933;">Carlos Eduardo</div>
-</div>
-<div style="font-size:9px;color:#8A98B4;">Qui, 01</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-</div>
 
 <div class="logos-strip">
 <div class="logos-label">Igrejas que confiam no EBDClass</div>
