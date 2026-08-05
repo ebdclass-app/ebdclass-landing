@@ -270,6 +270,41 @@
   .nab-arrow{transform:rotate(90deg);padding:4px 0}
 }
 </style>
+<!-- BLOCO 5c: FAQ + CTA — prefixos nf- e nct- -->
+<style>
+.nf-sec{background:#F4F7FF;padding:96px max(6%,calc(50% - 400px))}
+.nf-in{max-width:760px;margin:0 auto}
+.nf-head{text-align:center;margin-bottom:44px}
+.nf-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#092F7D;margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
+.nf-label::before{content:'';width:24px;height:2px;background:#092F7D}
+.nf-h{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,50px);font-weight:500;line-height:1.1;letter-spacing:-0.5px;color:#0D1933}
+.nf-h em{font-style:italic;color:#092F7D}
+.nf-item{background:#fff;border:1px solid #E3E9F7;border-radius:16px;margin-bottom:12px;overflow:hidden;transition:border-color .2s,box-shadow .2s;cursor:pointer}
+.nf-item.open{border-color:#C9D6F0;box-shadow:0 8px 28px rgba(9,47,125,0.07)}
+.nf-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;font-size:16.5px;font-weight:700;color:#0D1933}
+.nf-ic{width:30px;height:30px;border-radius:9px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s}
+.nf-item.open .nf-ic{transform:rotate(45deg);background:#092F7D}
+.nf-item.open .nf-ic svg{stroke:#fff}
+.nf-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 24px}
+.nf-item.open .nf-a{max-height:320px;padding:0 24px 22px}
+.nf-a p{font-size:15px;color:#5A6785;line-height:1.75}
+.nct-sec{background:linear-gradient(160deg,#0A2878 0%,#0D1933 55%,#091428 100%);padding:110px max(6%,calc(50% - 480px));text-align:center;position:relative;overflow:hidden}
+.nct-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 50% 0%,rgba(26,92,255,0.25),transparent 62%);pointer-events:none}
+.nct-in{position:relative;z-index:1;max-width:640px;margin:0 auto}
+.nct-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px;display:flex;align-items:center;gap:8px;justify-content:center}
+.nct-label::before{content:'';width:24px;height:2px;background:rgba(255,255,255,0.4)}
+.nct-h{font-family:'Playfair Display',serif;font-size:clamp(34px,4.6vw,58px);font-weight:500;line-height:1.08;letter-spacing:-0.8px;color:#fff;margin-bottom:20px}
+.nct-h em{font-style:italic;color:#7DFFCC}
+.nct-p{font-size:18px;color:rgba(255,255,255,0.72);line-height:1.7;margin-bottom:36px}
+.nct-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#092F7D;padding:17px 40px;border-radius:50px;font-size:16.5px;font-weight:800;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform .2s}
+.nct-btn:hover{transform:translateY(-2px);color:#092F7D}
+.nct-note{margin-top:26px;font-size:14px;color:rgba(255,255,255,0.6);display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
+.nct-note span{display:flex;align-items:center;gap:6px}
+@media(max-width:900px){
+  .nf-sec{padding:64px 6%}
+  .nct-sec{padding:80px 6%}
+}
+</style>
 </head>
 <body>
 <nav id="navbar">
@@ -631,31 +666,56 @@ Salvar alterações
 </div>
 </div>
 
-<div id="faq" class="faq-section">
-<div class="faq-inner">
-<div class="faq-header reveal">
-<div class="section-label" style="justify-content:center;">FAQ</div>
-<h2 class="section-h">Perguntas <em>frequentes</em></h2>
+<div id="faq" class="nf-sec">
+<div class="nf-in">
+<div class="nf-head">
+<div class="nf-label">Dúvidas</div>
+<h2 class="nf-h">Perguntas <em>frequentes</em></h2>
 </div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Como acesso o EBDClass? <div class="faq-ico">+</div></div><div class="faq-a">Você escolhe: dá para usar direto no navegador do celular ou computador, sem instalar nada, ou baixar o aplicativo na loja. Nas duas formas o acesso é o mesmo, com login por usuário e senha. Basta ter internet.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Como funciona o período gratuito? <div class="faq-ico">+</div></div><div class="faq-a">São 15 dias de teste completo, sem necessidade de cartão de crédito. Você acessa todos os recursos do plano escolhido e só decide se continua no final do período. Se não gostar, é só não renovar — sem burocracia.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Posso ter várias congregações na mesma conta? <div class="faq-ico">+</div></div><div class="faq-a">Sim. O EBDClass foi feito para o modelo de campo: você cadastra a sede e quantas congregações precisar, todas em um único painel com visão consolidada. O limite é pela soma total de alunos do campo, conforme o plano escolhido. Para campos grandes (1.000+ alunos), temos o plano personalizado.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Qual plano é ideal para minha igreja? <div class="faq-ico">+</div></div><div class="faq-a">Se sua igreja tem até 50 alunos e é uma congregação só, o plano de entrada é perfeito. Se você tem entre 50 e 200 alunos, escolha o plano intermediário. Para igrejas com até 500 alunos, o plano completo é o ideal. Ficou dúvida? Fale com a gente no WhatsApp.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Os professores precisam criar conta? <div class="faq-ico">+</div></div><div class="faq-a">Não precisam criar nada. O próprio secretário cadastra cada professor com usuário e senha, e entrega o acesso pronto. O professor só abre no celular, faz login e já vê a chamada da turma dele. Zero burocracia e nenhum conhecimento de tecnologia necessário.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Tenho fidelidade ou contrato? <div class="faq-ico">+</div></div><div class="faq-a">Não. Os planos são mensais ou anuais pré-pagos. Você pode cancelar quando quiser, sem multa e sem explicação.</div></div>
-<div class="faq-item" onclick="toggleFaq(this)"><div class="faq-q">Os dados das igrejas ficam seguros? <div class="faq-ico">+</div></div><div class="faq-a">Sim. Usamos criptografia de ponta e os dados de cada igreja ficam isolados. Fazemos backup automático diariamente e seguimos as normas da LGPD.</div></div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Como acesso o EBDClass?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>Você escolhe: dá para usar direto no navegador do celular ou computador, sem instalar nada, ou baixar o aplicativo na loja. Nas duas formas o acesso é o mesmo, com login por usuário e senha. Basta ter internet.</p></div>
+</div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Como funciona o período gratuito?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>São 15 dias de teste completo, sem necessidade de cartão de crédito. Você acessa todos os recursos do plano escolhido e só decide se continua no final do período. Se não gostar, é só não renovar — sem burocracia.</p></div>
+</div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Posso ter várias congregações na mesma conta?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>Sim. O EBDClass foi feito para o modelo de campo: você cadastra a sede e quantas congregações precisar, todas em um único painel com visão consolidada. O limite é pela soma total de alunos do campo, conforme o plano escolhido. Para campos grandes (1.000+ alunos), temos o plano personalizado.</p></div>
+</div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Qual plano é ideal para minha igreja?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>Se sua igreja tem até 50 alunos e é uma congregação só, o plano de entrada é perfeito. Se você tem entre 50 e 200 alunos, escolha o plano intermediário. Para igrejas com até 500 alunos, o plano completo é o ideal. Ficou dúvida? Fale com a gente no WhatsApp.</p></div>
+</div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Os professores precisam criar conta?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>Não precisam criar nada. O próprio secretário cadastra cada professor com usuário e senha, e entrega o acesso pronto. O professor só abre no celular, faz login e já vê a chamada da turma dele. Zero burocracia e nenhum conhecimento de tecnologia necessário.</p></div>
+</div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Tenho fidelidade ou contrato?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>Não. Os planos são mensais ou anuais pré-pagos. Você pode cancelar quando quiser, sem multa e sem explicação.</p></div>
+</div>
+<div class="nf-item" onclick="tf(this)">
+<div class="nf-q">Os dados das igrejas ficam seguros?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#092F7D" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
+<div class="nf-a"><p>Sim. Usamos criptografia de ponta e os dados de cada igreja ficam isolados. Fazemos backup automático diariamente e seguimos as normas da LGPD.</p></div>
+</div>
 </div>
 </div>
 
-<section class="cta-section">
-<div class="cta-inner reveal">
-<div class="section-label" style="justify-content:center;">Comece hoje</div>
-<h2 class="section-h">15 dias grátis.<br><em>Sem cartão. Sem stress.</em></h2>
-<p class="cta-p">Configure em 2 minutos e já use no próximo domingo.</p>
-<a href="https://app.ebdclass.com.br/cadastro" class="btn-white">Testar na minha igreja →</a>
-<div class="cta-note">✓ Sem fidelidade &nbsp;·&nbsp; ✓ Suporte via WhatsApp &nbsp;·&nbsp; ✓ Cancele quando quiser</div>
+<div class="nct-sec">
+<div class="nct-in">
+<div class="nct-label">Comece hoje</div>
+<h2 class="nct-h">Organize sua EBD <em>no próximo domingo</em></h2>
+<p class="nct-p">15 dias grátis, sem cartão. Configure em 2 minutos e já use na próxima aula.</p>
+<a href="https://app.ebdclass.com.br/cadastro" class="nct-btn">Testar na minha igreja →</a>
+<div class="nct-note">
+<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem fidelidade</span>
+<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Suporte no WhatsApp</span>
+<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Cancele quando quiser</span>
 </div>
-</section>
+</div>
+</div>
 
 <footer>
 <a href="#" class="footer-logo">
@@ -669,25 +729,15 @@ Salvar alterações
 </footer>
 
 <script>
-function setMode(btn,mode){
-  document.querySelectorAll('.tog').forEach(b=>b.classList.remove('on'));
-  btn.classList.add('on');
-  // Preço não muda — só os recursos extras do anual aparecem como inclusos
-  document.querySelectorAll('.feat-annual').forEach(li=>{
-    const tag=li.querySelector('.feat-tag');
-    if(mode==='a'){tag.style.display='none';}
-    else{tag.style.display='';}
-  });
-}
-function toggleFaq(el){
-  const wasOpen=el.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
-  if(!wasOpen)el.classList.add('open');
-}
 function pmode(btn,mode){
   document.querySelectorAll('.np-tb').forEach(b=>b.classList.remove('on'));
   btn.classList.add('on');
   document.querySelectorAll('.pann .np-tag').forEach(t=>{t.style.display=mode==='a'?'none':'';});
+}
+function tf(el){
+  const open=el.classList.contains('open');
+  document.querySelectorAll('.nf-item').forEach(f=>f.classList.remove('open'));
+  if(!open)el.classList.add('open');
 }
 window.addEventListener('scroll',()=>{
   document.getElementById('navbar').style.boxShadow=window.scrollY>30?'0 2px 20px rgba(0,0,0,0.25)':'none';
