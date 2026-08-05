@@ -92,6 +92,48 @@
   .nh-f2{right:-14px}
 }
 </style>
+<!-- BLOCO 2: faixa credibilidade + dashboard — prefixo nb- -->
+<style>
+.nb-strip{background:#092F7D;padding:44px max(6%,calc(50% - 540px))}
+.nb-strip-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.nb-cr{text-align:center;position:relative}
+.nb-cr:not(:last-child)::after{content:'';position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:1px;height:44px;background:rgba(255,255,255,0.15)}
+.nb-cr-ic{width:40px;height:40px;margin:0 auto 12px;border-radius:11px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.18);display:flex;align-items:center;justify-content:center}
+.nb-cr-t{font-size:17px;font-weight:800;color:#fff;letter-spacing:-0.2px}
+.nb-cr-s{font-size:12.5px;color:rgba(255,255,255,0.6);margin-top:3px}
+.nb-sec{background:#fff;padding:96px max(6%,calc(50% - 540px))}
+.nb-sec-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.nb-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#092F7D;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+.nb-label::before{content:'';width:24px;height:2px;background:#092F7D}
+.nb-h{font-family:'Playfair Display',serif;font-size:clamp(30px,3.6vw,46px);font-weight:500;line-height:1.12;letter-spacing:-0.5px;margin-bottom:18px;color:#0D1933}
+.nb-h em{font-style:italic;color:#092F7D}
+.nb-p{font-size:17px;color:#5A6785;line-height:1.8;margin-bottom:24px}
+.nb-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.nb-list li{display:flex;align-items:flex-start;gap:12px;font-size:15.5px;color:#1E2D4A;line-height:1.5}
+.nb-list li svg{flex-shrink:0;margin-top:2px}
+.nb-dash{background:#F4F7FF;border:1px solid #D4DCF0;border-radius:22px;padding:20px;box-shadow:0 24px 60px rgba(9,47,125,0.1)}
+.nb-dhead{background:linear-gradient(160deg,#0A2878,#0D1933);border-radius:16px;padding:18px 18px 16px;margin-bottom:16px}
+.nb-dtitle{font-size:11px;color:rgba(255,255,255,0.6);font-weight:600;margin-bottom:4px}
+.nb-dchurch{font-size:19px;font-weight:800;color:#fff}
+.nb-dsub{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
+.nb-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.nb-mc{background:#fff;border:1px solid #D4DCF0;border-radius:14px;padding:14px 12px}
+.nb-ml{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#8A98B4;margin-bottom:6px}
+.nb-mv{font-size:22px;font-weight:800;line-height:1;letter-spacing:-1px}
+.nb-ms{font-size:9.5px;color:#5A6785;margin-top:5px}
+.nb-rank-t{font-size:12px;font-weight:800;color:#0D1933;margin-bottom:12px;text-align:center}
+.nb-rings{display:flex;justify-content:space-between;gap:8px}
+.nb-ring{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
+.nb-ring-c{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
+.nb-ring-c span{background:#F4F7FF;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.nb-ring-l{font-size:9px;color:#5A6785;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60px}
+@media(max-width:900px){
+  .nb-strip-in{grid-template-columns:1fr;gap:28px}
+  .nb-cr:not(:last-child)::after{display:none}
+  .nb-sec{padding:64px 6%}
+  .nb-sec-in{grid-template-columns:1fr;gap:40px}
+}
+</style>
 </head>
 <body>
 <nav id="navbar">
@@ -182,6 +224,61 @@ Salvar alterações
 </div>
 </div>
 </section>
+
+<div class="nb-strip">
+<div class="nb-strip-in">
+<div class="nb-cr">
+<div class="nb-cr-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg></div>
+<div class="nb-cr-t">Multi-congregação</div>
+<div class="nb-cr-s">Sede e filiais num painel</div>
+</div>
+<div class="nb-cr">
+<div class="nb-cr-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+<div class="nb-cr-t">Dados protegidos</div>
+<div class="nb-cr-s">Em conformidade com a LGPD</div>
+</div>
+<div class="nb-cr">
+<div class="nb-cr-ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></div>
+<div class="nb-cr-t">Relatórios automáticos</div>
+<div class="nb-cr-s">Sem planilha, prontos na hora</div>
+</div>
+</div>
+</div>
+
+<div class="nb-sec">
+<div class="nb-sec-in">
+<div>
+<div class="nb-label">Visão geral</div>
+<h2 class="nb-h">Sua EBD inteira <em>num relance</em></h2>
+<p class="nb-p">O secretário abre o painel e vê tudo: quantos alunos, quantos vieram no domingo, quais turmas estão indo bem e quais precisam de atenção. Sem abrir planilha, sem somar nada na mão.</p>
+<ul class="nb-list">
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Frequência por turma e por aluno, atualizada em tempo real</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ranking que mostra onde a presença está caindo</li>
+<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Controle de ofertas do trimestre, tudo somado sozinho</li>
+</ul>
+</div>
+<div class="nb-dash">
+<div class="nb-dhead">
+<div class="nb-dtitle">Resumo geral</div>
+<div class="nb-dchurch">IEAD - Lourival Parente</div>
+<div class="nb-dsub">Últimas 3 aulas · 3º trimestre de 2026</div>
+</div>
+<div class="nb-metrics">
+<div class="nb-mc"><div class="nb-ml">Matriculados</div><div class="nb-mv" style="color:#0D1933">141</div><div class="nb-ms">10 turmas ativas</div></div>
+<div class="nb-mc"><div class="nb-ml">Frequência</div><div class="nb-mv" style="color:#00A87A">43%</div><div class="nb-ms">média no intervalo</div></div>
+<div class="nb-mc"><div class="nb-ml">Ofertas</div><div class="nb-mv" style="color:#00A87A">R$57</div><div class="nb-ms">total no intervalo</div></div>
+</div>
+<div class="nb-rank-t">Ranking de turmas</div>
+<div class="nb-rings">
+<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#E8951F 0% 71%,#EBF0FF 71% 100%);color:#0D1933"><span>71%</span></div><div class="nb-ring-l">Cordeirinhos</div></div>
+<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#E8951F 0% 67%,#EBF0FF 67% 100%);color:#0D1933"><span>67%</span></div><div class="nb-ring-l">Juvenis</div></div>
+<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#C0392B 0% 55%,#EBF0FF 55% 100%);color:#0D1933"><span>55%</span></div><div class="nb-ring-l">Obreiros</div></div>
+<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#C0392B 0% 50%,#EBF0FF 50% 100%);color:#0D1933"><span>50%</span></div><div class="nb-ring-l">Bereanos</div></div>
+</div>
+</div>
+</div>
+</div>
+
 
 <div class="logos-strip">
 <div class="logos-label">Igrejas que confiam no EBDClass</div>
