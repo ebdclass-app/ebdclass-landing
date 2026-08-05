@@ -17,7 +17,7 @@
 .pg-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,4.6vw,54px);font-weight:500;line-height:1.08;letter-spacing:-1px;color:#fff;margin-bottom:14px}
 .pg-hero h1 em{font-style:italic;color:#7DFFCC}
 .pg-meta{font-size:14px;color:rgba(255,255,255,0.55)}
-.pg-body{max-width:760px;margin:0 auto;padding:64px max(6%,calc(50% - 380px)) 90px}
+.pg-body{width:100%;max-width:780px;margin:0 auto;padding:64px 24px 90px}
 .pg-highlight{background:#EBF0FF;border:1px solid #C9D6F0;border-radius:16px;padding:22px 26px;margin-bottom:44px}
 .pg-highlight p{font-size:15px;color:#1E2D4A;line-height:1.7;margin:0}
 .pg-sec{margin-bottom:38px}
@@ -49,6 +49,10 @@
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(2){opacity:0}
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
+body{display:block!important}
+.pg-body,.pg-highlight,.pg-contact,.pg-cta,.pg-faq,.pg-sec{width:auto;box-sizing:border-box}
+.pg-body *{min-width:0}
+@media(max-width:900px){.pg-body{padding:44px 18px 70px}}
 </style>
 </head>
 <body>
