@@ -6,12 +6,30 @@
 <title>Exclusão de Conta — EBDClass</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800&family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <!-- Estilos em style.css — editar lá, não aqui -->
 <link rel="stylesheet" href="style.css">
 <!-- Correção de largura do corpo (evita coluna esmagada) — mesmo ajuste das outras páginas internas -->
 <style>
 .page-body{padding:56px max(6%,calc(50% - 480px)) 80px;max-width:none;margin:0}
+/* Menu mobile — mesmo das outras páginas internas */
+.pg-mtoggle{display:none}.pg-burger{display:none}
+@media(max-width:900px){
+  .pg-body{padding:44px 6% 70px}
+  .pg-cta{padding:24px}
+  .pg-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210;flex-shrink:0}
+  .pg-burger span{display:block;height:2px;width:100%;background:#0D1933;border-radius:2px;transition:transform .3s,opacity .3s}
+  #navbar ul{display:none!important;position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid rgba(10,40,120,0.12);box-shadow:0 12px 30px rgba(10,40,120,0.15);padding:8px 6% 20px;margin:0;z-index:205}
+  #navbar .pg-mtoggle:checked ~ ul{display:flex!important}
+  #navbar ul li{display:block!important;width:100%!important}
+  #navbar ul li a{display:block!important;padding:15px 4px!important;font-size:16px!important;color:#0D1933!important;border-bottom:1px solid rgba(10,40,120,0.12)!important}
+  #navbar ul li:last-child a{border-bottom:none!important}
+  #navbar ul .nav-login,#navbar ul .nav-cta{text-align:center;margin-top:12px}
+  #navbar ul .nav-cta{color:#fff!important}
+  .pg-mtoggle:checked ~ .pg-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .pg-mtoggle:checked ~ .pg-burger span:nth-child(2){opacity:0}
+  .pg-mtoggle:checked ~ .pg-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+}
 </style>
 </head>
 <body>
@@ -19,6 +37,8 @@
 <a href="index.html" class="logo">
 <img src="logo.png" alt="EBDClass" class="logo-img">
 </a>
+<input type="checkbox" id="pg-mtoggle" class="pg-mtoggle">
+<label for="pg-mtoggle" class="pg-burger" aria-label="Abrir menu"><span></span><span></span><span></span></label>
 <ul>
 <li><a href="index.html#recursos">Recursos</a></li>
 <li><a href="index.html#como-funciona">Como funciona</a></li>
@@ -101,5 +121,8 @@
 </div>
 <div style="font-size:13px;color:rgba(255,255,255,0.65);font-family:var(--font);">© 2026 EBDClass</div>
 </footer>
+<script>
+document.querySelectorAll('#navbar ul a').forEach(a=>a.addEventListener('click',()=>{document.getElementById('pg-mtoggle').checked=false;}));
+</script>
 </body>
 </html>
