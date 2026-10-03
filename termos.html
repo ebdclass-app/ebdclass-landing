@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Termos de Uso — EBDClass</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="icon-512.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,300;0,6..12,400;0,6..12,600;0,6..12,700;0,6..12,800&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
 .pg-hero{position:relative;overflow:hidden;background:linear-gradient(160deg,#0A2878 0%,#0D1933 60%,#091428 100%);padding:130px max(6%,calc(50% - 440px)) 70px;text-align:center}
@@ -14,37 +16,39 @@
 .pg-hero-in{position:relative;z-index:1;max-width:720px;margin:0 auto}
 .pg-tag{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);color:#fff;padding:7px 16px;border-radius:50px;font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:22px}
 .pg-tag .pg-dot{width:6px;height:6px;background:#00C896;border-radius:50%;box-shadow:0 0 8px #00C896}
-.pg-hero h1{font-family:'Playfair Display',serif;font-size:clamp(34px,4.6vw,54px);font-weight:500;line-height:1.08;letter-spacing:-1px;color:#fff;margin-bottom:14px}
-.pg-hero h1 em{font-style:italic;color:#7DFFCC}
+.pg-hero h1{font-family:'Nunito Sans',sans-serif;font-size:clamp(34px,4.6vw,54px);font-weight:800;line-height:1.08;letter-spacing:-1px;color:#fff;margin-bottom:14px}
+.pg-hero h1 em{font-style:normal;color:#7DFFCC}
 .pg-meta{font-size:14px;color:rgba(255,255,255,0.55)}
 .pg-body{width:100%;max-width:780px;margin:0 auto;padding:64px 24px 90px}
 .pg-highlight{background:#EBF0FF;border:1px solid #C9D6F0;border-radius:16px;padding:22px 26px;margin-bottom:44px}
 .pg-highlight p{font-size:15px;color:#1E2D4A;line-height:1.7;margin:0}
 .pg-sec{margin-bottom:38px}
 .pg-sec h2{font-size:21px;font-weight:800;color:#0D1933;margin-bottom:14px;letter-spacing:-0.3px}
-.pg-sec h3{font-size:15px;font-weight:800;color:#092F7D;margin:18px 0 8px}
+.pg-sec h3{font-size:15px;font-weight:800;color:#0A2878;margin:18px 0 8px}
 .pg-sec p{font-size:15px;color:#5A6785;line-height:1.8;margin-bottom:12px}
 .pg-sec ul{list-style:none;padding:0;margin:0 0 12px}
 .pg-sec li{position:relative;padding-left:24px;font-size:15px;color:#5A6785;line-height:1.7;margin-bottom:9px}
 .pg-sec li::before{content:'';position:absolute;left:2px;top:10px;width:7px;height:7px;border-radius:50%;background:#00C896}
-.pg-sec a{color:#092F7D;font-weight:700}
+.pg-sec a{color:#0A2878;font-weight:700}
 .pg-sec strong{color:#1E2D4A}
-.pg-cta{background:linear-gradient(120deg,#092F7D,#0D1933);border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:36px}
+.pg-cta{background:linear-gradient(120deg,#0A2878,#0D1933);border-radius:20px;padding:28px 32px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:36px}
 .pg-cta strong{font-size:17px;color:#fff;display:block;margin-bottom:4px}
 .pg-cta p{font-size:14px;color:rgba(255,255,255,0.65);margin:0}
-.pg-cta a{background:#fff;color:#092F7D;padding:13px 26px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0}
-#navbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 max(6%,calc(50% - 480px));height:70px;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(9,47,125,0.12)}
+.pg-cta a{background:#fff;color:#0A2878;padding:13px 26px;border-radius:50px;font-size:14px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0}
+#navbar{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 max(6%,calc(50% - 480px));height:70px;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid rgba(10,40,120,0.12)}
 .pg-mtoggle{display:none}.pg-burger{display:none}
 @media(max-width:900px){
   .pg-body{padding:44px 6% 70px}
   .pg-cta{padding:24px}
   .pg-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210;flex-shrink:0}
   .pg-burger span{display:block;height:2px;width:100%;background:#0D1933;border-radius:2px;transition:transform .3s,opacity .3s}
-  #navbar ul{display:none!important;position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid rgba(9,47,125,0.12);box-shadow:0 12px 30px rgba(9,47,125,0.15);padding:8px 6% 20px;margin:0;z-index:205}
+  #navbar ul{display:none!important;position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid rgba(10,40,120,0.12);box-shadow:0 12px 30px rgba(10,40,120,0.15);padding:8px 6% 20px;margin:0;z-index:205}
   #navbar .pg-mtoggle:checked ~ ul{display:flex!important}
   #navbar ul li{display:block!important;width:100%!important}
-  #navbar ul li a{display:block!important;padding:15px 4px!important;font-size:16px!important;color:#0D1933!important;border-bottom:1px solid rgba(9,47,125,0.12)!important}
+  #navbar ul li a{display:block!important;padding:15px 4px!important;font-size:16px!important;color:#0D1933!important;border-bottom:1px solid rgba(10,40,120,0.12)!important}
   #navbar ul li:last-child a{border-bottom:none!important}
+  #navbar ul .nav-login,#navbar ul .nav-cta{text-align:center;margin-top:12px}
+  #navbar ul .nav-cta{color:#fff!important}
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(2){opacity:0}
   .pg-mtoggle:checked ~ .pg-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
@@ -73,7 +77,7 @@ body{display:block!important}
 <div class="pg-hero-in">
 <div class="pg-tag"><span class="pg-dot"></span>Termos de uso</div>
 <h1>Transparência em <em>cada detalhe</em></h1>
-<div class="pg-meta">Última atualização: Julho de 2026 · Válido para todos os planos</div>
+<div class="pg-meta">Última atualização: Outubro de 2026 · Válido para todos os planos</div>
 </div>
 </div>
 
@@ -113,9 +117,9 @@ body{display:block!important}
 <p>Oferecemos <strong>15 dias de teste gratuito</strong>, sem cartão de crédito. Ao fim do período, o acesso é pausado caso não haja contratação. A assinatura pode ser mensal ou anual, conforme o plano escolhido.</p>
 <h3>Formas de pagamento</h3>
 <ul>
-<li>Cartão de crédito (à vista ou parcelado)</li>
+<li>Cartão de crédito</li>
 <li>Boleto bancário</li>
-<li>Pix (em breve)</li>
+<li>Pix</li>
 </ul>
 </div>
 
@@ -125,7 +129,7 @@ body{display:block!important}
 <ul>
 <li><strong>Plano mensal:</strong> acesso continua até o fim do período já pago; sem reembolso proporcional</li>
 <li><strong>Plano anual:</strong> acesso continua até o fim do período contratado; sem reembolso proporcional</li>
-<li>Após o cancelamento, os dados ficam disponíveis para exportação por 90 dias</li>
+<li>Se a conta for encerrada, os dados ficam guardados por 30 dias (para voltar atrás ou pedir uma cópia por e-mail) e depois são excluídos</li>
 </ul>
 <p>Exceções de reembolso são analisadas caso a caso, mediante contato pelo WhatsApp em até 7 dias do pagamento.</p>
 </div>
@@ -156,7 +160,7 @@ body{display:block!important}
 
 <div class="pg-sec">
 <h2>8. Disponibilidade do serviço</h2>
-<p>Buscamos manter o sistema disponível com uptime mínimo de 99% ao mês. Manutenções programadas são avisadas com no mínimo 24 horas de antecedência. Não nos responsabilizamos por indisponibilidades causadas por falha de internet do usuário, força maior ou situações fora do nosso controle.</p>
+<p>Buscamos manter o sistema disponível o tempo todo. Manutenções programadas são avisadas com no mínimo 24 horas de antecedência. Não nos responsabilizamos por indisponibilidades causadas por falha de internet do usuário, força maior ou situações fora do nosso controle.</p>
 </div>
 
 <div class="pg-sec">
@@ -172,7 +176,7 @@ body{display:block!important}
 <div class="pg-sec">
 <h2>11. Alterações nos termos</h2>
 <p>Podemos atualizar estes termos a qualquer momento. Avisamos por e-mail com no mínimo 15 dias de antecedência para mudanças relevantes. O uso continuado após a vigência implica aceite.</p>
-<p><strong>Última atualização:</strong> Julho de 2026.</p>
+<p><strong>Última atualização:</strong> Outubro de 2026.</p>
 </div>
 
 <div class="pg-sec">
@@ -185,7 +189,7 @@ body{display:block!important}
 <strong>Dúvidas sobre os termos?</strong>
 <p>Fale com a gente antes de contratar — sem compromisso.</p>
 </div>
-<a href="https://wa.me/5586988197951?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20os%20termos%20do%20EBDClass." target="_blank">Falar no WhatsApp →</a>
+<a href="https://wa.me/5586988197951?text=Olá!%20Tenho%20uma%20dúvida%20sobre%20os%20termos%20do%20EBDClass." target="_blank" rel="noopener">Falar no WhatsApp →</a>
 </div>
 </div>
 
@@ -193,7 +197,7 @@ body{display:block!important}
 <a href="index.html" class="footer-logo"><img src="logo.png" alt="EBDClass" class="footer-logo-img" style="filter:brightness(0) invert(1)!important"></a>
 <div class="footer-links">
 <a href="index.html#recursos">Recursos</a><a href="index.html#planos">Planos</a><a href="ajuda.html">Ajuda</a>
-<a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://wa.me/5586988197951" target="_blank">WhatsApp</a>
+<a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://wa.me/5586988197951" target="_blank" rel="noopener">WhatsApp</a>
 </div>
 <div class="footer-copy">© 2026 EBDClass</div>
 </footer>
