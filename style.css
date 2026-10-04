@@ -14,6 +14,8 @@
   --radius-lg:22px
 }
 html{scroll-behavior:smooth}
+h1,h2{text-wrap:balance}
+p{text-wrap:pretty}
 body{font-family:var(--font);background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased}
 
 /* SEÇÕES CLARAS */
@@ -71,10 +73,16 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
 
       
   /* STEPS */
-  .steps-section{padding:60px 5%}
-  .steps-grid{grid-template-columns:1fr;gap:16px;margin-top:36px}
-  .step-connector{display:none}
-  .step{padding:28px 20px}
+  .steps-section{padding:64px 6%}
+  .steps-section .section-h{font-size:32px}
+  .steps-section .section-p{font-size:16px}
+  .steps-grid{grid-template-columns:1fr;gap:0;margin-top:28px;text-align:left}
+  .step-connector{display:block;top:28px;bottom:28px;left:22px;right:auto;width:1px;height:auto;background:rgba(255,255,255,0.25)}
+  .step{display:grid;grid-template-columns:44px 1fr;column-gap:16px;align-items:center;padding:12px 0;border:none;background:none}
+  .step:hover{background:none;box-shadow:none}
+  .step-circle{grid-row:span 2;width:44px;height:44px;margin:0;font-size:16px;background:#1A3A8F}
+  .step-title{font-size:16px;margin-bottom:2px}
+  .step-desc{font-size:14px;line-height:1.5}
 
     
 

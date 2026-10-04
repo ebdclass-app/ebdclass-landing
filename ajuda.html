@@ -27,12 +27,12 @@
 .pg-contact a:hover{transform:translateY(-2px)}
 .pg-cat{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#0A2878;margin:40px 0 18px;display:flex;align-items:center;gap:8px}
 .pg-cat::before{content:'';width:24px;height:2px;background:#0A2878}
-.pg-faq{background:#fff;border:1px solid #E3E9F7;border-radius:16px;margin-bottom:12px;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s}
+.pg-faq{-webkit-tap-highlight-color:transparent;background:#fff;border:1px solid #E3E9F7;border-radius:16px;margin-bottom:12px;overflow:hidden;cursor:pointer;transition:border-color .2s,box-shadow .2s}
 .pg-faq.open{border-color:#C9D6F0;box-shadow:0 8px 28px rgba(10,40,120,0.07)}
 .pg-faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 22px;font-size:16px;font-weight:700;color:#0D1933}
 .pg-faq-ic{width:28px;height:28px;border-radius:8px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s}
-.pg-faq.open .pg-faq-ic{transform:rotate(45deg);background:#0A2878}
-.pg-faq.open .pg-faq-ic svg{stroke:#fff}
+.pg-faq-ic svg{transition:transform .25s}
+.pg-faq.open .pg-faq-ic svg{transform:rotate(45deg)}
 .pg-faq-a{max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;padding:0 22px}
 .pg-faq.open .pg-faq-a{max-height:400px;padding:0 22px 20px}
 .pg-faq-a p{font-size:14.5px;color:#5A6785;line-height:1.75}
@@ -94,7 +94,7 @@ body{display:block!important}
 
 <div class="pg-cat">Primeiros passos</div>
 <div class="pg-faq" onclick="pgf(this)"><div class="pg-faq-q">Como faço para criar minha conta?<div class="pg-faq-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="pg-faq-a"><p>Acesse <a href="https://app.ebdclass.com.br/cadastro">app.ebdclass.com.br/cadastro</a>, preencha os dados da sua igreja e pronto: você já entra no sistema. São 15 dias grátis, com tudo liberado e sem cartão de crédito.</p></div></div>
-<div class="pg-faq" onclick="pgf(this)"><div class="pg-faq-q">Preciso instalar algum aplicativo?<div class="pg-faq-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="pg-faq-a"><p>Não é obrigatório. Você usa direto no navegador do celular ou computador, sem instalar nada. Se preferir, também pode baixar o aplicativo na loja — o acesso é o mesmo nas duas formas.</p></div></div>
+<div class="pg-faq" onclick="pgf(this)"><div class="pg-faq-q">Preciso instalar algum aplicativo?<div class="pg-faq-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="pg-faq-a"><p>Não é obrigatório. Você usa direto no navegador do celular ou computador, sem instalar nada. Se quiser, dá para adicionar o EBDClass à tela inicial do celular e abrir como um aplicativo.</p></div></div>
 <div class="pg-faq" onclick="pgf(this)"><div class="pg-faq-q">Como adiciono as turmas e os professores?<div class="pg-faq-ic"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div><div class="pg-faq-a"><p>Crie suas classes no menu <strong>Turmas</strong>. Para os professores, vá em <strong>Configurações → Acesso de professores</strong>: você cadastra cada um com nome e usuário, e o sistema gera a senha. Você entrega usuário e senha ao professor — sem convite, sem e-mail, sem link.</p></div></div>
 
 <div class="pg-cat">Chamada e relatórios</div>
