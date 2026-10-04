@@ -60,6 +60,9 @@
 .nh-proof{display:flex;align-items:center;gap:8px 20px;margin-top:30px;flex-wrap:wrap}
 .nh-ptxt{font-size:14px;color:#5A6785;display:inline-flex;align-items:center;gap:6px}
 .nh-ptxt b{color:#0D1933}
+.nh-play{display:inline-flex;align-items:center;gap:12px;margin-top:22px;text-decoration:none}
+.nh-play img{height:58px;width:auto;display:block;margin-left:-9px}
+.nh-play span{font-size:13.5px;color:#5A6785;line-height:1.4}
 .nh-right{display:flex;justify-content:center;position:relative}
 .nh-phone{position:relative;width:290px;height:600px;background:#0A0C14;border-radius:44px;padding:10px;box-shadow:0 30px 70px rgba(10,40,120,0.28),0 8px 20px rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.08)}
 .nh-notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#0A0C14;border-radius:0 0 16px 16px;z-index:5}
@@ -95,6 +98,8 @@
   .nh-left{max-width:none;margin:0 auto}
   .nh-sub{margin-left:auto;margin-right:auto}
   .nh-ctas,.nh-proof{justify-content:center}
+  .nh-play{justify-content:center}
+  .nh-play img{margin-left:0}
   .nh-phone{text-align:left}
   .nh-f1{left:-14px}
   .nh-f2{right:-14px}
@@ -257,6 +262,7 @@
 .nf-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 24px}
 .nf-item.open .nf-a{max-height:320px;padding:0 24px 22px}
 .nf-a p{font-size:15px;color:#5A6785;line-height:1.75}
+.nf-a a{color:#0A2878;font-weight:700}
 .nct-sec{background:linear-gradient(160deg,#0A2878 0%,#0D1933 55%,#091428 100%);padding:110px max(6%,calc(50% - 480px));text-align:center;position:relative;overflow:hidden}
 .nct-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 50% 0%,rgba(26,92,255,0.25),transparent 62%);pointer-events:none}
 .nct-in{position:relative;z-index:1;max-width:640px;margin:0 auto}
@@ -267,6 +273,8 @@
 .nct-p{font-size:18px;color:rgba(255,255,255,0.72);line-height:1.7;margin-bottom:36px}
 .nct-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0A2878;padding:17px 40px;border-radius:50px;font-size:16.5px;font-weight:800;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform .2s}
 .nct-btn:hover{transform:translateY(-2px);color:#0A2878}
+.nct-play{display:block;width:max-content;margin:14px auto 0}
+.nct-play img{height:58px;width:auto;display:block}
 .nct-note{margin-top:26px;font-size:14px;color:rgba(255,255,255,0.6);display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
 .nct-note span{display:flex;align-items:center;gap:6px}
 @media(max-width:900px){
@@ -309,6 +317,7 @@
 <span class="nh-ptxt"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem cartão de crédito</span>
 <span class="nh-ptxt"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Cancele quando quiser</span>
 </div>
+<a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener" class="nh-play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" width="174" height="58" loading="lazy"><span>Também como app<br>para Android</span></a>
 </div>
 <div class="nh-right">
 <div class="nh-float nh-f1">
@@ -542,7 +551,7 @@ Salvar alterações
 </div>
 <div class="nf-item" onclick="tf(this)">
 <div class="nf-q">Como acesso o EBDClass?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>Direto no navegador do celular ou do computador, sem instalar nada. Se quiser, dá para adicionar o EBDClass à tela inicial do celular e abrir como um aplicativo. O acesso é com usuário e senha; basta ter internet.</p></div>
+<div class="nf-a"><p>Direto no navegador do celular ou do computador, sem instalar nada. No Android, você também pode baixar o aplicativo na <a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener">Google Play</a>; no iPhone, é só adicionar o EBDClass à tela inicial pelo Safari. O acesso é com usuário e senha; basta ter internet.</p></div>
 </div>
 <div class="nf-item" onclick="tf(this)">
 <div class="nf-q">Como funciona o período gratuito?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
@@ -577,6 +586,7 @@ Salvar alterações
 <h2 class="nct-h">Organize sua EBD <em>no próximo domingo</em></h2>
 <p class="nct-p">15 dias grátis e sem cartão. O cadastro leva poucos minutos.</p>
 <a href="https://app.ebdclass.com.br/cadastro" class="nct-btn">Testar na minha igreja →</a>
+<a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener" class="nct-play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" width="174" height="58" loading="lazy"></a>
 <div class="nct-note">
 <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem fidelidade</span>
 <span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Pix, boleto ou cartão</span>
