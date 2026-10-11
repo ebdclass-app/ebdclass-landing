@@ -21,7 +21,11 @@ São quadros extraídos dos vídeos de passo a passo do app (`public/videos/` no
 
 ## Medição
 
-A página não carrega nenhum script de análise: sem isso não há o que pedir de consentimento (LGPD). Os eventos já são emitidos em `window.dataLayer` e, se existirem, para `gtag()` ou `plausible()`:
+A análise é o **Umami Cloud** (cloud.umami.is): gratuito para este volume, sem cookies e sem aviso de cookies. O script só é carregado quando `UMAMI_WEBSITE_ID` (no topo de `landing.js`) está preenchido; vazio, a página não envia nada a ninguém.
+
+Para ativar: crie a conta no Umami Cloud, adicione o site `ebdclass.com.br`, copie o *Website ID* e cole em `UMAMI_WEBSITE_ID`. O script ignora acessos de outros domínios (localhost, prévias) e respeita o "Não rastrear" do navegador.
+
+Os eventos também vão para `window.dataLayer` e, se existirem, para `gtag()` ou `plausible()`:
 
 | Evento | Quando |
 |---|---|
@@ -33,9 +37,9 @@ A página não carrega nenhum script de análise: sem isso não há o que pedir 
 
 Os links para `app.ebdclass.com.br/cadastro` saem com `utm_source=site`, `utm_medium=landing`, `utm_campaign=cadastro` e `utm_content=<id do botão>`. Se o visitante chegar com UTMs próprias (anúncio, WhatsApp), elas são repassadas no lugar dessas.
 
-Para medir de verdade, instale **uma** ferramenta (GTM, GA4 ou Plausible) no `<head>` do `index.html`. Se usar GA4 ou Meta, inclua o aviso de cookies. Para ver os eventos sem ferramenta, abra a página com `?ebd_debug=1` e o console do navegador.
+Para ver os eventos sem painel, abra a página com `?ebd_debug=1` e o console do navegador.
 
-Cadastro concluído, primeiro uso e pagamento acontecem no app, que hoje não tem análise. Para fechar o funil é preciso registrar esses eventos lá (veja o relatório do trabalho).
+Cadastro concluído, primeiro uso e pagamento acontecem no app, que hoje não tem análise.
 
 ## Testar no computador
 

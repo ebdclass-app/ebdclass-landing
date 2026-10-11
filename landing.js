@@ -1,10 +1,9 @@
 /* EBDClass — landing page. Sem dependências.
  *
- * Rastreamento: nenhum script de terceiros é carregado por padrão (LGPD: sem
- * analytics não há o que pedir de consentimento). Os eventos abaixo vão para
- * window.dataLayer e, se existirem, para gtag() ou plausible(). Para medir de
- * verdade, instale a ferramenta escolhida (GTM, GA4 ou Plausible) — veja o
- * README, seção "Medição".
+ * Rastreamento: os eventos abaixo vão para window.dataLayer e, se existirem,
+ * para umami.track(), gtag() ou plausible(). A análise é o Umami Cloud, que não
+ * usa cookies (não exige aviso de cookies). Ele só é carregado quando
+ * UMAMI_WEBSITE_ID está preenchido — veja o README, seção "Medição".
  *
  * Eventos: cta_click, login_click, whatsapp_click, play_store_click,
  *          plan_cycle_toggle, faq_open, section_view.
@@ -16,6 +15,8 @@
   var doc = document;
   w.dataLayer = w.dataLayer || [];
 
+  // ID do site no Umami Cloud (cloud.umami.is > Settings > Websites). Vazio = não carrega nada.
+  var UMAMI_WEBSITE_ID = '';
   var APP_SIGNUP = 'https://app.ebdclass.com.br/cadastro';
   var debug = /[?&]ebd_debug=1/.test(location.search);
 
@@ -24,11 +25,22 @@
     var payload = { event: name };
     for (var k in params) payload[k] = params[k];
     w.dataLayer.push(payload);
+    try { if (w.umami && typeof w.umami.track === 'function') w.umami.track(name, params); } catch (e) {}
     try { if (typeof w.gtag === 'function') w.gtag('event', name, params); } catch (e) {}
     try { if (typeof w.plausible === 'function') w.plausible(name, { props: params }); } catch (e) {}
     if (debug && w.console) console.log('[ebd-track]', name, params);
   }
   w.ebdTrack = track;
+
+  if (UMAMI_WEBSITE_ID) {
+    var u = doc.createElement('script');
+    u.defer = true;
+    u.src = 'https://cloud.umami.is/script.js';
+    u.setAttribute('data-website-id', UMAMI_WEBSITE_ID);
+    u.setAttribute('data-domains', 'ebdclass.com.br'); // ignora localhost e prévias
+    u.setAttribute('data-do-not-track', 'true');
+    doc.head.appendChild(u);
+  }
 
   function sectionOf(el) {
     var s = el.closest('[data-section]');
