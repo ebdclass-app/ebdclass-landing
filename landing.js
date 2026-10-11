@@ -16,7 +16,7 @@
   w.dataLayer = w.dataLayer || [];
 
   // ID do site no Umami Cloud (cloud.umami.is > Settings > Websites). Vazio = não carrega nada.
-  var UMAMI_WEBSITE_ID = '';
+  var UMAMI_WEBSITE_ID = 'c4eb020a-d33b-4696-b059-3e939a637ae1';
   var APP_SIGNUP = 'https://app.ebdclass.com.br/cadastro';
   var debug = /[?&]ebd_debug=1/.test(location.search);
 
