@@ -31,7 +31,10 @@ ul,ol{list-style:none}
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .skip{position:absolute;left:12px;top:-60px;z-index:300;background:var(--white);color:var(--blue);padding:10px 16px;border-radius:10px;font-weight:700;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.25)}
 .skip:focus{top:12px}
-.wrap{width:min(1160px,calc(100% - var(--gutter)*2));margin-inline:auto}
+.wrap{width:min(1200px,calc(100% - var(--gutter)*2));margin-inline:auto}
+@media(min-width:640px){:root{--gutter:32px}}
+@media(min-width:960px){:root{--gutter:48px}}
+@media(min-width:1200px){:root{--gutter:64px}}
 
 /* ---------- Botões ---------- */
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 24px;border-radius:999px;font:800 16px/1.2 var(--font);text-align:center;text-decoration:none;border:2px solid transparent;cursor:pointer;transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease,border-color .18s ease}
@@ -56,7 +59,7 @@ ul,ol{list-style:none}
 .brand{display:flex;align-items:center;margin-right:auto}
 .brand img{height:28px;width:auto}
 .nav-links{display:none}
-.nav-cta-bar{display:inline-flex}
+.nav-login-bar{display:inline-flex;border-color:var(--blue);color:var(--blue)}
 .burger{-webkit-tap-highlight-color:transparent;display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;padding:11px;border:0;background:transparent;border-radius:12px;cursor:pointer}
 .burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .2s}
 .burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
@@ -64,18 +67,15 @@ ul,ol{list-style:none}
 .burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 .nav-links.open{display:flex;flex-direction:column;position:absolute;top:var(--nav-h);left:0;right:0;background:#fff;border-bottom:1px solid var(--line);box-shadow:0 18px 32px rgba(9,47,125,.14);padding:6px var(--gutter) 22px;max-height:calc(100dvh - var(--nav-h));overflow:auto}
 .nav-links a{font-weight:700;font-size:17px;color:var(--ink);text-decoration:none;padding:15px 2px;border-bottom:1px solid var(--line)}
-.nav-links a.nav-login{margin-top:14px;text-align:center;border:2px solid var(--line);border-radius:999px;padding:12px}
-.nav-links a.btn{display:none}
+.nav-links a.nav-login{display:none}
 @media(min-width:960px){
   :root{--nav-h:72px}
-  .burger,.nav-cta-bar{display:none}
+  .burger,.nav-login-bar{display:none}
   .nav-links,.nav-links.open{display:flex;position:static;flex-direction:row;align-items:center;gap:30px;padding:0;border:0;box-shadow:none;background:none;max-height:none;overflow:visible}
   .nav-links a{font-size:15px;padding:6px 0;border:0;color:var(--muted);transition:color .2s}
   .nav-links a:hover{color:var(--blue)}
-  .nav-links a.nav-login{margin:0;border:2px solid var(--line);padding:8px 20px;color:var(--ink);transition:border-color .2s}
-  .nav-links a.nav-login:hover{border-color:var(--blue);color:var(--blue)}
-  .nav-links a.btn{display:inline-flex;color:#fff;padding:0 22px;border-bottom:0}
-  .nav-links a.btn:hover{color:#fff}
+  .nav-links a.nav-login{display:inline-flex;padding:0 24px;border:2px solid var(--blue);color:var(--blue);font-size:15px}
+  .nav-links a.nav-login:hover{background:var(--blue);color:#fff}
   .brand img{height:32px}
 }
 
@@ -123,13 +123,18 @@ ul,ol{list-style:none}
 .shot-phone img{width:100%;border-radius:16px;aspect-ratio:600/1298}
 .demo-note{position:absolute;right:0;bottom:-26px;font-size:12px;color:rgba(255,255,255,.55)}
 @media(min-width:640px){
-  .cta-row{flex-direction:row}
-  .cta-row .btn{width:auto}
+  .cta-row{flex-direction:row;flex-wrap:wrap}
+  .cta-row .btn{width:auto;white-space:nowrap}
+}
+@media(min-width:640px){
+  .hero-visual{max-width:640px}
 }
 @media(min-width:960px){
   .hero{padding:72px 0 96px}
+}
+@media(min-width:1280px){
   .hero-in{grid-template-columns:minmax(0,1.02fr) minmax(0,1fr);gap:56px}
-  .hero-visual{max-width:none;padding-bottom:9%}
+  .hero-visual{max-width:none;margin-inline:0;padding-bottom:9%}
   .shot-desk{margin-left:14%}
   .shot-phone{width:30%;left:0;border-radius:26px;padding:5px}
   .shot-phone img{border-radius:21px}
