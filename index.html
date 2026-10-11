@@ -1,629 +1,453 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>EBDClass — Gestão da Escola Bíblica Dominical</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EBDClass — Sistema de gestão da Escola Bíblica Dominical</title>
+<meta name="description" content="Chamada da EBD no celular, frequência de todas as turmas num só painel e relatórios prontos para imprimir ou salvar em PDF. Teste grátis por 15 dias, sem cartão.">
+<link rel="canonical" href="https://ebdclass.com.br/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#092F7D">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="apple-touch-icon" href="icon-512.png">
-<meta name="description" content="Chamada da EBD no celular em 3 minutos, relatórios automáticos e sede e congregações num painel só. Teste grátis por 15 dias, sem cartão.">
-<meta name="theme-color" content="#0A2878">
+
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="EBDClass">
+<meta property="og:locale" content="pt_BR">
 <meta property="og:url" content="https://ebdclass.com.br/">
-<meta property="og:title" content="EBDClass — Gestão da Escola Bíblica Dominical">
-<meta property="og:description" content="Chamada da EBD no celular em 3 minutos e relatório pronto sozinho. Teste grátis por 15 dias, sem cartão.">
-<meta property="og:image" content="https://ebdclass.com.br/icon-512.png">
+<meta property="og:title" content="EBDClass — A frequência de toda a sua EBD, sem caderneta e sem planilha">
+<meta property="og:description" content="Chamada no celular, painel com todas as turmas e relatórios prontos. Teste grátis por 15 dias, sem cartão.">
+<meta property="og:image" content="https://ebdclass.com.br/img/og-ebdclass.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="EBDClass: tela de chamada e painel da Escola Bíblica Dominical">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EBDClass — Gestão da Escola Bíblica Dominical">
+<meta name="twitter:description" content="Chamada no celular, painel com todas as turmas e relatórios prontos. Teste grátis por 15 dias, sem cartão.">
+<meta name="twitter:image" content="https://ebdclass.com.br/img/og-ebdclass.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<!-- Estilos em style.css — editar lá, não aqui -->
-<link rel="stylesheet" href="style.css">
-<!-- Menu mobile (hambúrguer) — CSS-only, sem JS. Prefixo mnav- para não colidir. -->
-<style>
-.mnav-toggle{display:none}
-.mnav-burger{display:none}
-@media(max-width:900px){
-  html,body{overflow-x:hidden}
-  nav{flex-wrap:nowrap}
-  .mnav-burger{display:flex;flex-direction:column;justify-content:center;gap:5px;width:44px;height:44px;border:none;background:transparent;cursor:pointer;padding:10px;z-index:210;flex-shrink:0}
-  .mnav-burger span{display:block;height:2px;width:100%;background:#0D1933;border-radius:2px;transition:transform 0.3s,opacity 0.3s}
-  /* Painel fechado: some de vez */
-  nav ul{display:none!important;position:fixed;top:70px;left:0;width:100%;flex-direction:column;align-items:stretch;gap:0;background:#fff;border-bottom:1px solid rgba(10,40,120,0.12);box-shadow:0 12px 30px rgba(10,40,120,0.15);padding:8px 6% 20px;margin:0;max-height:85vh;overflow-y:auto;z-index:205}
-  /* Painel aberto: aparece como coluna */
-  .mnav-toggle:checked ~ ul{display:flex!important}
-  nav ul li{display:block!important;width:100%!important}
-  nav ul li a{display:block!important;padding:16px 4px!important;font-size:16px!important;color:#0D1933!important;border-bottom:1px solid rgba(10,40,120,0.12)!important}
-  nav ul li:last-child a{border-bottom:none!important}
-  nav ul .nav-login,nav ul .nav-cta{text-align:center;margin-top:12px}
-  nav ul .nav-cta{color:#fff!important}
-  /* Hambúrguer vira X */
-  .mnav-toggle:checked ~ .mnav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
-  .mnav-toggle:checked ~ .mnav-burger span:nth-child(2){opacity:0}
-  .mnav-toggle:checked ~ .mnav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&family=Playfair+Display:ital,wght@1,600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/geral-desktop.webp" type="image/webp" fetchpriority="high">
+<link rel="stylesheet" href="landing.css">
+<script>document.documentElement.classList.remove('no-js')</script>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {"@type":"Organization","@id":"https://ebdclass.com.br/#org","name":"EBDClass","url":"https://ebdclass.com.br/","logo":"https://ebdclass.com.br/icon-512.png"},
+    {"@type":"SoftwareApplication","name":"EBDClass","applicationCategory":"BusinessApplication","operatingSystem":"Web, Android","inLanguage":"pt-BR",
+     "description":"Sistema de gestão da Escola Bíblica Dominical: chamada digital, frequência por turma, relatórios e gestão de sede e congregações.",
+     "url":"https://ebdclass.com.br/","publisher":{"@id":"https://ebdclass.com.br/#org"},
+     "offers":{"@type":"AggregateOffer","priceCurrency":"BRL","lowPrice":"34.90","highPrice":"319.90","offerCount":"5"}},
+    {"@type":"FAQPage","mainEntity":[
+      {"@type":"Question","name":"Preciso instalar alguma coisa?","acceptedAnswer":{"@type":"Answer","text":"Não. O EBDClass funciona direto no navegador do celular ou do computador. No Android também há o aplicativo na Google Play; no iPhone, é possível adicionar o EBDClass à tela inicial pelo Safari."}},
+      {"@type":"Question","name":"Posso acessar pelo celular e pelo computador?","acceptedAnswer":{"@type":"Answer","text":"Sim. O acesso é o mesmo nos dois, com os mesmos dados. O professor costuma fazer a chamada no celular e o secretário acompanha pelo celular ou pelo computador."}},
+      {"@type":"Question","name":"Como funciona o cadastro?","acceptedAnswer":{"@type":"Answer","text":"Você informa o e-mail e confirma com um código que enviamos, depois preenche seu nome, WhatsApp, usuário e senha, os dados da igreja e a localização. Não pede cartão de crédito."}},
+      {"@type":"Question","name":"Como minha igreja pode começar?","acceptedAnswer":{"@type":"Answer","text":"Crie a conta de teste, cadastre as turmas, os alunos e os professores e, no domingo, o professor faz a chamada pelo celular. O app traz um passo a passo com vídeos curtos para cada etapa."}},
+      {"@type":"Question","name":"Qual plano atende à minha realidade?","acceptedAnswer":{"@type":"Answer","text":"O plano vai pelo total de alunos da EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Durante o teste não há limite, então você vê quantos alunos tem e escolhe a faixa depois. Acima de 2.000 alunos, há plano personalizado."}},
+      {"@type":"Question","name":"Existe período de teste?","acceptedAnswer":{"@type":"Answer","text":"Sim. São 15 dias com todos os recursos liberados, sem cartão de crédito. Se você não contratar ao final, nada é cobrado e o acesso é pausado."}},
+      {"@type":"Question","name":"Como funciona o cancelamento?","acceptedAnswer":{"@type":"Answer","text":"Não há fidelidade nem multa. Você cancela pelo sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional; exceções são analisadas caso a caso em até 7 dias do pagamento."}},
+      {"@type":"Question","name":"Os professores precisam criar conta?","acceptedAnswer":{"@type":"Answer","text":"Não. O secretário cadastra cada professor com usuário e senha. O professor entra pelo celular e já vê a chamada da turma dele."}},
+      {"@type":"Question","name":"Posso ter várias congregações na mesma conta?","acceptedAnswer":{"@type":"Answer","text":"Sim. A sede cadastra as congregações e acompanha tudo no mesmo painel, com relatório de campo. O limite do plano é a soma dos alunos de todo o campo."}},
+      {"@type":"Question","name":"Os dados da igreja ficam seguros?","acceptedAnswer":{"@type":"Answer","text":"A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. O tratamento segue a LGPD."}}
+    ]}
+  ]
 }
-</style>
-<!-- HERO redesenhado (Bloco 1) — estilos isolados prefixados nh- para não colidir com style.css -->
-<style>
-.nh{position:relative;overflow:hidden;padding:120px max(6%,calc(50% - 600px)) 90px}
-.nh-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 70% 55% at 78% 25%,rgba(26,92,255,0.10),transparent 60%),radial-gradient(ellipse 50% 45% at 12% 75%,rgba(0,200,150,0.07),transparent 55%),#F4F7FF}
-.nh-grid{position:absolute;inset:0;z-index:0;background-image:linear-gradient(rgba(10,40,120,0.045) 1px,transparent 1px),linear-gradient(90deg,rgba(10,40,120,0.045) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%);mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 0%,transparent 75%)}
-.nh-wrap{position:relative;z-index:1;display:grid;grid-template-columns:1fr 400px;gap:56px;align-items:center;max-width:1200px;margin:0 auto}
-.nh-left{max-width:560px}
-.nh-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(10,40,120,0.07);border:1px solid rgba(10,40,120,0.18);color:#0A2878;padding:7px 16px;border-radius:50px;font-size:13px;font-weight:700;letter-spacing:0.3px;margin-bottom:26px}
-.nh-dot{width:6px;height:6px;background:#00C896;border-radius:50%;box-shadow:0 0 8px #00C896}
-.nh h1{font-family:'Nunito Sans',sans-serif;font-size:clamp(42px,5.2vw,68px);font-weight:800;line-height:1.05;letter-spacing:-1px;margin-bottom:24px;color:#0D1933}
-.nh h1 em{font-style:normal;color:#0A2878}
-.nh-sub{font-size:19px;color:#5A6785;line-height:1.7;margin-bottom:36px;max-width:480px}
-.nh-cta{display:inline-flex;align-items:center;gap:8px;background:#0A2878;color:#fff;padding:16px 34px;border-radius:50px;font-size:16px;font-weight:700;text-decoration:none;box-shadow:0 4px 24px rgba(10,40,120,0.32);transition:transform .2s,box-shadow .2s}
-.nh-cta:hover{transform:translateY(-2px);box-shadow:0 8px 34px rgba(10,40,120,0.42);color:#fff}
-.nh-ctas{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.nh-proof{display:flex;align-items:center;gap:8px 20px;margin-top:30px;flex-wrap:wrap}
-.nh-ptxt{font-size:14px;color:#5A6785;display:inline-flex;align-items:center;gap:6px}
-.nh-ptxt b{color:#0D1933}
-.nh-play{display:inline-flex;align-items:center;gap:12px;margin-top:22px;text-decoration:none}
-.nh-play img{height:58px;width:auto;display:block;margin-left:-9px}
-.nh-play span{font-size:13.5px;color:#5A6785;line-height:1.4}
-.nh-right{display:flex;justify-content:center;position:relative}
-.nh-phone{position:relative;width:290px;height:600px;background:#0A0C14;border-radius:44px;padding:10px;box-shadow:0 30px 70px rgba(10,40,120,0.28),0 8px 20px rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.08)}
-.nh-notch{position:absolute;top:20px;left:50%;transform:translateX(-50%);width:120px;height:26px;background:#0A0C14;border-radius:0 0 16px 16px;z-index:5}
-.nh-screen{width:100%;height:100%;background:#F4F7FF;border-radius:36px;overflow:hidden;position:relative}
-.nh-ahead{background:linear-gradient(160deg,#0A2878,#0D1933);padding:46px 16px 14px;display:flex;align-items:center;justify-content:space-between}
-.nh-alogo{display:flex;align-items:center;gap:6px;color:#fff;font-weight:800;font-size:14px}
-.nh-alogo svg{width:20px;height:20px}
-.nh-adate{font-size:8.5px;color:rgba(255,255,255,0.6)}
-.nh-abody{padding:14px}
-.nh-acls{font-size:11px;font-weight:800;color:#0D1933;margin-bottom:10px;display:flex;align-items:center;gap:6px}
-.nh-acls span{font-size:9px;font-weight:600;color:#8A98B4;margin-left:auto}
-.nh-stu{display:flex;align-items:center;gap:10px;background:#fff;border:1.5px solid;border-radius:14px;padding:9px 10px;margin-bottom:8px}
-.nh-stu-p{border-color:rgba(0,200,150,0.5)}
-.nh-stu-f{border-color:rgba(220,60,60,0.4)}
-.nh-sav{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;flex-shrink:0}
-.nh-sname{font-size:12.5px;font-weight:600;color:#0D1933;flex:1}
-.nh-btns{display:flex;gap:5px}
-.nh-pf{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;border:1.5px solid #D4DCF0;color:#8A98B4;background:#fff}
-.nh-pf.on-p{background:#00C896;border-color:#00C896;color:#fff}
-.nh-pf.on-f{background:#E5484D;border-color:#E5484D;color:#fff}
-.nh-asave{margin-top:12px;background:linear-gradient(90deg,#1A5CFF,#00C896);color:#fff;text-align:center;padding:13px;border-radius:14px;font-size:13px;font-weight:800;display:flex;align-items:center;justify-content:center;gap:7px}
-.nh-float{position:absolute;background:#fff;border-radius:14px;padding:12px 14px;box-shadow:0 12px 30px rgba(10,40,120,0.16);border:1px solid rgba(10,40,120,0.08);display:flex;align-items:center;gap:10px;z-index:6}
-.nh-f1{top:60px;left:-38px}
-.nh-f2{bottom:80px;right:-30px}
-.nh-fic{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nh-fic.g{background:#00C896}
-.nh-fic.b{background:#EBF0FF}
-.nh-ft{font-size:12px;font-weight:800;color:#0D1933;line-height:1.2}
-.nh-fs{font-size:10px;color:#5A6785;margin-top:1px}
-@media(max-width:900px){
-  .nh{padding:100px 6% 60px}
-  .nh-wrap{grid-template-columns:1fr;gap:56px;text-align:center}
-  .nh-left{max-width:none;margin:0 auto}
-  .nh-sub{margin-left:auto;margin-right:auto}
-  .nh-ctas,.nh-proof{justify-content:center}
-  .nh-play{justify-content:center}
-  .nh-play img{margin-left:0}
-  .nh-phone{text-align:left}
-  .nh-f1{left:-14px}
-  .nh-f2{right:-14px}
-}
-</style>
-<!-- BLOCO 2: faixa credibilidade + dashboard — prefixo nb- -->
-<style>
-.nb-sec{background:#fff;padding:96px max(6%,calc(50% - 540px))}
-.nb-sec-in{max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.nb-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0A2878;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.nb-label::before{content:'';width:24px;height:2px;background:#0A2878}
-.nb-h{font-family:'Nunito Sans',sans-serif;font-size:clamp(30px,3.6vw,46px);font-weight:800;line-height:1.12;letter-spacing:-0.5px;margin-bottom:18px;color:#0D1933}
-.nb-h em{font-style:normal;color:#0A2878}
-.nb-p{font-size:17px;color:#5A6785;line-height:1.8;margin-bottom:24px}
-.nb-list{list-style:none;display:flex;flex-direction:column;gap:14px}
-.nb-list li{display:flex;align-items:flex-start;gap:12px;font-size:15.5px;color:#1E2D4A;line-height:1.5}
-.nb-list li svg{flex-shrink:0;margin-top:2px}
-.nb-dash{background:#F4F7FF;border:1px solid #D4DCF0;border-radius:22px;padding:20px;box-shadow:0 24px 60px rgba(10,40,120,0.1)}
-.nb-dhead{background:linear-gradient(160deg,#0A2878,#0D1933);border-radius:16px;padding:18px 18px 16px;margin-bottom:16px}
-.nb-dtitle{font-size:11px;color:rgba(255,255,255,0.6);font-weight:600;margin-bottom:4px}
-.nb-dchurch{font-size:19px;font-weight:800;color:#fff}
-.nb-dsub{font-size:11px;color:rgba(255,255,255,0.5);margin-top:2px}
-.nb-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
-.nb-mc{background:#fff;border:1px solid #D4DCF0;border-radius:14px;padding:14px 12px}
-.nb-ml{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;color:#8A98B4;margin-bottom:6px}
-.nb-mv{font-size:22px;font-weight:800;line-height:1;letter-spacing:-1px}
-.nb-ms{font-size:9.5px;color:#5A6785;margin-top:5px}
-.nb-rank-t{font-size:12px;font-weight:800;color:#0D1933;margin-bottom:12px;text-align:center}
-.nb-rings{display:flex;justify-content:space-between;gap:8px}
-.nb-ring{display:flex;flex-direction:column;align-items:center;gap:6px;flex:1}
-.nb-ring-c{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800}
-.nb-ring-c span{background:#F4F7FF;width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-.nb-ring-l{font-size:9px;color:#5A6785;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:60px}
-@media(max-width:900px){
-  .nb-sec{padding:64px 6%}
-  .nb-sec-in{grid-template-columns:1fr;gap:40px}
-}
-</style>
-<!-- BLOCO 3: grid de recursos — prefixo nc- -->
-<style>
-.nc-sec{background:#F4F7FF;padding:96px max(6%,calc(50% - 540px))}
-.nc-in{max-width:1080px;margin:0 auto}
-.nc-head{text-align:center;max-width:600px;margin:0 auto 52px}
-.nc-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0A2878;margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
-.nc-label::before{content:'';width:24px;height:2px;background:#0A2878}
-.nc-h{font-family:'Nunito Sans',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px;color:#0D1933}
-.nc-h em{font-style:normal;color:#0A2878}
-.nc-sub{font-size:17px;color:#5A6785;line-height:1.7}
-.nc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.nc-card{background:#fff;border:1px solid #E3E9F7;border-radius:20px;padding:28px 24px;transition:transform .25s,box-shadow .25s,border-color .25s}
-.nc-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(10,40,120,0.1);border-color:#C9D6F0}
-.nc-ic{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;background:#EBF0FF;border:1.5px solid rgba(10,40,120,0.14)}
-.nc-ic.g{background:#E6FAF5;border-color:rgba(0,200,150,0.22)}
-.nc-ct{font-size:18px;font-weight:800;margin-bottom:9px;letter-spacing:-0.2px;color:#0D1933}
-.nc-cd{font-size:14.5px;color:#5A6785;line-height:1.7}
-@media(max-width:900px){
-  .nc-sec{padding:64px 6%}
-  .nc-head{margin-bottom:28px}
-  .nc-grid{grid-template-columns:1fr;gap:10px}
-  .nc-card{display:grid;grid-template-columns:44px 1fr;column-gap:14px;align-items:center;padding:16px 18px;border-radius:16px}
-  .nc-card:hover{transform:none}
-  .nc-ic{grid-row:span 2;width:44px;height:44px;border-radius:12px;margin:0}
-  .nc-ic svg{width:20px;height:20px}
-  .nc-ct{font-size:16px;margin-bottom:2px}
-  .nc-cd{font-size:14px;line-height:1.5}
-}
-</style>
-<!-- BLOCO 4: segurança — prefixo ns- -->
-<style>
-.ns-sec{background:linear-gradient(165deg,#0A2878 0%,#0D1933 60%,#091428 100%);padding:96px max(6%,calc(50% - 540px));position:relative;overflow:hidden}
-.ns-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(26,92,255,0.22),transparent 65%);pointer-events:none}
-.ns-in{max-width:1080px;margin:0 auto;position:relative;z-index:1}
-.ns-head{text-align:center;max-width:620px;margin:0 auto 56px}
-.ns-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
-.ns-label::before{content:'';width:24px;height:2px;background:rgba(255,255,255,0.4)}
-.ns-h{font-family:'Nunito Sans',sans-serif;font-size:clamp(32px,4.2vw,54px);font-weight:800;line-height:1.1;letter-spacing:-0.5px;color:#fff;margin-bottom:16px}
-.ns-h em{font-style:normal;color:#7DFFCC}
-.ns-sub{font-size:17px;color:rgba(255,255,255,0.68);line-height:1.75}
-.ns-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.ns-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:20px;padding:30px 28px;transition:background .25s,border-color .25s}
-.ns-card:hover{background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.25)}
-.ns-ic{width:50px;height:50px;border-radius:13px;background:rgba(0,200,150,0.12);border:1px solid rgba(0,200,150,0.3);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
-.ns-ct{font-size:19px;font-weight:800;color:#fff;margin-bottom:9px;letter-spacing:-0.2px}
-.ns-cd{font-size:15px;color:rgba(255,255,255,0.62);line-height:1.7}
-@media(max-width:900px){
-  .ns-sec{padding:64px 6%}
-  .ns-head{margin-bottom:28px}
-  .ns-grid{grid-template-columns:1fr;gap:10px}
-  .ns-card{display:grid;grid-template-columns:44px 1fr;column-gap:14px;align-items:center;padding:16px 18px;border-radius:16px}
-  .ns-ic{grid-row:span 2;width:44px;height:44px;border-radius:12px;margin:0}
-  .ns-ic svg{width:20px;height:20px}
-  .ns-ct{font-size:16px;margin-bottom:2px}
-  .ns-cd{font-size:14px;line-height:1.5}
-}
-</style>
-<!-- BLOCO 5a: planos — prefixo np- -->
-<style>
-.np-sec{background:#F4F7FF;padding:96px max(6%,calc(50% - 560px))}
-.np-in{max-width:1120px;margin:0 auto}
-.np-head{text-align:center;max-width:640px;margin:0 auto 44px}
-.np-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0A2878;margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
-.np-label::before{content:'';width:24px;height:2px;background:#0A2878}
-.np-h{font-family:'Nunito Sans',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:800;line-height:1.1;letter-spacing:-0.5px;margin-bottom:16px;color:#0D1933}
-.np-h em{font-style:normal;color:#0A2878}
-.np-sub{font-size:17px;color:#5A6785;line-height:1.7}
-.np-tiers{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
-.np-tier{background:#fff;border:1px solid #E3E9F7;border-radius:18px;padding:22px 18px;text-align:center}
-.np-nm{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#8A98B4;margin-bottom:10px}
-.np-price{display:flex;align-items:baseline;justify-content:center;gap:1px}
-.np-cur{font-size:15px;font-weight:700;color:#1E2D4A;margin-right:2px}
-.np-val{font-size:36px;font-weight:800;letter-spacing:-1.5px;line-height:1;color:#0D1933}
-.np-cents{font-size:16px;font-weight:700;color:#1E2D4A}
-.np-per{font-size:13px;color:#8A98B4;margin-left:2px}
-.np-unit{font-size:12.5px;font-weight:700;color:#00A87A;margin-top:8px}
-.np-box{margin-top:16px;background:#fff;border:1px solid #E3E9F7;border-radius:22px;padding:32px 36px;display:grid;grid-template-columns:1.3fr 1fr;gap:36px}
-.np-box-t{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:#0A2878;margin-bottom:16px}
-.np-feats{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 20px}
-.np-feats li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#1E2D4A;line-height:1.45}
-.np-feats li svg{flex-shrink:0;margin-top:2px}
-.np-box-extra{border-left:1px solid #E3E9F7;padding-left:36px}
-.np-box-extra p{font-size:14.5px;color:#5A6785;line-height:1.6;margin-bottom:10px}
-.np-box-extra b{color:#0D1933}
-.np-cta{display:inline-flex;margin-top:8px;background:#0A2878;color:#fff;padding:13px 26px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;transition:transform .2s}
-.np-cta:hover{transform:translateY(-2px);color:#fff}
-.np-custom{margin-top:16px;background:linear-gradient(120deg,#0A2878,#0D1933);border-radius:22px;padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:28px;flex-wrap:wrap}
-.np-ctitle{font-size:19px;font-weight:800;color:#fff;margin-bottom:6px}
-.np-cp{font-size:15px;color:rgba(255,255,255,0.7);line-height:1.6;max-width:560px}
-.np-cbtn{background:#fff;color:#0A2878;padding:15px 30px;border-radius:50px;font-size:15px;font-weight:700;text-decoration:none;white-space:nowrap;flex-shrink:0;transition:transform .2s}
-.np-cbtn:hover{transform:translateY(-2px);color:#0A2878}
-@media(max-width:1000px){
-  .np-tiers{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:900px){
-  .np-sec{padding:64px 6%}
-  .np-tiers{grid-template-columns:1fr 1fr;gap:10px}
-  .np-tier{padding:18px 12px}
-  .np-tier:last-child{grid-column:1/-1}
-  .np-val{font-size:30px}
-  .np-box{grid-template-columns:1fr;padding:26px 22px;gap:26px}
-  .np-feats{grid-template-columns:1fr}
-  .np-box-extra{border-left:none;padding-left:0;border-top:1px solid #E3E9F7;padding-top:24px}
-  .np-custom{padding:26px 22px}
-}
-</style>
-<!-- BLOCO 5c: FAQ + CTA — prefixos nf- e nct- -->
-<style>
-.nf-sec{background:#fff;padding:96px max(6%,calc(50% - 400px))}
-.nf-in{max-width:760px;margin:0 auto}
-.nf-head{text-align:center;margin-bottom:44px}
-.nf-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#0A2878;margin-bottom:16px;display:flex;align-items:center;gap:8px;justify-content:center}
-.nf-label::before{content:'';width:24px;height:2px;background:#0A2878}
-.nf-h{font-family:'Nunito Sans',sans-serif;font-size:clamp(32px,4vw,50px);font-weight:800;line-height:1.1;letter-spacing:-0.5px;color:#0D1933}
-.nf-h em{font-style:normal;color:#0A2878}
-.nf-item{-webkit-tap-highlight-color:transparent;background:#F8FAFF;border:1px solid #E3E9F7;border-radius:16px;margin-bottom:12px;overflow:hidden;transition:border-color .2s,box-shadow .2s;cursor:pointer}
-.nf-item.open{border-color:#C9D6F0;box-shadow:0 8px 28px rgba(10,40,120,0.07)}
-.nf-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:22px 24px;font-size:16.5px;font-weight:700;color:#0D1933}
-.nf-ic{width:30px;height:30px;border-radius:9px;background:#EBF0FF;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .25s,background .2s}
-.nf-ic svg{transition:transform .25s}
-.nf-item.open .nf-ic svg{transform:rotate(45deg)}
-.nf-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding .3s ease;padding:0 24px}
-.nf-item.open .nf-a{max-height:320px;padding:0 24px 22px}
-.nf-a p{font-size:15px;color:#5A6785;line-height:1.75}
-.nf-a a{color:#0A2878;font-weight:700}
-.nct-sec{background:linear-gradient(160deg,#0A2878 0%,#0D1933 55%,#091428 100%);padding:110px max(6%,calc(50% - 480px));text-align:center;position:relative;overflow:hidden}
-.nct-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 60% at 50% 0%,rgba(26,92,255,0.25),transparent 62%);pointer-events:none}
-.nct-in{position:relative;z-index:1;max-width:640px;margin:0 auto}
-.nct-label{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.55);margin-bottom:18px;display:flex;align-items:center;gap:8px;justify-content:center}
-.nct-label::before{content:'';width:24px;height:2px;background:rgba(255,255,255,0.4)}
-.nct-h{font-family:'Nunito Sans',sans-serif;font-size:clamp(34px,4.6vw,58px);font-weight:800;line-height:1.08;letter-spacing:-0.8px;color:#fff;margin-bottom:20px}
-.nct-h em{font-style:normal;color:#7DFFCC}
-.nct-p{font-size:18px;color:rgba(255,255,255,0.72);line-height:1.7;margin-bottom:36px}
-.nct-btn{display:inline-flex;align-items:center;gap:8px;background:#fff;color:#0A2878;padding:17px 40px;border-radius:50px;font-size:16.5px;font-weight:800;text-decoration:none;box-shadow:0 8px 30px rgba(0,0,0,0.25);transition:transform .2s}
-.nct-btn:hover{transform:translateY(-2px);color:#0A2878}
-.nct-play{display:block;width:max-content;margin:14px auto 0}
-.nct-play img{height:58px;width:auto;display:block}
-.nct-note{margin-top:26px;font-size:14px;color:rgba(255,255,255,0.6);display:flex;gap:22px;justify-content:center;flex-wrap:wrap}
-.nct-note span{display:flex;align-items:center;gap:6px}
-@media(max-width:900px){
-  .nf-sec{padding:64px 6%}
-  .nct-sec{padding:80px 6%}
-}
-</style>
+</script>
 </head>
 <body>
-<nav id="navbar">
-<a href="#" class="logo">
-<img src="logo.png" alt="EBDClass" class="logo-img">
-</a>
-<input type="checkbox" id="mnav-toggle" class="mnav-toggle" aria-hidden="true">
-<label for="mnav-toggle" class="mnav-burger" aria-label="Abrir menu">
-<span></span><span></span><span></span>
-</label>
-<ul>
-<li><a href="#recursos">Recursos</a></li>
-<li><a href="#como-funciona">Como funciona</a></li>
-<li><a href="#planos">Planos</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="https://app.ebdclass.com.br/login" class="nav-login">Entrar</a></li>
-<li><a href="https://app.ebdclass.com.br/cadastro" class="nav-cta">Teste grátis</a></li>
-</ul>
-</nav>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
 
-<section class="nh">
-<div class="nh-bg"></div><div class="nh-grid"></div>
-<div class="nh-wrap">
-<div class="nh-left">
-<div class="nh-pill"><div class="nh-dot"></div>Feito para a Escola Bíblica Dominical</div>
-<h1>A chamada da sua EBD em <em>3 minutos.</em></h1>
-<p class="nh-sub">Chega de papel e planilha no domingo. O professor faz a chamada no celular, o secretário vê tudo em tempo real e o relatório fica pronto sozinho.</p>
-<div class="nh-ctas">
-<a href="https://app.ebdclass.com.br/cadastro" class="nh-cta">Organizar minha EBD grátis →</a>
-</div>
-<div class="nh-proof">
-<span class="nh-ptxt"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg><b>15 dias grátis</b></span>
-<span class="nh-ptxt"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem cartão de crédito</span>
-<span class="nh-ptxt"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Cancele quando quiser</span>
-</div>
-<a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener" class="nh-play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" width="174" height="58" loading="lazy"><span>Também como app<br>para Android</span></a>
-</div>
-<div class="nh-right">
-<div class="nh-float nh-f1">
-<div class="nh-fic g">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
-</div>
-<div><div class="nh-ft">Chamada salva</div><div class="nh-fs">há poucos segundos</div></div>
-</div>
-<div class="nh-float nh-f2">
-<div class="nh-fic b">
-<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-</div>
-<div><div class="nh-ft">141 alunos</div><div class="nh-fs">10 turmas ativas</div></div>
-</div>
-<div class="nh-phone">
-<div class="nh-notch"></div>
-<div class="nh-screen">
-<div class="nh-ahead">
-<div class="nh-alogo">
-<svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-EBD Class
-</div>
-<div class="nh-adate">Domingo, 26 abr</div>
-</div>
-<div class="nh-abody">
-<div class="nh-acls">Juvenis <span>3 presentes</span></div>
-<div class="nh-stu nh-stu-p">
-<div class="nh-sav" style="background:#1A5CFF">AB</div>
-<div class="nh-sname">Ana Beatriz</div>
-<div class="nh-btns"><div class="nh-pf on-p">P</div><div class="nh-pf">F</div></div>
-</div>
-<div class="nh-stu nh-stu-p">
-<div class="nh-sav" style="background:#00A87A">AP</div>
-<div class="nh-sname">André Pereira</div>
-<div class="nh-btns"><div class="nh-pf on-p">P</div><div class="nh-pf">F</div></div>
-</div>
-<div class="nh-stu nh-stu-f">
-<div class="nh-sav" style="background:#C0397D">JS</div>
-<div class="nh-sname">Júlia Santos</div>
-<div class="nh-btns"><div class="nh-pf">P</div><div class="nh-pf on-f">F</div></div>
-</div>
-<div class="nh-stu nh-stu-p">
-<div class="nh-sav" style="background:#6040C0">PL</div>
-<div class="nh-sname">Pedro Lima</div>
-<div class="nh-btns"><div class="nh-pf on-p">P</div><div class="nh-pf">F</div></div>
-</div>
-<div class="nh-asave">
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-Salvar alterações
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+<!-- Ícones (sprite) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-gift" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></g></symbol>
+    <symbol id="i-device" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="14" height="11" rx="2"/><path d="M6 19h6M9 15v4"/><rect x="17" y="8" width="5" height="11" rx="1.5"/></g></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></g></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-12.1 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z"/></g></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></g></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></g></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="m10 9 5 3-5 3z"/></g></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 2v20l3-2 3 2 3-2 3 2 3-2V2l-3 2-3-2-3 2-3-2z"/><path d="M8 8h8M8 12h8M8 16h5"/></g></symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="topo">
+  <div class="wrap nav-in">
+    <a class="brand" href="#topo" aria-label="EBDClass — início"><img src="logo.png" width="167" height="28" alt="EBDClass"></a>
+    <a class="btn btn-brand btn-sm nav-cta-bar" href="https://app.ebdclass.com.br/cadastro" data-cta="nav_mobile">Testar grátis</a>
+    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu"><span></span><span></span><span></span></button>
+    <nav class="nav-links" id="menu" aria-label="Principal">
+      <a href="#demonstracao">Demonstração</a>
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#planos">Planos</a>
+      <a href="#faq">Dúvidas</a>
+      <a class="nav-login" href="https://app.ebdclass.com.br/login" data-track="login_click">Entrar</a>
+      <a class="btn btn-brand btn-sm" href="https://app.ebdclass.com.br/cadastro" data-cta="nav">Testar grátis</a>
+    </nav>
+  </div>
+</header>
+
+<main id="conteudo">
+
+<!-- 1. HERO -->
+<section class="hero" aria-labelledby="h-hero" data-section="hero">
+  <div class="wrap hero-in">
+    <div class="hero-copy">
+      <p class="eyebrow">Gestão da Escola Bíblica Dominical</p>
+      <h1 id="h-hero">A frequência de toda a sua EBD, <em>sem caderneta e sem planilha.</em></h1>
+      <p class="lead">O professor faz a chamada no celular. O secretário vê a frequência, as ofertas e o ranking de todas as turmas e gera os relatórios <strong>sem somar nada à mão</strong>.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary btn-lg" href="https://app.ebdclass.com.br/cadastro" data-cta="hero_primary">Testar grátis por 15 dias <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost btn-lg" href="#demonstracao" data-cta="hero_demo">Ver o app por dentro</a>
+      </div>
+      <ul class="hero-points">
+        <li><svg width="17" height="17" aria-hidden="true"><use href="#i-check"/></svg>Sem cartão de crédito</li>
+        <li><svg width="17" height="17" aria-hidden="true"><use href="#i-check"/></svg>Todos os recursos no teste</li>
+        <li><svg width="17" height="17" aria-hidden="true"><use href="#i-check"/></svg>Sem fidelidade</li>
+      </ul>
+      <a class="play" href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener" data-track="play_store_click" data-where="hero">
+        <img src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" width="156" height="46" loading="lazy">
+        <span>Também como aplicativo<br>para Android</span>
+      </a>
+    </div>
+    <div class="hero-visual">
+      <figure class="shot-desk">
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i></div>
+        <img src="img/geral-desktop.webp" width="1120" height="700" alt="Painel Resumo geral do EBDClass no computador, com matriculados, frequência, ofertas e ranking das turmas" fetchpriority="high">
+      </figure>
+      <figure class="shot-phone">
+        <img src="img/chamada.webp" width="600" height="1298" alt="Tela de chamada no celular, com os botões P e F para cada aluno" fetchpriority="high">
+      </figure>
+      <p class="demo-note">Telas reais do app, com dados de demonstração.</p>
+    </div>
+  </div>
 </section>
 
-<div class="nb-sec">
-<div class="nb-sec-in">
-<div>
-<div class="nb-label">Visão geral</div>
-<h2 class="nb-h">Toda a sua EBD em <em>um só painel</em></h2>
-<p class="nb-p">O secretário abre o painel e vê quantos alunos vieram, quais turmas vão bem e quais precisam de atenção — sem planilha e sem somar nada na mão.</p>
-<ul class="nb-list">
-<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Frequência por turma e por aluno, sempre atualizada</li>
-<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ranking que mostra onde a presença está caindo</li>
-<li><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ofertas do trimestre somadas sozinhas</li>
-</ul>
-</div>
-<div class="nb-dash">
-<div class="nb-dhead">
-<div class="nb-dtitle">Resumo geral</div>
-<div class="nb-dchurch">Igreja Exemplo · Sede</div>
-<div class="nb-dsub">Últimas 3 aulas · 3º trimestre de 2026</div>
-</div>
-<div class="nb-metrics">
-<div class="nb-mc"><div class="nb-ml">Matriculados</div><div class="nb-mv" style="color:#0D1933">141</div><div class="nb-ms">10 turmas ativas</div></div>
-<div class="nb-mc"><div class="nb-ml">Frequência</div><div class="nb-mv" style="color:#00A87A">82%</div><div class="nb-ms">média no intervalo</div></div>
-<div class="nb-mc"><div class="nb-ml">Ofertas</div><div class="nb-mv" style="color:#00A87A">R$412</div><div class="nb-ms">total no intervalo</div></div>
-</div>
-<div class="nb-rank-t">Ranking de turmas</div>
-<div class="nb-rings">
-<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#00C896 0% 94%,#EBF0FF 94% 100%);color:#0D1933"><span>94%</span></div><div class="nb-ring-l">Cordeirinhos</div></div>
-<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#00C896 0% 88%,#EBF0FF 88% 100%);color:#0D1933"><span>88%</span></div><div class="nb-ring-l">Juvenis</div></div>
-<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#E8951F 0% 76%,#EBF0FF 76% 100%);color:#0D1933"><span>76%</span></div><div class="nb-ring-l">Jovens</div></div>
-<div class="nb-ring"><div class="nb-ring-c" style="background:conic-gradient(#E8951F 0% 69%,#EBF0FF 69% 100%);color:#0D1933"><span>69%</span></div><div class="nb-ring-l">Adultos</div></div>
-</div>
-</div>
-</div>
-</div>
+<!-- Faixa de confiança -->
+<section class="strip" aria-label="Em resumo">
+  <div class="wrap">
+    <ul>
+      <li><svg width="22" height="22" aria-hidden="true"><use href="#i-gift"/></svg><span><b>15 dias grátis</b>Tudo liberado, sem cartão</span></li>
+      <li><svg width="22" height="22" aria-hidden="true"><use href="#i-device"/></svg><span><b>Celular ou computador</b>No navegador, sem instalar nada</span></li>
+      <li><svg width="22" height="22" aria-hidden="true"><use href="#i-shield"/></svg><span><b>Dados no Brasil</b>Conforme a LGPD</span></li>
+      <li><svg width="22" height="22" aria-hidden="true"><use href="#i-chat"/></svg><span><b>Suporte humano</b>Atendimento por WhatsApp</span></li>
+    </ul>
+  </div>
+</section>
 
-<div id="recursos" class="nc-sec">
-<div class="nc-in">
-<div class="nc-head">
-<div class="nc-label">Recursos</div>
-<h2 class="nc-h">Tudo que sua EBD <em>precisa</em></h2>
-<p class="nc-sub">Feito para tirar o trabalho manual do domingo.</p>
-</div>
-<div class="nc-grid">
-<div class="nc-card">
-<div class="nc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-<div class="nc-ct">Chamada digital</div>
-<div class="nc-cd">Presença, Bíblias e revistas marcadas no celular, com um toque por aluno.</div>
-</div>
-<div class="nc-card">
-<div class="nc-ic g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="2"><path d="M3 3v18h18"/><path d="M18 17V9M13 17V5M8 17v-3"/></svg></div>
-<div class="nc-ct">Relatórios automáticos</div>
-<div class="nc-cd">Por aula, mês, trimestre e ano, prontos para salvar em PDF e enviar ao pastor.</div>
-</div>
-<div class="nc-card">
-<div class="nc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>
-<div class="nc-ct">Ranking de presença</div>
-<div class="nc-cd">Veja quem mais participa em cada turma e quem anda faltando.</div>
-</div>
-<div class="nc-card">
-<div class="nc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg></div>
-<div class="nc-ct">Gestão por campo</div>
-<div class="nc-cd">Sede e congregações num só lugar, com a frequência de cada igreja.</div>
-</div>
-<div class="nc-card">
-<div class="nc-ic g"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00A87A" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></div>
-<div class="nc-ct">Alertas de ausência</div>
-<div class="nc-cd">Saiba quem faltou domingos seguidos e cuide antes que o aluno se afaste.</div>
-</div>
-<div class="nc-card">
-<div class="nc-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></div>
-<div class="nc-ct">Aniversariantes da semana</div>
-<div class="nc-cd">A lista da semana, para lembrar de cada aluno no dia certo.</div>
-</div>
-</div>
-</div>
-</div>
+<!-- 2. PROBLEMA -->
+<section class="sec sec-light" id="problema" aria-labelledby="h-problema" data-section="problema">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">O domingo da EBD sem sistema</p>
+      <h2 class="h2" id="h-problema">Se a sua EBD ainda depende de caderneta, você <em>conhece</em> esta rotina</h2>
+    </div>
+    <ol class="pain-list">
+      <li class="pain rv"><h3>Somar tudo na mão</h3><p>A aula termina e ainda falta contar presentes, ausentes, Bíblias e revistas de cada turma.</p></li>
+      <li class="pain rv"><h3>Informação espalhada</h3><p>Cada professor guarda a sua caderneta. Para saber como está a EBD inteira, alguém precisa juntar tudo.</p></li>
+      <li class="pain rv"><h3>Faltas que passam batido</h3><p>O aluno some e só se percebe semanas depois, quando já ficou difícil reaproximar.</p></li>
+      <li class="pain rv"><h3>Relatório que toma o fim de semana</h3><p>No fim do trimestre, alguém refaz as contas para entregar ao pastor.</p></li>
+      <li class="pain rv"><h3>Histórico difícil de achar</h3><p>Qual foi a presença na lição 7? A resposta está em alguma caderneta, em algum lugar.</p></li>
+      <li class="pain rv"><h3>Várias turmas e congregações</h3><p>Cada uma com o seu jeito de anotar, e ninguém com uma visão do conjunto.</p></li>
+    </ol>
+    <p class="pain-close rv">Nada disso é falta de zelo. É falta de ferramenta. <em>Dá para resolver sem complicar o domingo.</em></p>
+  </div>
+</section>
 
-<div id="como-funciona" class="steps-section">
-<div class="steps-inner">
-<div class="reveal">
-<div class="section-label" style="justify-content:center;">Como funciona</div>
-<h2 class="section-h">Simples do início <em>ao fim</em></h2>
-<p class="section-p" style="max-width:460px;margin:0 auto;">Do cadastro à primeira chamada, sem instalar nada.</p>
-</div>
-<div class="steps-grid">
-<div class="step-connector"></div>
-<div class="step reveal" style="transition-delay:0.05s"><div class="step-circle">1</div><div class="step-title">Cadastre sua igreja</div><div class="step-desc">Crie a conta e adicione turmas, professores e congregações.</div></div>
-<div class="step reveal" style="transition-delay:0.15s"><div class="step-circle">2</div><div class="step-title">O professor faz a chamada</div><div class="step-desc">Pelo celular, com um toque por aluno.</div></div>
-<div class="step reveal" style="transition-delay:0.25s"><div class="step-circle">3</div><div class="step-title">O relatório sai pronto</div><div class="step-desc">O secretário acompanha as turmas e salva o relatório em PDF.</div></div>
-</div>
-</div>
-</div>
+<!-- 3. SOLUÇÃO -->
+<section class="sec" id="recursos" aria-labelledby="h-solucao" data-section="solucao">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">A solução</p>
+      <h2 class="h2" id="h-solucao">O EBDClass reúne a EBD <em>num só lugar</em></h2>
+      <p class="sub">Cada tarefa que hoje é manual vira algo que o sistema faz sozinho, no celular ou no computador.</p>
+    </div>
+    <div class="shift">
+      <div class="shift-head" aria-hidden="true"><span>Hoje, na caderneta</span><span>Com o EBDClass</span></div>
+      <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Somar cadernetas depois da aula</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Painel que soma sozinho<small>Matriculados, frequência e ofertas do período, num só resumo.</small></span></p>
+      </div>
+      <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Informação em cada caderneta</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Turmas, alunos e aulas centralizados<small>Tudo no mesmo sistema, e o professor vê só a turma dele.</small></span></p>
+      </div>
+      <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Descobrir a falta tarde demais</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Alertas de ausência<small>O painel mostra os alunos com 3 ou mais faltas seguidas.</small></span></p>
+      </div>
+      <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Refazer o relatório do trimestre</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Relatórios de frequência prontos<small>Por mês, trimestre ou ano, para imprimir ou salvar em PDF.</small></span></p>
+      </div>
+      <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Procurar a presença de uma lição antiga</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Histórico de aulas<small>Cada aula registrada, com presentes e ausentes, organizada por trimestre.</small></span></p>
+      </div>
+      <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Congregações sem visão do conjunto</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Sede e congregações no mesmo campo<small>Acompanhe cada igreja ou o campo completo, com relatório de campo.</small></span></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="ns-sec">
-<div class="ns-in">
-<div class="ns-head">
-<div class="ns-label">Segurança</div>
-<h2 class="ns-h">Os dados da sua igreja <em>protegidos</em></h2>
-<p class="ns-sub">Nomes e presenças dos seus alunos ficam em servidores no Brasil, com acesso só para quem a sua igreja autorizar.</p>
-</div>
-<div class="ns-grid">
-<div class="ns-card">
-<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-<div class="ns-ct">Cada igreja isolada</div>
-<div class="ns-cd">Uma igreja nunca vê os dados de outra.</div>
-</div>
-<div class="ns-card">
-<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div>
-<div class="ns-ct">Conexão criptografada</div>
-<div class="ns-cd">Os dados trafegam e ficam guardados de forma criptografada.</div>
-</div>
-<div class="ns-card">
-<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></div>
-<div class="ns-ct">De acordo com a LGPD</div>
-<div class="ns-cd">Você pode pedir uma cópia ou a exclusão dos dados quando quiser.</div>
-</div>
-<div class="ns-card">
-<div class="ns-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-<div class="ns-ct">Cada um no seu papel</div>
-<div class="ns-cd">O professor vê só a chamada da turma dele. O resto fica com a secretaria.</div>
-</div>
-</div>
-</div>
-</div>
+<!-- 4. DEMONSTRAÇÃO -->
+<section class="sec sec-light" id="demonstracao" aria-labelledby="h-demo" data-section="demonstracao">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Veja por dentro</p>
+      <h2 class="h2" id="h-demo">O app <em>de verdade</em>, passo a passo</h2>
+      <p class="sub">Estas são telas reais do EBDClass, com dados de demonstração de uma “Igreja Exemplo”.</p>
+    </div>
 
-<div id="planos" class="np-sec">
-<div class="np-in">
-<div class="np-head">
-<div class="np-label">Planos</div>
-<h2 class="np-h">Preço justo pra <em>cada igreja</em></h2>
-<p class="np-sub">Comece com 15 dias grátis, com tudo liberado e sem cartão. Depois, você paga pelo tamanho da sua EBD, somando sede e congregações — no Pix, boleto ou cartão.</p>
-</div>
-<div class="np-tiers">
-<div class="np-tier"><div class="np-nm">Até 50 alunos</div><div class="np-price"><span class="np-cur">R$</span><span class="np-val">34</span><span class="np-cents">,90</span><span class="np-per">/mês</span></div><div class="np-unit">≈ R$ 0,70 por aluno</div></div>
-<div class="np-tier"><div class="np-nm">Até 200 alunos</div><div class="np-price"><span class="np-cur">R$</span><span class="np-val">64</span><span class="np-cents">,90</span><span class="np-per">/mês</span></div><div class="np-unit">≈ R$ 0,33 por aluno</div></div>
-<div class="np-tier"><div class="np-nm">Até 500 alunos</div><div class="np-price"><span class="np-cur">R$</span><span class="np-val">109</span><span class="np-cents">,90</span><span class="np-per">/mês</span></div><div class="np-unit">≈ R$ 0,22 por aluno</div></div>
-<div class="np-tier"><div class="np-nm">Até 1.000 alunos</div><div class="np-price"><span class="np-cur">R$</span><span class="np-val">189</span><span class="np-cents">,90</span><span class="np-per">/mês</span></div><div class="np-unit">≈ R$ 0,19 por aluno</div></div>
-<div class="np-tier"><div class="np-nm">Até 2.000 alunos</div><div class="np-price"><span class="np-cur">R$</span><span class="np-val">319</span><span class="np-cents">,90</span><span class="np-per">/mês</span></div><div class="np-unit">≈ R$ 0,16 por aluno</div></div>
-</div>
-<div class="np-box">
-<div class="np-box-col">
-<div class="np-box-t">Incluso em todos os planos</div>
-<ul class="np-feats">
-<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Chamada digital por turma, com Bíblia e revista</li>
-<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Relatórios por aula, mês, trimestre e ano</li>
-<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Alerta de alunos faltosos</li>
-<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Ranking de presença</li>
-<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Sede e congregações num painel só</li>
-<li><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#00C896" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Suporte humano no WhatsApp</li>
-</ul>
-</div>
-<div class="np-box-col np-box-extra">
-<div class="np-box-t">Recursos extras</div>
-<p><b>Aniversariantes</b> incluso a partir de 200 alunos.</p>
-<p><b>Relatório financeiro</b> incluso a partir de 500 alunos.</p>
-<p><b>No plano anual</b> (12 meses pagos de uma vez), tudo fica liberado em qualquer faixa, com suporte prioritário.</p>
-<a href="https://app.ebdclass.com.br/cadastro" class="np-cta">Começar teste grátis →</a>
-</div>
-</div>
-<div class="np-custom">
-<div>
-<div class="np-ctitle">Plano Personalizado</div>
-<p class="np-cp">Seu campo tem mais de 2.000 alunos ou muitas congregações? Montamos um plano sob medida para a sua realidade.</p>
-</div>
-<a href="https://wa.me/5586988197951?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20plano%20personalizado%20do%20EBDClass." target="_blank" rel="noopener" class="np-cbtn">Falar com a equipe →</a>
-</div>
-</div>
-</div>
+    <article class="feat rv">
+      <div>
+        <span class="feat-tag">Para o professor</span>
+        <h3>Chamada em poucos toques</h3>
+        <p>Abra a turma, toque em P ou F para cada aluno, registre Bíblias e revistas e salve. O secretário já vê o resultado.</p>
+        <ul class="ticks">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Presença, Bíblias e revistas na mesma tela</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Espaço para visitantes e conversões</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Sem sinal na sala? A chamada fica guardada e é enviada quando a internet volta. <small>Abra o app com internet ao menos uma vez antes.</small></span></li>
+        </ul>
+      </div>
+      <div class="feat-media"><div class="phone"><img src="img/chamada.webp" width="600" height="1298" loading="lazy" alt="Tela de chamada: lista de alunos com botões P e F, seção Bíblia e revista e botão Salvar alterações"></div></div>
+    </article>
 
-<div id="faq" class="nf-sec">
-<div class="nf-in">
-<div class="nf-head">
-<div class="nf-label">Dúvidas</div>
-<h2 class="nf-h">Perguntas <em>frequentes</em></h2>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Como acesso o EBDClass?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>Direto no navegador do celular ou do computador, sem instalar nada. No Android, você também pode baixar o aplicativo na <a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener">Google Play</a>; no iPhone, é só adicionar o EBDClass à tela inicial pelo Safari. O acesso é com usuário e senha; basta ter internet.</p></div>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Como funciona o período gratuito?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>São 15 dias de teste completo, sem necessidade de cartão de crédito. Durante o teste, todos os recursos ficam liberados, e você só decide se continua no final do período. Se não quiser continuar, é só não assinar: nada é cobrado.</p></div>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Posso ter várias congregações na mesma conta?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>Sim. O EBDClass foi feito para o modelo de campo: você cadastra a sede e quantas congregações precisar, todas em um único painel com visão consolidada. O limite é pela soma total de alunos do campo, conforme o plano escolhido. Para campos com mais de 2.000 alunos, temos o plano personalizado.</p></div>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Qual plano é ideal para minha igreja?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>O plano vai pelo total de alunos da sua EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Na dúvida, comece o teste: nos 15 dias tudo fica liberado e você já vê quantos alunos tem. Se preferir, fale com a gente no WhatsApp.</p></div>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Os professores precisam criar conta?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>Não precisam criar nada. O próprio secretário cadastra cada professor com usuário e senha, e entrega o acesso pronto. O professor só abre no celular, faz login e já vê a chamada da turma dele. Zero burocracia e nenhum conhecimento de tecnologia necessário.</p></div>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Tenho fidelidade ou contrato?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>Não. Os planos são mensais ou anuais pré-pagos. Você pode cancelar quando quiser, sem multa e sem explicação.</p></div>
-</div>
-<div class="nf-item" onclick="tf(this)">
-<div class="nf-q">Os dados das igrejas ficam seguros?<div class="nf-ic"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0A2878" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>
-<div class="nf-a"><p>Sim. A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. Também seguimos a LGPD.</p></div>
-</div>
-</div>
-</div>
+    <article class="feat rv">
+      <div>
+        <span class="feat-tag">Para o secretário e a liderança</span>
+        <h3>O resumo da EBD inteira</h3>
+        <p>Matriculados, frequência média e ofertas do período, com o ranking das turmas, sem montar nenhuma planilha.</p>
+        <ul class="ticks">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Escolha o período: hoje, trimestre, ano ou intervalo</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Ranking de turmas e de alunos com mais presenças</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Alertas de ausência e aniversariantes da semana</li>
+        </ul>
+      </div>
+      <div class="feat-media"><div class="phone"><img src="img/geral.webp" width="600" height="1298" loading="lazy" alt="Tela Resumo geral: 26 matriculados, 85% de frequência, R$ 285,00 em ofertas e ranking das turmas"></div></div>
+    </article>
 
-<div class="nct-sec">
-<div class="nct-in">
-<div class="nct-label">Comece hoje</div>
-<h2 class="nct-h">Organize sua EBD <em>no próximo domingo</em></h2>
-<p class="nct-p">15 dias grátis e sem cartão. O cadastro leva poucos minutos.</p>
-<a href="https://app.ebdclass.com.br/cadastro" class="nct-btn">Testar na minha igreja →</a>
-<a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener" class="nct-play"><img src="https://play.google.com/intl/en_us/badges/static/images/badges/pt-br_badge_web_generic.png" alt="Disponível no Google Play" width="174" height="58" loading="lazy"></a>
-<div class="nct-note">
-<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Sem fidelidade</span>
-<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Pix, boleto ou cartão</span>
-<span><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7DFFCC" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>Suporte no WhatsApp</span>
-</div>
-</div>
-</div>
+    <article class="feat rv">
+      <div>
+        <span class="feat-tag">Para o secretário</span>
+        <h3>O histórico de cada aula</h3>
+        <p>Cada aula fica registrada com a data, o número de presentes e de ausentes. Consultar uma lição antiga leva segundos.</p>
+        <ul class="ticks">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Aulas organizadas por trimestre</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Toque na aula para ver a chamada de cada turma</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Marque a turma que ficou sem aula, para não contar como falta</li>
+        </ul>
+      </div>
+      <div class="feat-media"><div class="phone"><img src="img/aulas.webp" width="600" height="1298" loading="lazy" alt="Tela Início com as aulas do 4º trimestre, mostrando presentes e ausentes de cada aula"></div></div>
+    </article>
 
-<footer>
-<a href="#" class="footer-logo">
-<img src="logo.png" alt="EBDClass" class="footer-logo-img" style="filter:brightness(0) invert(1)!important">
-</a>
-<div class="footer-links">
-<a href="#recursos">Recursos</a><a href="#planos">Planos</a><a href="ajuda.html">Ajuda</a>
-<a href="privacidade.html">Privacidade</a><a href="termos.html">Termos de uso</a><a href="https://wa.me/5586988197951" target="_blank" rel="noopener">WhatsApp</a>
-</div>
-<div class="footer-copy">© 2026 EBDClass</div>
+    <article class="feat rv">
+      <div>
+        <span class="feat-tag">Para a liderança</span>
+        <h3>Relatórios sem somar nada</h3>
+        <p>Escolha o mês, o trimestre ou o ano, as turmas e o modelo. O relatório sai pronto para imprimir ou salvar em PDF e levar ao pastor.</p>
+        <ul class="ticks">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Relatório geral (secretário) e caderneta (professor)</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Relatório de campo, quando há congregações</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Frequência por turma e por aluno</li>
+        </ul>
+      </div>
+      <div class="feat-media"><div class="phone"><img src="img/relatorios.webp" width="600" height="1298" loading="lazy" alt="Tela Relatórios de Frequência com seleção de mês, trimestre ou ano e modelos de relatório"></div></div>
+    </article>
+
+    <div class="also rv">
+      <h3>E ainda no EBDClass</h3>
+      <ul>
+        <li><b>Aniversariantes.</b> A lista da semana, para lembrar de cada aluno.</li>
+        <li><b>Avisos.</b> O secretário publica recados que os professores recebem no app.</li>
+        <li><b>Ofertas e financeiro.</b> A oferta da chamada é somada; o relatório financeiro completo depende do plano.</li>
+        <li><b>Manual em vídeo.</b> Cada etapa do secretário e do professor tem um vídeo curto no app.</li>
+      </ul>
+    </div>
+
+    <div class="rv" style="margin-top:36px;text-align:center">
+      <a class="btn btn-brand btn-lg" href="https://app.ebdclass.com.br/cadastro" data-cta="demo_end">Testar com a minha igreja <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 5. PERFIS -->
+<section class="sec" id="perfis" aria-labelledby="h-perfis" data-section="perfis">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Para quem é</p>
+      <h2 class="h2" id="h-perfis">Cada pessoa da EBD <em>ganha tempo</em></h2>
+    </div>
+    <div class="roles">
+      <div class="role rv"><h3>Pastores e lideranças</h3><p>Acompanham a frequência, os alunos que estão se afastando e as ofertas, com relatórios prontos para imprimir ou salvar em PDF.</p></div>
+      <div class="role rv"><h3>Superintendentes</h3><p>Enxergam as turmas lado a lado: ranking de frequência, histórico das aulas e quais turmas já fizeram a chamada.</p></div>
+      <div class="role rv"><h3>Professores</h3><p>Fazem a chamada no celular, em poucos toques, e veem só a turma deles. O app traz um manual com vídeos curtos.</p></div>
+      <div class="role rv"><h3>Secretários</h3><p>Cadastram turmas, alunos e professores, acompanham as chamadas e geram os relatórios sem conferir caderneta por caderneta.</p></div>
+      <div class="role rv"><h3>Campos com várias congregações</h3><p>A sede cadastra as congregações e acompanha a frequência de cada uma, ou do campo completo, no mesmo painel.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. COMO FUNCIONA -->
+<section class="sec sec-dark" id="como-funciona" aria-labelledby="h-como" data-section="como_funciona">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Como funciona</p>
+      <h2 class="h2" id="h-como">Do cadastro à primeira chamada <em>em quatro passos</em></h2>
+      <p class="sub">Sem instalar nada e sem cartão. O app guia cada etapa com vídeos curtos.</p>
+    </div>
+    <ol class="steps">
+      <li class="step rv"><h3>Crie a conta de teste</h3><p>Informe o e-mail, confirme com o código que enviamos e cadastre sua igreja. São 15 dias com tudo liberado.</p></li>
+      <li class="step rv"><h3>Cadastre turmas, alunos e professores</h3><p>O app mostra um passo a passo com vídeo curto para cada etapa. O professor recebe usuário e senha prontos.</p></li>
+      <li class="step rv"><h3>O professor faz a chamada</h3><p>No celular, em poucos toques por aluno, com Bíblias e revistas. O secretário já vê o resultado.</p></li>
+      <li class="step rv"><h3>Acompanhe e gere relatórios</h3><p>Veja frequência, ranking e alertas no painel e salve o relatório em PDF para levar ao pastor.</p></li>
+    </ol>
+    <div class="steps-cta rv">
+      <a class="btn btn-primary btn-lg" href="https://app.ebdclass.com.br/cadastro" data-cta="steps">Criar minha conta de teste <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <p>Sem cartão de crédito. Se não contratar ao final, nada é cobrado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. CONFIANÇA -->
+<section class="sec sec-light" id="seguranca" aria-labelledby="h-conf" data-section="confianca">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Confiança</p>
+      <h2 class="h2" id="h-conf">Você confere tudo <em>antes de pagar</em></h2>
+      <p class="sub">A melhor prova é testar com a sua própria EBD. Enquanto isso, estas são as garantias que você pode verificar.</p>
+    </div>
+    <div class="proof">
+      <div class="proof-item rv"><div class="proof-ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-gift"/></svg></div><div><h3>Teste de verdade</h3><p>15 dias com todos os recursos liberados, sem limite de alunos e sem cartão. Se não contratar, nada é cobrado.</p></div></div>
+      <div class="proof-item rv"><div class="proof-ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-lock"/></svg></div><div><h3>Os dados são da sua igreja</h3><p>Cada igreja só vê os próprios dados e o professor só vê a turma dele. Você pode pedir uma cópia ou a exclusão quando quiser. <a href="privacidade.html">Política de Privacidade</a></p></div></div>
+      <div class="proof-item rv"><div class="proof-ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-shield"/></svg></div><div><h3>Servidores no Brasil</h3><p>Conexão criptografada e banco de dados em São Paulo, com tratamento de dados conforme a LGPD.</p></div></div>
+      <div class="proof-item rv"><div class="proof-ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-receipt"/></svg></div><div><h3>Sem fidelidade, com regras claras</h3><p>Cancele quando quiser, sem multa, e mantenha o acesso até o fim do período pago. <a href="termos.html">Termos de uso</a></p></div></div>
+      <div class="proof-item rv"><div class="proof-ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-video"/></svg></div><div><h3>Ajuda dentro do app</h3><p>Vídeos curtos em cada etapa e uma <a href="ajuda.html">central de ajuda</a> com as dúvidas mais comuns.</p></div></div>
+      <div class="proof-item rv"><div class="proof-ic"><svg width="22" height="22" aria-hidden="true"><use href="#i-chat"/></svg></div><div><h3>Uma pessoa do outro lado</h3><p>Dúvida antes de começar? Fale com a equipe pelo WhatsApp, sem compromisso.</p></div></div>
+    </div>
+    <div class="try rv">
+      <div><h3>Quer ver funcionando na sua igreja?</h3><p>Crie a conta de teste, cadastre uma turma e faça a primeira chamada no próximo domingo.</p></div>
+      <a class="btn btn-brand btn-lg" href="https://app.ebdclass.com.br/cadastro" data-cta="confianca">Testar grátis <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 8. PLANOS -->
+<section class="sec" id="planos" aria-labelledby="h-planos" data-section="planos">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Planos</p>
+      <h2 class="h2" id="h-planos">Um preço pelo <em>tamanho da sua EBD</em></h2>
+      <p class="sub">Comece com 15 dias grátis, com tudo liberado e sem cartão. Depois, você escolhe a faixa pelo total de alunos, somando sede e congregações.</p>
+    </div>
+
+    <div class="cycle rv" role="group" aria-label="Forma de cobrança">
+      <button type="button" aria-pressed="true" data-cycle="mensal">Mensal</button>
+      <button type="button" aria-pressed="false" data-cycle="anual">Anual</button>
+    </div>
+
+    <div class="tiers">
+      <div class="tier rv" data-m="34,90" data-a="418,80"><div class="tier-name">Até 50 alunos</div><div class="tier-price"><b>R$ 34,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,70 por aluno</div></div>
+      <div class="tier rv" data-m="64,90" data-a="778,80"><div class="tier-name">Até 200 alunos</div><div class="tier-price"><b>R$ 64,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,33 por aluno</div></div>
+      <div class="tier rv" data-m="109,90" data-a="1.318,80"><div class="tier-name">Até 500 alunos</div><div class="tier-price"><b>R$ 109,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,22 por aluno</div></div>
+      <div class="tier rv" data-m="189,90" data-a="2.278,80"><div class="tier-name">Até 1.000 alunos</div><div class="tier-price"><b>R$ 189,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,19 por aluno</div></div>
+      <div class="tier rv" data-m="319,90" data-a="3.838,80"><div class="tier-name">Até 2.000 alunos</div><div class="tier-price"><b>R$ 319,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,16 por aluno</div></div>
+    </div>
+    <p class="pay-note">Valor por aluno com a faixa completa. Pagamento por Pix, boleto ou cartão. No plano anual, o preço mensal é o mesmo e o ano é pago de uma vez.</p>
+
+    <div class="incl rv">
+      <div>
+        <h3>Incluso em todos os planos</h3>
+        <ul class="ticks">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Chamada digital por turma, com Bíblias e revistas</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Relatórios por aula, mês, trimestre e ano</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Alertas de ausência e ranking de presença</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Sede e congregações no mesmo painel</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Suporte por WhatsApp</li>
+        </ul>
+      </div>
+      <div class="incl-note">
+        <h3>Recursos por faixa</h3>
+        <p><b>Aniversariantes:</b> a partir de 200 alunos.</p>
+        <p><b>Relatório financeiro:</b> a partir de 500 alunos.</p>
+        <p><b>No plano anual,</b> todos os recursos ficam liberados em qualquer faixa, com suporte prioritário.</p>
+        <a class="btn btn-brand" style="margin-top:6px;width:fit-content" href="https://app.ebdclass.com.br/cadastro" data-cta="planos">Começar o teste grátis <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+
+    <div class="custom rv">
+      <div><h3>Mais de 2.000 alunos ou muitas congregações?</h3><p>Montamos um plano personalizado para a realidade do seu campo.</p></div>
+      <a class="btn btn-outline" href="https://wa.me/5586988197951?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20o%20plano%20personalizado%20do%20EBDClass." target="_blank" rel="noopener" data-track="whatsapp_click" data-where="planos_personalizado">Falar com a equipe <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- 9. FAQ -->
+<section class="sec sec-light" id="faq" aria-labelledby="h-faq" data-section="faq">
+  <div class="wrap">
+    <div class="sec-head rv" style="text-align:center">
+      <p class="kicker" style="justify-content:center">Dúvidas</p>
+      <h2 class="h2" id="h-faq">Perguntas <em>frequentes</em></h2>
+    </div>
+    <div class="faq">
+      <details><summary>Preciso instalar alguma coisa?</summary><div class="ans"><p>Não. O EBDClass funciona direto no navegador do celular ou do computador. No Android, também há o aplicativo na <a href="https://play.google.com/store/apps/details?id=br.com.ebdclass.app" target="_blank" rel="noopener" data-track="play_store_click" data-where="faq">Google Play</a>. No iPhone, basta adicionar o EBDClass à tela inicial pelo Safari.</p></div></details>
+      <details><summary>Posso acessar pelo celular e pelo computador?</summary><div class="ans"><p>Sim. O acesso é o mesmo nos dois, com os mesmos dados. O professor costuma fazer a chamada no celular e o secretário acompanha pelo celular ou pelo computador.</p><p>Se faltar sinal na sala, a chamada do professor fica guardada no celular e é enviada quando a internet voltar. Para isso, abra o app com internet ao menos uma vez antes.</p></div></details>
+      <details><summary>Como funciona o cadastro?</summary><div class="ans"><p>Você informa o e-mail e confirma com um código que enviamos. Depois preenche seu nome e WhatsApp, escolhe usuário e senha e informa os dados e a localização da igreja. Não pede cartão de crédito.</p></div></details>
+      <details><summary>Como minha igreja pode começar?</summary><div class="ans"><p>Crie a conta de teste e cadastre as turmas, os alunos e os professores. O app mostra um passo a passo com vídeo curto para cada etapa. No domingo, o professor já faz a chamada pelo celular.</p></div></details>
+      <details><summary>Qual plano atende à minha realidade?</summary><div class="ans"><p>O plano vai pelo total de alunos da EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Durante o teste não há limite, então você vê quantos alunos tem e escolhe a faixa depois. Acima de 2.000, temos o plano personalizado.</p><p>Na dúvida, <a href="https://wa.me/5586988197951" target="_blank" rel="noopener" data-track="whatsapp_click" data-where="faq_plano">fale com a gente no WhatsApp</a>.</p></div></details>
+      <details><summary>Existe período de teste?</summary><div class="ans"><p>Sim. São 15 dias com todos os recursos liberados, sem cartão de crédito. Se você não contratar ao final, nada é cobrado e o acesso é pausado.</p></div></details>
+      <details><summary>Como funciona o cancelamento?</summary><div class="ans"><p>Não há fidelidade nem multa. Você cancela pelo próprio sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional; exceções são analisadas caso a caso, em até 7 dias do pagamento. Veja os <a href="termos.html">Termos de uso</a>.</p></div></details>
+      <details><summary>Os professores precisam criar conta?</summary><div class="ans"><p>Não. O secretário cadastra cada professor com usuário e senha e entrega o acesso pronto. O professor abre no celular, entra e já vê a chamada da turma dele.</p></div></details>
+      <details><summary>Posso ter várias congregações na mesma conta?</summary><div class="ans"><p>Sim. A sede cadastra as congregações e acompanha tudo no mesmo painel, com relatório de campo. O limite do plano é a soma dos alunos de todo o campo.</p></div></details>
+      <details><summary>Os dados da igreja ficam seguros?</summary><div class="ans"><p>A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. O tratamento segue a LGPD. Veja a <a href="privacidade.html">Política de Privacidade</a>.</p></div></details>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CTA FINAL -->
+<section class="final" id="comecar" aria-labelledby="h-final" data-section="cta_final">
+  <div class="wrap">
+    <h2 id="h-final">Organize a sua EBD <em>a partir do próximo domingo</em></h2>
+    <p class="lead">Crie a conta de teste em poucos minutos, cadastre sua primeira turma e faça a chamada pelo celular. São 15 dias com tudo liberado.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary btn-lg" href="https://app.ebdclass.com.br/cadastro" data-cta="final">Testar grátis por 15 dias <svg width="20" height="20" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+    <ul class="hero-points">
+      <li><svg width="17" height="17" aria-hidden="true"><use href="#i-check"/></svg>Sem cartão de crédito</li>
+      <li><svg width="17" height="17" aria-hidden="true"><use href="#i-check"/></svg>Sem fidelidade</li>
+      <li><svg width="17" height="17" aria-hidden="true"><use href="#i-check"/></svg>Pix, boleto ou cartão</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <a href="#topo" aria-label="EBDClass — voltar ao topo"><img src="logo.png" width="167" height="28" alt="EBDClass" loading="lazy"></a>
+    <nav aria-label="Rodapé">
+      <a href="#recursos">Recursos</a>
+      <a href="#planos">Planos</a>
+      <a href="ajuda.html">Ajuda</a>
+      <a href="privacidade.html">Privacidade</a>
+      <a href="termos.html">Termos de uso</a>
+      <a href="https://wa.me/5586988197951" target="_blank" rel="noopener" data-track="whatsapp_click" data-where="footer">WhatsApp</a>
+      <a href="https://app.ebdclass.com.br/login" data-track="login_click">Entrar</a>
+    </nav>
+    <small>© 2026 EBDClass</small>
+  </div>
 </footer>
 
-<script>
-function tf(el){
-  const open=el.classList.contains('open');
-  document.querySelectorAll('.nf-item').forEach(f=>f.classList.remove('open'));
-  if(!open)el.classList.add('open');
-}
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').style.boxShadow=window.scrollY>30?'0 2px 20px rgba(0,0,0,0.25)':'none';
-});
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});
-},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-// Fecha o menu mobile ao tocar em qualquer link
-const mnavToggle=document.getElementById('mnav-toggle');
-document.querySelectorAll('nav ul a').forEach(a=>{
-  a.addEventListener('click',()=>{if(mnavToggle)mnavToggle.checked=false;});
-});
-</script>
+<script src="landing.js" defer></script>
 </body>
 </html>
