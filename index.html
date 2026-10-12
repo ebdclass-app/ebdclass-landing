@@ -39,7 +39,7 @@
   "@graph":[
     {"@type":"Organization","@id":"https://ebdclass.com.br/#org","name":"EBDClass","url":"https://ebdclass.com.br/","logo":"https://ebdclass.com.br/icon-512.png"},
     {"@type":"SoftwareApplication","name":"EBDClass","applicationCategory":"BusinessApplication","operatingSystem":"Web, Android","inLanguage":"pt-BR",
-     "description":"Sistema de gestão da Escola Bíblica Dominical: chamada digital, frequência por turma, relatórios e gestão de sede e congregações.",
+     "description":"Sistema de gestão da Escola Bíblica Dominical: chamada digital, frequência por turma, relatórios, controle de revistas e materiais e gestão de sede e congregações.",
      "url":"https://ebdclass.com.br/","publisher":{"@id":"https://ebdclass.com.br/#org"},
      "offers":{"@type":"AggregateOffer","priceCurrency":"BRL","lowPrice":"34.90","highPrice":"319.90","offerCount":"5"}},
     {"@type":"FAQPage","mainEntity":[
@@ -50,6 +50,7 @@
       {"@type":"Question","name":"Qual plano atende à minha realidade?","acceptedAnswer":{"@type":"Answer","text":"O plano vai pelo total de alunos da EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Durante o teste não há limite, então você vê quantos alunos tem e escolhe a faixa depois. Acima de 2.000 alunos, há plano personalizado."}},
       {"@type":"Question","name":"Existe período de teste?","acceptedAnswer":{"@type":"Answer","text":"Sim. São 15 dias com todos os recursos liberados, sem cartão de crédito. Se você não contratar ao final, nada é cobrado e o acesso é pausado."}},
       {"@type":"Question","name":"Como funciona o cancelamento?","acceptedAnswer":{"@type":"Answer","text":"Não há fidelidade nem multa. Você cancela pelo sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional; exceções são analisadas caso a caso em até 7 dias do pagamento."}},
+      {"@type":"Question","name":"O EBDClass controla as revistas da EBD?","acceptedAnswer":{"@type":"Answer","text":"Sim. O secretário cadastra o catálogo com o preço de cada revista e material, inclui os pedidos por turma com os alunos e professores já cadastrados e marca quem pagou e quem já recebeu. Os pagamentos entram no relatório financeiro. O recurso está incluso a partir de 500 alunos ou no plano anual, e liberado no teste grátis."}},
       {"@type":"Question","name":"Os professores precisam criar conta?","acceptedAnswer":{"@type":"Answer","text":"Não. O secretário cadastra cada professor com usuário e senha. O professor entra pelo celular e já vê a chamada da turma dele."}},
       {"@type":"Question","name":"Posso ter várias congregações na mesma conta?","acceptedAnswer":{"@type":"Answer","text":"Sim. A sede cadastra as congregações e acompanha tudo no mesmo painel, com relatório de campo. O limite do plano é a soma dos alunos de todo o campo."}},
       {"@type":"Question","name":"Os dados da igreja ficam seguros?","acceptedAnswer":{"@type":"Answer","text":"A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. O tratamento segue a LGPD."}}
@@ -180,6 +181,10 @@
         <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Relatórios de frequência prontos<small>Por mês, trimestre ou ano, para imprimir ou salvar em PDF.</small></span></p>
       </div>
       <div class="shift-row rv">
+        <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Planilha de revistas e de quem já pagou</s></p>
+        <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Revistas e materiais por turma<small>Catálogo com preços, quem pagou e quem já recebeu, e os pagamentos no relatório financeiro.</small></span></p>
+      </div>
+      <div class="shift-row rv">
         <p class="shift-before"><svg width="18" height="18" aria-hidden="true"><use href="#i-x"/></svg><s>Procurar a presença de uma lição antiga</s></p>
         <p class="shift-after"><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg><span>Histórico de aulas<small>Cada aula registrada, com presentes e ausentes, organizada por trimestre.</small></span></p>
       </div>
@@ -256,12 +261,27 @@
       <div class="feat-media"><div class="phone"><img src="img/relatorios.webp" width="600" height="1298" loading="lazy" alt="Tela Relatórios de Frequência com seleção de mês, trimestre ou ano e modelos de relatório"></div></div>
     </article>
 
+    <article class="feat rv">
+      <div>
+        <span class="feat-tag">Para o secretário</span>
+        <h3>Revistas e materiais sem planilha</h3>
+        <p>Cadastre o catálogo com o preço de cada item e inclua os pedidos por turma: os alunos e professores já cadastrados aparecem na lista. Um toque marca quem pagou e quem já recebeu.</p>
+        <ul class="ticks">
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Total, recebido, a receber e entregues do trimestre</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Resumo por item para fazer a encomenda</li>
+          <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Pagamentos direto no relatório financeiro</li>
+        </ul>
+        <p class="feat-note">A partir de 500 alunos ou no plano anual. Liberado no teste grátis.</p>
+      </div>
+      <div class="feat-media"><div class="phone"><img src="img/materiais.webp" width="600" height="1298" loading="lazy" alt="Tela Revistas e Materiais: totais do trimestre e a turma de Adultos com quem pagou e quem já recebeu a revista"></div></div>
+    </article>
+
     <div class="also rv">
       <h3>E ainda no EBDClass</h3>
       <ul>
         <li><b>Aniversariantes.</b> A lista da semana, para lembrar de cada aluno.</li>
         <li><b>Avisos.</b> O secretário publica recados que os professores recebem no app.</li>
-        <li><b>Ofertas e financeiro.</b> A oferta da chamada é somada; o relatório financeiro completo depende do plano.</li>
+        <li><b>Ofertas e financeiro.</b> A oferta da chamada é somada; o relatório financeiro completo e o controle de revistas dependem do plano.</li>
         <li><b>Manual em vídeo.</b> Cada etapa do secretário e do professor tem um vídeo curto no app.</li>
       </ul>
     </div>
@@ -283,7 +303,7 @@
       <div class="role rv"><h3>Pastores e lideranças</h3><p>Acompanham a frequência, os alunos que estão se afastando e as ofertas, com relatórios prontos para imprimir ou salvar em PDF.</p></div>
       <div class="role rv"><h3>Superintendentes</h3><p>Enxergam as turmas lado a lado: ranking de frequência, histórico das aulas e quais turmas já fizeram a chamada.</p></div>
       <div class="role rv"><h3>Professores</h3><p>Fazem a chamada no celular, em poucos toques, e veem só a turma deles. O app traz um manual com vídeos curtos.</p></div>
-      <div class="role rv"><h3>Secretários</h3><p>Cadastram turmas, alunos e professores, acompanham as chamadas e geram os relatórios sem conferir caderneta por caderneta.</p></div>
+      <div class="role rv"><h3>Secretários</h3><p>Cadastram turmas, alunos e professores, acompanham as chamadas, controlam as revistas de cada turma e geram os relatórios sem conferir caderneta por caderneta.</p></div>
       <div class="role rv"><h3>Campos com várias congregações</h3><p>A sede cadastra as congregações e acompanha a frequência de cada uma, ou do campo completo, no mesmo painel.</p></div>
     </div>
   </div>
@@ -370,7 +390,7 @@
       <div class="incl-note">
         <h3>Recursos por faixa</h3>
         <p><b>Aniversariantes:</b> a partir de 200 alunos.</p>
-        <p><b>Relatório financeiro:</b> a partir de 500 alunos.</p>
+        <p><b>Relatório financeiro e revistas e materiais:</b> a partir de 500 alunos.</p>
         <p><b>No plano anual,</b> todos os recursos ficam liberados em qualquer faixa, com suporte prioritário.</p>
         <a class="btn btn-brand" style="margin-top:6px;width:fit-content" href="https://app.ebdclass.com.br/cadastro" data-cta="planos">Começar o teste grátis <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
@@ -398,6 +418,7 @@
       <details><summary>Qual plano atende à minha realidade?</summary><div class="ans"><p>O plano vai pelo total de alunos da EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Durante o teste não há limite, então você vê quantos alunos tem e escolhe a faixa depois. Acima de 2.000, temos o plano personalizado.</p><p>Na dúvida, <a href="https://wa.me/5586988197951" target="_blank" rel="noopener" data-track="whatsapp_click" data-where="faq_plano">fale com a gente no WhatsApp</a>.</p></div></details>
       <details><summary>Existe período de teste?</summary><div class="ans"><p>Sim. São 15 dias com todos os recursos liberados, sem cartão de crédito. Se você não contratar ao final, nada é cobrado e o acesso é pausado.</p></div></details>
       <details><summary>Como funciona o cancelamento?</summary><div class="ans"><p>Não há fidelidade nem multa. Você cancela pelo próprio sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional; exceções são analisadas caso a caso, em até 7 dias do pagamento. Veja os <a href="termos.html">Termos de uso</a>.</p></div></details>
+      <details><summary>O EBDClass controla as revistas da EBD?</summary><div class="ans"><p>Sim. O secretário cadastra o catálogo com o preço de cada revista e material, inclui os pedidos por turma com os alunos e professores já cadastrados e marca quem pagou e quem já recebeu. Os pagamentos entram no relatório financeiro.</p><p>O recurso está incluso a partir de 500 alunos ou no plano anual, e liberado no teste grátis.</p></div></details>
       <details><summary>Os professores precisam criar conta?</summary><div class="ans"><p>Não. O secretário cadastra cada professor com usuário e senha e entrega o acesso pronto. O professor abre no celular, entra e já vê a chamada da turma dele.</p></div></details>
       <details><summary>Posso ter várias congregações na mesma conta?</summary><div class="ans"><p>Sim. A sede cadastra as congregações e acompanha tudo no mesmo painel, com relatório de campo. O limite do plano é a soma dos alunos de todo o campo.</p></div></details>
       <details><summary>Os dados da igreja ficam seguros?</summary><div class="ans"><p>A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. O tratamento segue a LGPD. Veja a <a href="privacidade.html">Política de Privacidade</a>.</p></div></details>
