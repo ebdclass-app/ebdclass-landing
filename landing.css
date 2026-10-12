@@ -204,6 +204,7 @@ ul,ol{list-style:none}
 .ticks li{display:flex;gap:11px;align-items:flex-start;font-size:16px;line-height:1.45}
 .ticks svg{flex-shrink:0;margin-top:3px;color:var(--green-ink)}
 .ticks small{color:var(--muted);font-size:14px}
+.feat > div > p.feat-note{font-size:14px;font-weight:700;color:var(--blue);margin:16px 0 0}
 .phone{width:min(250px,66vw);margin-inline:auto;border-radius:36px;background:#0A0C14;padding:7px;box-shadow:0 30px 60px rgba(9,47,125,.28),0 6px 16px rgba(9,47,125,.12);border:1px solid rgba(255,255,255,.1)}
 .phone img{width:100%;border-radius:30px;aspect-ratio:600/1298}
 .feat-media{display:flex;justify-content:center;padding:18px 0;border-radius:var(--r-lg);background:radial-gradient(420px 300px at 50% 45%,#DCE7FF,transparent 70%)}
