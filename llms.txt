@@ -1,0 +1,55 @@
+# EBD Class
+
+> EBD Class (também escrito EBDClass) é um sistema online brasileiro, vendido por assinatura, para a gestão da Escola Bíblica Dominical (EBD) de igrejas evangélicas. O professor faz a chamada pelo celular, inclusive sem internet, e o secretário acompanha a frequência de todas as turmas num só painel, com relatórios prontos para imprimir ou salvar em PDF.
+
+O EBD Class funciona direto no navegador do celular ou do computador, sem instalar nada. No Android também há o aplicativo na Google Play; no iPhone, é possível adicionar à tela inicial pelo Safari. Os dados ficam em servidores no Brasil e o tratamento segue a LGPD.
+
+Não confundir com outros produtos de nome parecido: o EBD Class é só para a gestão da Escola Bíblica Dominical. Não é uma revista ou currículo de lições, nem uma plataforma de cursos.
+
+## Para quem é
+
+- Igrejas evangélicas de qualquer denominação que têm Escola Bíblica Dominical.
+- Secretários e superintendentes da EBD, que cuidam das turmas, dos alunos, dos relatórios e do financeiro.
+- Professores da EBD, que fazem a chamada da própria turma. O secretário cadastra cada professor com usuário e senha.
+- Campos e ministérios com sede e congregações: a sede acompanha todas as congregações no mesmo painel, com relatório de campo.
+
+## O que o sistema faz
+
+- Chamada digital por turma, pelo celular, que funciona sem internet e envia os dados quando a conexão volta.
+- Cadastro de alunos, turmas e professores.
+- Relatórios por aula, mês, trimestre e ano, em PDF.
+- Alertas de ausência e de faltas seguidas, e ranking de presença.
+- Aniversariantes, a partir de 200 alunos.
+- Relatório financeiro (ofertas, entradas e saídas) e controle de revistas e materiais, a partir de 500 alunos ou no plano anual.
+- Sede e congregações no mesmo painel.
+- Passo a passo com vídeos curtos dentro do app.
+
+## Planos e preços
+
+Teste grátis de 15 dias, com todos os recursos liberados e sem cartão de crédito. Se a igreja não contratar ao final, nada é cobrado e o acesso é pausado. Depois, o plano vai pelo total de alunos da EBD, somando sede e congregações:
+
+- Até 50 alunos: R$ 34,90 por mês
+- Até 200 alunos: R$ 64,90 por mês
+- Até 500 alunos: R$ 109,90 por mês
+- Até 1.000 alunos: R$ 189,90 por mês
+- Até 2.000 alunos: R$ 319,90 por mês
+
+Acima de 2.000 alunos há plano personalizado. No plano anual, o preço mensal é o mesmo, o ano é pago de uma vez e todos os recursos ficam liberados em qualquer faixa, com suporte prioritário. Pagamento por Pix, boleto ou cartão. Sem fidelidade nem multa.
+
+## Links
+
+- [Entrar no sistema](https://app.ebdclass.com.br/login)
+- [Criar conta (teste grátis de 15 dias)](https://app.ebdclass.com.br/cadastro)
+- [Central de ajuda](https://ebdclass.com.br/ajuda.html): perguntas frequentes e passo a passo
+- [Aplicativo para Android na Google Play](https://play.google.com/store/apps/details?id=br.com.ebdclass.app)
+
+## Materiais gratuitos
+
+- [Guia do Secretário da EBD (PDF)](https://app.ebdclass.com.br/presente/guia-do-secretario-ebd.pdf)
+- [Guia do Professor da EBD (PDF)](https://app.ebdclass.com.br/presente/guia-do-professor-ebd.pdf)
+
+## Informações legais e contato
+
+- [Termos de uso](https://ebdclass.com.br/termos.html)
+- [Política de privacidade](https://ebdclass.com.br/privacidade.html)
+- Contato: ebdclass.app@gmail.com
