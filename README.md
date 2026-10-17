@@ -9,11 +9,12 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 | `landing.js` | Menu mobile, alternância mensal/anual, animações e rastreamento de cliques |
 | `style.css` | Estilos das páginas internas: `ajuda`, `termos`, `privacidade`, `exclusao-conta` |
 | `img/` | Telas reais do app (WebP) e a imagem de compartilhamento `og-ebdclass.jpg` |
-| `robots.txt`, `sitemap.xml` | SEO |
+| `robots.txt`, `sitemap.xml` | SEO. Atualize o `lastmod` do `sitemap.xml` quando mudar uma página |
+| `llms.txt` | Resumo do produto para buscadores de IA (ChatGPT, Claude, Gemini, Perplexity). Confira preços e recursos quando mudar o plano |
 
 ## Antes de mudar preço, plano ou condição
 
-A fonte dos preços é `lib/faixas.ts` no repositório `ebdclass-app`. Se mudar lá, mude também a tabela de planos em `index.html` (`data-m` e `data-a` de cada `.tier`, o texto visível e o `AggregateOffer` no JSON-LD). O que cada plano libera está em `lib/plano.ts` do app.
+A fonte dos preços é `lib/faixas.ts` no repositório `ebdclass-app`. Se mudar lá, mude também a tabela de planos em `index.html` (`data-m` e `data-a` de cada `.tier`, o texto visível o `AggregateOffer` no JSON-LD e a lista de preços do `llms.txt`). O que cada plano libera está em `lib/plano.ts` do app.
 
 ## Telas do app em `img/`
 
