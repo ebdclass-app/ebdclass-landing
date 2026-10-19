@@ -98,7 +98,7 @@ footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding
 /* PÁGINAS INTERNAS (ajuda, privacidade, termos) */
 .page-hero{background:var(--blue);padding:72px max(6%,calc(50% - 480px)) 56px;text-align:center}
 .page-hero-label{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:16px}
-.page-hero h1{font-family:var(--font);font-size:clamp(36px,4vw,56px);font-weight:800;line-height:1.1;color:white;margin-bottom:12px}
+.page-hero h1{font-family:var(--font);font-size:clamp(28px,20px + 2vw,44px);font-weight:800;line-height:1.1;color:white;margin-bottom:12px}
 .page-hero h1 em{font-style:normal;color:#9DC4FF;-webkit-text-fill-color:#9DC4FF}
 .page-hero-meta{font-size:15px;color:rgba(255,255,255,0.65)}
 
