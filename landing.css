@@ -339,6 +339,14 @@ ul,ol{list-style:none}
 .rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
 .rv.in{opacity:1;transform:none}
 .no-js .rv{opacity:1;transform:none}
+/* ---------- Aviso de cookies (criado por landing.js, só com o Pixel ligado) ---------- */
+.cookie{position:fixed;z-index:400;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom));max-width:620px;margin-inline:auto;display:grid;gap:12px;padding:16px 18px;border-radius:18px;background:var(--navy);color:rgba(255,255,255,.92);box-shadow:0 14px 44px rgba(3,10,35,.45)}
+.cookie p{font-size:14.5px;line-height:1.55}
+.cookie a{color:var(--green);font-weight:700}
+.cookie-btns{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-btns .btn{flex:1 1 140px}
+@media(min-width:720px){.cookie{left:auto;right:20px;margin-inline:0;bottom:20px}}
+
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .rv{opacity:1;transform:none;transition:none}

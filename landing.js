@@ -46,7 +46,32 @@
     doc.head.appendChild(u);
   }
 
-  if (/^\d{5,20}$/.test(META_PIXEL_ID)) {
+  /* ---------- Cookies e Pixel da Meta ----------
+   * O Pixel só carrega depois de o visitante clicar em "Aceitar" no aviso. A escolha
+   * fica no cookie ebd_cookies (sim/nao), do domínio ebdclass.com.br, e vale também
+   * para o app (lib/consentimento-cookies.ts no ebdclass-app). Sem META_PIXEL_ID não
+   * há aviso, nem cookie, nem link "Cookies" no rodapé. */
+  var PIXEL_ON = /^\d{5,20}$/.test(META_PIXEL_ID);
+  var COOKIE_ESCOLHA = 'ebd_cookies';
+
+  function lerEscolha() {
+    var m = doc.cookie.match(new RegExp('(?:^|;\\s*)' + COOKIE_ESCOLHA + '=(sim|nao)(?:;|$)'));
+    return m ? m[1] : '';
+  }
+  function gravarEscolha(v) {
+    var c = COOKIE_ESCOLHA + '=' + v + '; Max-Age=15552000; Path=/; SameSite=Lax'; // 180 dias
+    if (location.protocol === 'https:') c += '; Secure';
+    if (/(^|\.)ebdclass\.com\.br$/.test(location.hostname)) c += '; Domain=.ebdclass.com.br';
+    try { doc.cookie = c; } catch (e) {}
+  }
+  function apagarCookiesDaMeta() {
+    ['_fbp', '_fbc'].forEach(function (n) {
+      doc.cookie = n + '=; Max-Age=0; Path=/';
+      if (/(^|\.)ebdclass\.com\.br$/.test(location.hostname)) doc.cookie = n + '=; Max-Age=0; Path=/; Domain=.ebdclass.com.br';
+    });
+  }
+
+  function carregarPixel() {
     // Código padrão do Pixel da Meta. A visita (PageView) é registrada ao carregar.
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return;
@@ -58,6 +83,48 @@
     }(w, doc, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
     w.fbq('init', META_PIXEL_ID);
     w.fbq('track', 'PageView');
+  }
+
+  function mostrarAviso() {
+    if (doc.getElementById('aviso-cookies')) return;
+    var box = doc.createElement('div');
+    box.id = 'aviso-cookies';
+    box.className = 'cookie';
+    box.setAttribute('role', 'region');
+    box.setAttribute('aria-label', 'Aviso de cookies');
+    box.innerHTML =
+      '<p>Usamos cookies para medir o resultado dos nossos anúncios (Pixel da Meta, do Facebook e Instagram). ' +
+      'Só ativamos se você aceitar. <a href="privacidade.html#cookies">Saiba mais</a></p>' +
+      '<div class="cookie-btns">' +
+      '<button type="button" class="btn btn-ghost btn-sm" data-escolha="nao">Recusar</button>' +
+      '<button type="button" class="btn btn-primary btn-sm" data-escolha="sim">Aceitar e continuar</button>' +
+      '</div>';
+    box.addEventListener('click', function (ev) {
+      var b = ev.target.closest('button[data-escolha]');
+      if (!b) return;
+      var anterior = lerEscolha();
+      var v = b.getAttribute('data-escolha');
+      gravarEscolha(v);
+      box.remove();
+      if (v === 'sim') {
+        if (typeof w.fbq !== 'function') carregarPixel();
+      } else if (anterior === 'sim' || typeof w.fbq === 'function') {
+        // Revogou depois de ter aceitado: apaga os cookies da Meta e recarrega sem o Pixel.
+        apagarCookiesDaMeta();
+        location.reload();
+      }
+    });
+    doc.body.appendChild(box);
+  }
+
+  if (PIXEL_ON) {
+    if (lerEscolha() === 'sim') carregarPixel();
+    else if (lerEscolha() === '') mostrarAviso();
+    var prefs = doc.getElementById('cookie-prefs');
+    if (prefs) {
+      prefs.hidden = false;
+      prefs.addEventListener('click', function (ev) { ev.preventDefault(); mostrarAviso(); });
+    }
   }
 
   // Só dois eventos vão à Meta: o clique no WhatsApp (Contact) e o clique em

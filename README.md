@@ -40,15 +40,22 @@ Os links para `app.ebdclass.com.br/cadastro` saem com `utm_source=site`, `utm_me
 
 Para ver os eventos sem painel, abra a página com `?ebd_debug=1` e o console do navegador.
 
-### Pixel da Meta (anúncios)
+### Pixel da Meta (anúncios) e aviso de cookies
 
-O Pixel está no código, mas **desligado**: `META_PIXEL_ID` no topo de `landing.js` está vazio, e vazio ele não carrega nem envia nada. À Meta vão a visita (`PageView`), o clique no WhatsApp (`Contact`) e o clique em "teste grátis" (evento próprio `CtaSignupClick`, para remarketing). O cadastro concluído é registrado no app (`CompleteRegistration`, veja `lib/meta-pixel.ts` no `ebdclass-app`).
+O Pixel está no código, mas **desligado**: `META_PIXEL_ID` no topo de `landing.js` está vazio, e vazio não há Pixel, aviso nem cookie. Com o ID preenchido:
 
-**Antes de preencher o ID:** o Pixel usa cookies, e hoje o site não tem aviso de cookies porque o Umami não usa. É preciso decidir como pedir o consentimento e atualizar a `privacidade.html` (e a versão em `TERMOS_VERSAO` do app). A Política atual foi publicada sem revisão jurídica.
+- O aviso de cookies aparece (criado por `landing.js`, estilo `.cookie` em `landing.css`) com **Recusar** e **Aceitar e continuar**. O Pixel só carrega depois do "Aceitar".
+- A escolha fica no cookie `ebd_cookies` (`sim` ou `nao`, 180 dias) do domínio `.ebdclass.com.br`. O app lê o mesmo cookie (`lib/consentimento-cookies.ts` no `ebdclass-app`), então a pessoa escolhe uma vez só.
+- O link **Cookies** do rodapé (`#cookie-prefs`, escondido enquanto o Pixel está desligado) reabre o aviso. Quem aceitou e depois recusa tem os cookies `_fbp` e `_fbc` apagados e a página recarregada sem o Pixel.
+- À Meta vão a visita (`PageView`), o clique no WhatsApp (`Contact`) e o clique em "teste grátis" (`CtaSignupClick`, para remarketing). O cadastro concluído é registrado no app (`CompleteRegistration`).
+- A `privacidade.html` (itens 2, 3, 5, 6, 7 e 10) já descreve isso. Se mudar o que é enviado à Meta, mude o texto junto e troque `TERMOS_VERSAO` no app.
 
-Passo a passo: crie o Pixel no Gerenciador de Eventos da Meta, cole o ID (só números) em `META_PIXEL_ID`, verifique o domínio `ebdclass.com.br` em Segurança da marca > Domínios e confira os eventos no "Testar eventos". O mesmo ID vai na variável `NEXT_PUBLIC_META_PIXEL_ID` da Vercel, no app.
+**Para ligar:**
 
-Cadastro concluído, primeiro uso e pagamento acontecem no app, que hoje não tem análise.
+1. Crie o Pixel no Gerenciador de Eventos da Meta e **desligue a "Correspondência avançada automática"** (e os "eventos automáticos") nas configurações dele. Com ela ligada, a Meta lê campos de formulário (e-mail, nome, telefone) e a Política deixaria de ser verdadeira.
+2. Cole o ID (só números) em `META_PIXEL_ID` e o mesmo ID em `NEXT_PUBLIC_META_PIXEL_ID` na Vercel (app), com novo deploy.
+3. Verifique o domínio `ebdclass.com.br` em Segurança da marca > Domínios.
+4. Aceite o aviso e confira `PageView`, `Contact` e `CtaSignupClick` em "Testar eventos".
 
 ## Testar no computador
 
