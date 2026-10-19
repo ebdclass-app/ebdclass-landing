@@ -40,6 +40,14 @@ Os links para `app.ebdclass.com.br/cadastro` saem com `utm_source=site`, `utm_me
 
 Para ver os eventos sem painel, abra a página com `?ebd_debug=1` e o console do navegador.
 
+### Pixel da Meta (anúncios)
+
+O Pixel está no código, mas **desligado**: `META_PIXEL_ID` no topo de `landing.js` está vazio, e vazio ele não carrega nem envia nada. À Meta vão a visita (`PageView`), o clique no WhatsApp (`Contact`) e o clique em "teste grátis" (evento próprio `CtaSignupClick`, para remarketing). O cadastro concluído é registrado no app (`CompleteRegistration`, veja `lib/meta-pixel.ts` no `ebdclass-app`).
+
+**Antes de preencher o ID:** o Pixel usa cookies, e hoje o site não tem aviso de cookies porque o Umami não usa. É preciso decidir como pedir o consentimento e atualizar a `privacidade.html` (e a versão em `TERMOS_VERSAO` do app). A Política atual foi publicada sem revisão jurídica.
+
+Passo a passo: crie o Pixel no Gerenciador de Eventos da Meta, cole o ID (só números) em `META_PIXEL_ID`, verifique o domínio `ebdclass.com.br` em Segurança da marca > Domínios e confira os eventos no "Testar eventos". O mesmo ID vai na variável `NEXT_PUBLIC_META_PIXEL_ID` da Vercel, no app.
+
 Cadastro concluído, primeiro uso e pagamento acontecem no app, que hoje não tem análise.
 
 ## Testar no computador

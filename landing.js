@@ -17,6 +17,9 @@
 
   // ID do site no Umami Cloud (cloud.umami.is > Settings > Websites). Vazio = não carrega nada.
   var UMAMI_WEBSITE_ID = 'c4eb020a-d33b-4696-b059-3e939a637ae1';
+  // ID do Pixel da Meta (Meta Business > Gerenciador de Eventos > Fontes de dados). Só números.
+  // Vazio = não carrega nada. Antes de preencher, veja "Pixel da Meta" no README (cookies e Política).
+  var META_PIXEL_ID = '';
   var APP_SIGNUP = 'https://app.ebdclass.com.br/cadastro';
   var debug = /[?&]ebd_debug=1/.test(location.search);
 
@@ -26,6 +29,7 @@
     for (var k in params) payload[k] = params[k];
     w.dataLayer.push(payload);
     try { if (w.umami && typeof w.umami.track === 'function') w.umami.track(name, params); } catch (e) {}
+    try { metaTrack(name, params); } catch (e) {}
     try { if (typeof w.gtag === 'function') w.gtag('event', name, params); } catch (e) {}
     try { if (typeof w.plausible === 'function') w.plausible(name, { props: params }); } catch (e) {}
     if (debug && w.console) console.log('[ebd-track]', name, params);
@@ -40,6 +44,29 @@
     u.setAttribute('data-domains', 'ebdclass.com.br'); // ignora localhost e prévias
     u.setAttribute('data-do-not-track', 'true');
     doc.head.appendChild(u);
+  }
+
+  if (/^\d{5,20}$/.test(META_PIXEL_ID)) {
+    // Código padrão do Pixel da Meta. A visita (PageView) é registrada ao carregar.
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n;
+      n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(w, doc, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    w.fbq('init', META_PIXEL_ID);
+    w.fbq('track', 'PageView');
+  }
+
+  // Só dois eventos vão à Meta: o clique no WhatsApp (Contact) e o clique em
+  // "teste grátis" (evento próprio, para montar público de remarketing).
+  // O cadastro em si é registrado dentro do app (CompleteRegistration).
+  function metaTrack(name, params) {
+    if (typeof w.fbq !== 'function') return;
+    if (name === 'whatsapp_click') w.fbq('track', 'Contact');
+    else if (name === 'cta_click' && params.destination === 'signup') w.fbq('trackCustom', 'CtaSignupClick', { section: params.section || '' });
   }
 
   function sectionOf(el) {
