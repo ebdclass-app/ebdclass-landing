@@ -226,6 +226,34 @@
 
   /* ---------- Entrada suave e visualização de seções ---------- */
   var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // Carrossel da demonstração (só no celular: no computador o CSS mostra as telas empilhadas).
+  var track = doc.getElementById('demo-track');
+  var demoNav = doc.getElementById('demo-nav');
+  if (track && demoNav) {
+    var cards = track.querySelectorAll('.feat');
+    var dotsBox = demoNav.querySelector('.demo-dots');
+    var dots = [];
+    cards.forEach(function (card, i) {
+      var b = doc.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Tela ' + (i + 1) + ' de ' + cards.length + ': ' + card.querySelector('h3').textContent);
+      b.addEventListener('click', function () { track.scrollTo({ left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).scrollPaddingLeft || 0), behavior: 'smooth' }); });
+      dotsBox.appendChild(b);
+      dots.push(b);
+    });
+    var atual = -1;
+    function marcar() {
+      var passo = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
+      var i = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / passo)));
+      if (i === atual) return;
+      atual = i;
+      dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    }
+    track.addEventListener('scroll', marcar, { passive: true });
+    demoNav.hidden = false;
+    marcar();
+  }
+
   if ('IntersectionObserver' in w) {
     if (!reduced) {
       var io = new IntersectionObserver(function (entries) {
