@@ -6,7 +6,7 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 |---|---|
 | `index.html` | A landing page. Textos, seções e dados estruturados (JSON-LD) ficam aqui |
 | `landing.css` | Estilos da landing (`index.html`) |
-| `landing.js` | Menu mobile, alternância mensal/anual, animações e rastreamento de cliques |
+| `landing.js` | Menu mobile, alternância mensal/anual, carrossel da demonstração no celular, animações e rastreamento de cliques |
 | `style.css` | Estilos das páginas internas: `ajuda`, `termos`, `privacidade`, `exclusao-conta` |
 | `img/` | Telas reais do app (WebP) e a imagem de compartilhamento `og-ebdclass.jpg` |
 | `robots.txt`, `sitemap.xml` | SEO. Atualize o `lastmod` do `sitemap.xml` quando mudar uma página |

@@ -221,6 +221,26 @@ ul,ol{list-style:none}
   .also ul{grid-template-columns:repeat(2,1fr);gap:14px 28px}
 }
 @media(min-width:1000px){.also ul{grid-template-columns:repeat(4,1fr)}}
+.demo-nav,.demo-nav[hidden]{display:none}
+/* Celular: as 5 telas viram um carrossel de arrastar para o lado (pontos criados por landing.js) */
+@media(max-width:759px){
+  .demo-track{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(var(--gutter)*-1);padding:2px var(--gutter) 6px;scroll-padding-inline:var(--gutter);scrollbar-width:none;overscroll-behavior-x:contain}
+  .demo-track::-webkit-scrollbar{display:none}
+  .demo-track .feat,.demo-track .feat:first-of-type{flex:0 0 86%;scroll-snap-align:start;align-content:start;gap:14px;padding:18px 18px 20px;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg)}
+  .demo-track .feat.rv{opacity:1;transform:none}
+  .demo-track .feat-media{order:-1;padding:14px 0}
+  .demo-track .phone{width:min(180px,48vw)}
+  .demo-track .feat h3{font-size:20px}
+  .demo-track .feat > div > p{font-size:15.5px;margin-bottom:12px}
+  .demo-track .ticks li{font-size:15px}
+  .demo-nav{display:grid;justify-items:center;gap:4px;margin-top:10px}
+  .demo-nav[hidden]{display:none}
+  .demo-hint{font-size:13.5px;color:var(--muted)}
+  .demo-dots{display:flex}
+  .demo-dots button{width:32px;height:32px;border:0;background:none;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent}
+  .demo-dots button::before{content:'';width:8px;height:8px;border-radius:999px;background:#BCCDF3;transition:width .2s,background-color .2s}
+  .demo-dots button[aria-current="true"]::before{width:22px;background:var(--blue)}
+}
 
 /* ---------- Perfis ---------- */
 .roles{border-top:1px solid var(--line)}
