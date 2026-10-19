@@ -93,8 +93,8 @@
     box.setAttribute('role', 'region');
     box.setAttribute('aria-label', 'Aviso de cookies');
     box.innerHTML =
-      '<p>Usamos cookies para entender como as pessoas chegam até o EBD Class pelos nossos anúncios. ' +
-      'É opcional: o sistema funciona igual se você preferir não aceitar. <a href="privacidade.html#cookies">Saiba mais</a></p>' +
+      '<p>Usamos cookies para medir quais anúncios trazem visitas ao EBD Class. ' +
+      'É opcional: o sistema funciona igual sem eles. <a href="privacidade.html#cookies">Saiba mais</a></p>' +
       '<div class="cookie-btns">' +
       '<button type="button" class="btn btn-outline btn-sm" data-escolha="nao">Prefiro não</button>' +
       '<button type="button" class="btn btn-primary btn-sm" data-escolha="sim">OK, aceito</button>' +
