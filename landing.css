@@ -132,6 +132,7 @@ ul,ol{list-style:none}
   .cta-row .btn{width:auto;white-space:nowrap}
 }
 @media(max-width:639px){
+  .hero-micro{text-align:center}
   .hero-visual{padding-bottom:0}
   .shot-desk,.demo-note{display:none}
   .shot-phone{position:relative;left:auto;bottom:auto;width:min(56%,224px);margin:0 auto -72px;border-radius:28px;padding:6px}
