@@ -93,11 +93,11 @@
     box.setAttribute('role', 'region');
     box.setAttribute('aria-label', 'Aviso de cookies');
     box.innerHTML =
-      '<p>Usamos cookies para medir o resultado dos nossos anúncios (Pixel da Meta, do Facebook e Instagram). ' +
-      'Só ativamos se você aceitar. <a href="privacidade.html#cookies">Saiba mais</a></p>' +
+      '<p>Usamos cookies para entender como as pessoas chegam até o EBD Class pelos nossos anúncios. ' +
+      'É opcional: o sistema funciona igual se você preferir não aceitar. <a href="privacidade.html#cookies">Saiba mais</a></p>' +
       '<div class="cookie-btns">' +
-      '<button type="button" class="btn btn-ghost btn-sm" data-escolha="nao">Recusar</button>' +
-      '<button type="button" class="btn btn-primary btn-sm" data-escolha="sim">Aceitar e continuar</button>' +
+      '<button type="button" class="btn btn-outline btn-sm" data-escolha="nao">Prefiro não</button>' +
+      '<button type="button" class="btn btn-primary btn-sm" data-escolha="sim">OK, aceito</button>' +
       '</div>';
     box.addEventListener('click', function (ev) {
       var b = ev.target.closest('button[data-escolha]');
