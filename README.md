@@ -22,7 +22,7 @@ São quadros extraídos dos vídeos de passo a passo do app (`public/videos/` no
 
 ## Medição
 
-A análise é o **Umami Cloud** (cloud.umami.is): gratuito para este volume, sem cookies e sem aviso de cookies. O script só é carregado quando `UMAMI_WEBSITE_ID` (no topo de `landing.js`) está preenchido; vazio, a página não envia nada a ninguém.
+A análise é o **Umami Cloud** (cloud.umami.is): gratuito para este volume, sem cookies (o aviso de cookies do site é só por causa do Pixel da Meta, veja a seção abaixo). O script só é carregado quando `UMAMI_WEBSITE_ID` (no topo de `landing.js`) está preenchido; vazio, a página não envia nada a ninguém.
 
 Para ativar: crie a conta no Umami Cloud, adicione o site `ebdclass.com.br`, copie o *Website ID* e cole em `UMAMI_WEBSITE_ID`. O script ignora acessos de outros domínios (localhost, prévias) e respeita o "Não rastrear" do navegador.
 
@@ -42,7 +42,7 @@ Para ver os eventos sem painel, abra a página com `?ebd_debug=1` e o console do
 
 ### Pixel da Meta (anúncios) e aviso de cookies
 
-O Pixel está no código, mas **desligado**: `META_PIXEL_ID` no topo de `landing.js` está vazio, e vazio não há Pixel, aviso nem cookie. Com o ID preenchido:
+O Pixel é o conjunto de dados **"EBD Class"** (ID `1123546126807480`, no portfólio e na conta de anúncios "EBD Class" da Meta). O ID já está em `META_PIXEL_ID` no topo de `landing.js`; o site passa a mostrar o aviso e a carregar o Pixel (depois do "OK, aceito") assim que esta versão for para o `main`. Sem ID (vazio) não haveria Pixel, aviso nem cookie. Com o ID preenchido:
 
 - O aviso de cookies aparece (criado por `landing.js`, estilo `.cookie` em `landing.css`) com **Prefiro não** e **OK, aceito**, os dois do mesmo tamanho e bem visíveis. O texto é curto e sem jargão, mas diz a finalidade (medir de onde vêm as visitas dos anúncios) e leva à Política. Não tire a finalidade nem esconda o "Prefiro não": o consentimento precisa ser informado e a recusa tão fácil quanto a aceitação (guia de cookies da ANPD). O Pixel só carrega depois do "OK, aceito".
 - A escolha fica no cookie `ebd_cookies` (`sim` ou `nao`, 180 dias) do domínio `.ebdclass.com.br`. O app lê o mesmo cookie (`lib/consentimento-cookies.ts` no `ebdclass-app`), então a pessoa escolhe uma vez só.

@@ -19,7 +19,7 @@
   var UMAMI_WEBSITE_ID = 'c4eb020a-d33b-4696-b059-3e939a637ae1';
   // ID do Pixel da Meta (Meta Business > Gerenciador de Eventos > Fontes de dados). Só números.
   // Vazio = não carrega nada. Antes de preencher, veja "Pixel da Meta" no README (cookies e Política).
-  var META_PIXEL_ID = '';
+  var META_PIXEL_ID = '1123546126807480';
   var APP_SIGNUP = 'https://app.ebdclass.com.br/cadastro';
   var debug = /[?&]ebd_debug=1/.test(location.search);
 
