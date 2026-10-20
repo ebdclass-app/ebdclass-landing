@@ -1,10 +1,10 @@
-/* EBDClass — landing page (index.html). Mobile-first.
+/* EBD Class — landing page (index.html). Mobile-first.
    As páginas internas (ajuda, termos, privacidade) continuam usando style.css. */
 
 :root{
-  --navy:#061B4D;
+  --navy:#0D1933;
   --blue:#092F7D;
-  --brand:#2563FF;
+  --brand:#1A5CFF;
   --green:#00C896;
   --green-ink:#00785A;       /* verde legível como texto sobre fundo claro */
   --ink:#0B1730;
@@ -96,7 +96,7 @@ ul,ol{list-style:none}
 
 /* ---------- Hero ---------- */
 .hero{position:relative;overflow:hidden;color:#fff;background:
-  radial-gradient(900px 520px at 85% 8%,rgba(37,99,255,.45),transparent 62%),
+  radial-gradient(900px 520px at 85% 8%,rgba(26,92,255,.45),transparent 62%),
   radial-gradient(640px 420px at 0% 100%,rgba(0,200,150,.14),transparent 60%),
   linear-gradient(180deg,#092F7D 0%,#061B4D 100%);
   padding:32px 0 0}
@@ -337,7 +337,7 @@ ul,ol{list-style:none}
 
 /* ---------- CTA final ---------- */
 .final{position:relative;overflow:hidden;color:#fff;text-align:center;padding:64px 0;background:
-  radial-gradient(760px 420px at 50% 0%,rgba(37,99,255,.42),transparent 65%),
+  radial-gradient(760px 420px at 50% 0%,rgba(26,92,255,.42),transparent 65%),
   linear-gradient(180deg,#092F7D,#061B4D)}
 .final h2{font-size:clamp(28px,21px + 1.9vw,44px);font-weight:900;letter-spacing:-.03em;margin-bottom:16px}
 .final h2 em{font-family:var(--serif);font-style:italic;font-weight:600;color:#63EDC4}
@@ -350,7 +350,7 @@ ul,ol{list-style:none}
 /* ---------- Rodapé ---------- */
 .footer{background:#040F2E;color:rgba(255,255,255,.72);padding:40px 0 30px}
 .footer-in{display:grid;gap:26px}
-.footer img{height:28px;width:auto;filter:brightness(0) invert(1)}
+.footer img{height:28px;width:auto}
 .footer nav{display:flex;flex-wrap:wrap;gap:12px 24px}
 .footer a{color:rgba(255,255,255,.78);text-decoration:none;font-size:14.5px}
 .footer a:hover{color:#fff;text-decoration:underline}

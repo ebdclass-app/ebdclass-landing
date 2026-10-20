@@ -1,4 +1,4 @@
-/* EBDClass — landing page. Sem dependências.
+/* EBD Class — landing page. Sem dependências.
  *
  * Rastreamento: os eventos abaixo vão para window.dataLayer e, se existirem,
  * para umami.track(), gtag() ou plausible(). A análise é o Umami Cloud, que não
