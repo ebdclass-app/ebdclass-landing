@@ -28,14 +28,14 @@ body{font-family:var(--font);background:var(--bg);color:var(--ink);overflow-x:hi
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 max(6%,calc(50% - 480px));height:70px;background:rgba(255,255,255,0.92);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-dark);transition:box-shadow 0.3s}
 .logo{font-size:20px;font-weight:700;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:-0.3px}
-.logo-img{height:36px;width:auto;display:block}
+.logo-img{height:32px;width:auto;display:block}
 nav ul{display:flex;gap:36px;list-style:none;align-items:center}
 nav ul a{color:var(--muted);text-decoration:none;font-size:15px;font-weight:600;transition:color 0.2s}
 nav ul a:hover{color:var(--blue)}
 .nav-login{border:1.5px solid var(--border)!important;color:var(--ink)!important;padding:9px 22px!important;border-radius:50px!important;font-weight:600!important;transition:all 0.2s!important}
 .nav-login:hover{border-color:var(--blue)!important;color:var(--blue)!important}
-.nav-cta{background:var(--blue)!important;color:white!important;padding:10px 24px!important;border-radius:50px!important;font-weight:700!important;box-shadow:0 0 20px var(--blue-glow-sm)!important;transition:all 0.2s!important}
-.nav-cta:hover{opacity:0.88!important;color:white!important}
+.nav-cta{background:#00C896!important;color:#03163F!important;padding:10px 24px!important;border-radius:50px!important;font-weight:800!important;box-shadow:0 8px 24px rgba(0,200,150,0.3)!important;transition:all 0.2s!important}
+.nav-cta:hover{background:#19DCAB!important;color:#03163F!important}
 
 /* STEPS — fundo azul escuro */
 .steps-section{background:var(--blue);padding:96px max(6%,calc(50% - 480px));position:relative;overflow:hidden}
@@ -58,7 +58,7 @@ nav ul a:hover{color:var(--blue)}
 /* FOOTER */
 footer{background:var(--ink);border-top:1px solid rgba(255,255,255,0.08);padding:44px max(6%,calc(50% - 480px));display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
 .footer-logo{text-decoration:none;display:flex;align-items:center}
-.footer-logo-img{height:28px;width:auto;filter:brightness(0) invert(1)!important}
+.footer-logo-img{height:28px;width:auto}
 .footer-links{display:flex;gap:28px;flex-wrap:wrap}
 .footer-links a{color:rgba(255,255,255,0.7);text-decoration:none;font-size:14px;transition:color 0.2s}
 .footer-links a:hover{color:rgba(255,255,255,0.9)}
