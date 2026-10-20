@@ -226,30 +226,67 @@
 
   /* ---------- Entrada suave e visualização de seções ---------- */
   var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Carrossel da demonstração (só no celular: no computador o CSS mostra as telas empilhadas).
-  var track = doc.getElementById('demo-track');
+  // Demonstração: no celular, carrossel de arrastar com pontos; no computador, abas ao lado de uma tela por vez.
+  // (Não chamar a variável de "track": ela apagaria a função track() acima e quebraria os eventos.)
+  var demoTrack = doc.getElementById('demo-track');
   var demoNav = doc.getElementById('demo-nav');
-  if (track && demoNav) {
-    var cards = track.querySelectorAll('.feat');
+  var demoBox = doc.getElementById('demo');
+  var tabsBox = doc.getElementById('demo-tabs');
+  if (demoTrack && demoBox && tabsBox) {
+    var telas = demoTrack.querySelectorAll('.feat');
+    var abas = [];
+    function abrirTela(i, foco) {
+      telas.forEach(function (t, k) { t.classList.toggle('is-on', k === i); });
+      abas.forEach(function (a, k) { a.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+      if (foco) abas[i].focus();
+    }
+    telas.forEach(function (tela, i) {
+      var b = doc.createElement('button');
+      b.type = 'button';
+      var tag = doc.createElement('small');
+      tag.textContent = tela.querySelector('.feat-tag').textContent;
+      var titulo = doc.createElement('b');
+      titulo.textContent = tela.querySelector('h3').textContent;
+      b.appendChild(tag);
+      b.appendChild(titulo);
+      b.addEventListener('click', function () {
+        abrirTela(i);
+        track('demo_tab', { screen: titulo.textContent });
+      });
+      b.addEventListener('keydown', function (e) {
+        var n = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[e.key];
+        if (!n) return;
+        e.preventDefault();
+        abrirTela((i + n + telas.length) % telas.length, true);
+      });
+      tabsBox.appendChild(b);
+      abas.push(b);
+    });
+    tabsBox.hidden = false;
+    demoBox.classList.add('tabs-on');
+    abrirTela(0);
+  }
+  if (demoTrack && demoNav) {
+    var cards = demoTrack.querySelectorAll('.feat');
     var dotsBox = demoNav.querySelector('.demo-dots');
     var dots = [];
     cards.forEach(function (card, i) {
       var b = doc.createElement('button');
       b.type = 'button';
       b.setAttribute('aria-label', 'Tela ' + (i + 1) + ' de ' + cards.length + ': ' + card.querySelector('h3').textContent);
-      b.addEventListener('click', function () { track.scrollTo({ left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).scrollPaddingLeft || 0), behavior: 'smooth' }); });
+      b.addEventListener('click', function () { demoTrack.scrollTo({ left: card.offsetLeft - demoTrack.offsetLeft - parseFloat(getComputedStyle(demoTrack).scrollPaddingLeft || 0), behavior: 'smooth' }); });
       dotsBox.appendChild(b);
       dots.push(b);
     });
     var atual = -1;
     function marcar() {
       var passo = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
-      var i = Math.max(0, Math.min(cards.length - 1, Math.round(track.scrollLeft / passo)));
+      var i = Math.max(0, Math.min(cards.length - 1, Math.round(demoTrack.scrollLeft / passo)));
       if (i === atual) return;
       atual = i;
       dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
     }
-    track.addEventListener('scroll', marcar, { passive: true });
+    demoTrack.addEventListener('scroll', marcar, { passive: true });
     demoNav.hidden = false;
     marcar();
   }
