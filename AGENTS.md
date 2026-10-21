@@ -13,4 +13,4 @@ O que mais aparece no site (o manual tem os detalhes e o porquê):
 - **Voz:** a língua da EBD (chamada, turma, aluno, secretário). "Painel", não "dashboard"; "teste grátis", não "trial". Frases curtas e números concretos (15 dias, 3 minutos).
 - **Imagens:** telas reais do app com a "Igreja Exemplo" e alunos fictícios (veja o README).
 
-Mudou algo da marca? A mudança começa no Brand Book do `ebdclass-app` (nova versão no capítulo 19) e depois vem para cá.
+Mudou algo da marca? A mudança começa no Brand Book do `ebdclass-app` (nova versão no capítulo 17) e depois vem para cá.
