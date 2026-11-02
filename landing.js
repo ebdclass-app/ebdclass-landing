@@ -195,20 +195,27 @@
     }
   });
 
-  /* ---------- Planos: mensal / anual ---------- */
+  /* ---------- Planos: mensal / semestral / anual ---------- */
+  // O HTML já vem no anual (o destaque). Os valores de cada ciclo ficam nos
+  // data-* de cada faixa e seguem lib/faixas.ts do app: semestral com 10% de
+  // desconto e anual com 12 meses pelo preço de 10.
   var cycleBtns = doc.querySelectorAll('.cycle button');
   var tiers = doc.querySelectorAll('.tier[data-m]');
   function setCycle(c) {
     cycleBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cycle === c ? 'true' : 'false'); });
     tiers.forEach(function (t) {
-      var price = c === 'anual' ? t.dataset.a : t.dataset.m;
-      t.querySelector('.tier-price b').textContent = 'R$ ' + price;
-      t.querySelector('.tier-price span').textContent = c === 'anual' ? '/ano' : '/mês';
+      var d = t.dataset;
+      var de = t.querySelector('.tier-de');
       var sub = t.querySelector('.tier-sub');
-      if (!sub.dataset.orig) sub.dataset.orig = sub.textContent;
-      sub.textContent = c === 'anual' ? 'Equivale a R$ ' + t.dataset.m + ' por mês' : sub.dataset.orig;
+      var preco = c === 'anual' ? d.a : c === 'semestral' ? d.s : d.m;
+      t.querySelector('.tier-price b').textContent = 'R$ ' + preco;
+      de.hidden = c === 'mensal';
+      if (c === 'anual') sub.textContent = 'R$ ' + d.aTotal + ' por ano · economize R$ ' + d.aEco;
+      else if (c === 'semestral') sub.textContent = 'R$ ' + d.sTotal + ' a cada 6 meses · economize R$ ' + d.sEco;
+      else sub.textContent = d.mSub;
     });
   }
+
   cycleBtns.forEach(function (b) {
     b.addEventListener('click', function () {
       if (b.getAttribute('aria-pressed') === 'true') return;
