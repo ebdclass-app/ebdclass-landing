@@ -216,25 +216,6 @@
     });
   }
 
-  // Oferta do anual: a campanha "Planejamento 2027" some depois de 31/12 e fica a
-  // do fim do teste grátis (a mesma regra de lib/oferta.ts no app).
-  var oferta = doc.querySelector('.oferta[data-oferta-ate]');
-  var ofertaTeste = doc.querySelector('.oferta-teste');
-  if (oferta && ofertaTeste && Date.now() >= Date.parse(oferta.dataset.ofertaAte)) {
-    oferta.hidden = true;
-    ofertaTeste.hidden = false;
-  }
-
-  cycleBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cycle === c ? 'true' : 'false'); });
-    tiers.forEach(function (t) {
-      var price = c === 'anual' ? t.dataset.a : t.dataset.m;
-      t.querySelector('.tier-price b').textContent = 'R$ ' + price;
-      t.querySelector('.tier-price span').textContent = c === 'anual' ? '/ano' : '/mês';
-      var sub = t.querySelector('.tier-sub');
-      if (!sub.dataset.orig) sub.dataset.orig = sub.textContent;
-      sub.textContent = c === 'anual' ? 'Equivale a R$ ' + t.dataset.m + ' por mês' : sub.dataset.orig;
-    });
-  }
   cycleBtns.forEach(function (b) {
     b.addEventListener('click', function () {
       if (b.getAttribute('aria-pressed') === 'true') return;
