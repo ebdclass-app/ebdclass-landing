@@ -52,8 +52,9 @@
       {"@type":"Question","name":"Como minha igreja pode começar?","acceptedAnswer":{"@type":"Answer","text":"Crie a conta de teste, cadastre as turmas, os alunos e os professores e, no domingo, o professor faz a chamada pelo celular. O app traz um passo a passo com vídeos curtos para cada etapa."}},
       {"@type":"Question","name":"Qual plano atende à minha realidade?","acceptedAnswer":{"@type":"Answer","text":"O plano vai pelo total de alunos da EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Durante o teste não há limite, então você vê quantos alunos tem e escolhe a faixa depois. Acima de 2.000 alunos, há plano personalizado."}},
       {"@type":"Question","name":"Existe período de teste?","acceptedAnswer":{"@type":"Answer","text":"Sim. São 15 dias com todos os recursos liberados, sem cartão de crédito. Se você não contratar ao final, nada é cobrado e o acesso é pausado."}},
-      {"@type":"Question","name":"Como funciona o cancelamento?","acceptedAnswer":{"@type":"Answer","text":"Não há fidelidade nem multa. Você cancela pelo sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional; exceções são analisadas caso a caso em até 7 dias do pagamento."}},
-      {"@type":"Question","name":"O EBD Class controla as revistas da EBD?","acceptedAnswer":{"@type":"Answer","text":"Sim. O secretário cadastra o catálogo com o preço de cada revista e material, inclui os pedidos por turma com os alunos e professores já cadastrados e marca quem pagou e quem já recebeu. Os pagamentos entram no relatório financeiro. O recurso está incluso a partir de 500 alunos ou no plano anual, e liberado no teste grátis."}},
+      {"@type":"Question","name":"Como funciona o cancelamento?","acceptedAnswer":{"@type":"Answer","text":"Não há fidelidade nem multa. Você cancela pelo sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional. No semestral e no anual há garantia de 30 dias: se não servir para a sua escola, devolvemos o valor pago."}},
+      {"@type":"Question","name":"Qual a diferença entre mensal, semestral e anual?","acceptedAnswer":{"@type":"Answer","text":"Mensal: preço cheio, renovado todo mês, com recursos por faixa. Semestral: 6 meses pagos de uma vez, com 10% de desconto e todos os recursos liberados. Anual: 12 meses pelo preço de 10 (2 meses grátis), com todos os recursos, suporte prioritário, onboarding com a equipe e preço garantido na renovação. No semestral e no anual há garantia de 30 dias."}},
+      {"@type":"Question","name":"O EBD Class controla as revistas da EBD?","acceptedAnswer":{"@type":"Answer","text":"Sim. O secretário cadastra o catálogo com o preço de cada revista e material, inclui os pedidos por turma com os alunos e professores já cadastrados e marca quem pagou e quem já recebeu. Os pagamentos entram no relatório financeiro. O recurso está incluso a partir de 500 alunos ou nos planos semestral e anual, e liberado no teste grátis."}},
       {"@type":"Question","name":"Os professores precisam criar conta?","acceptedAnswer":{"@type":"Answer","text":"Não. O secretário cadastra cada professor com usuário e senha. O professor entra pelo celular e já vê a chamada da turma dele."}},
       {"@type":"Question","name":"Posso ter várias congregações na mesma conta?","acceptedAnswer":{"@type":"Answer","text":"Sim. A sede cadastra as congregações e acompanha tudo no mesmo painel, com relatório de campo. O limite do plano é a soma dos alunos de todo o campo."}},
       {"@type":"Question","name":"Os dados da igreja ficam seguros?","acceptedAnswer":{"@type":"Answer","text":"A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. O tratamento segue a LGPD."}}
@@ -277,7 +278,7 @@
           <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Resumo por item para fazer a encomenda</li>
           <li><svg width="20" height="20" aria-hidden="true"><use href="#i-check"/></svg>Pagamentos direto no relatório financeiro</li>
         </ul>
-        <p class="feat-note">A partir de 500 alunos ou no plano anual. Liberado no teste grátis.</p>
+        <p class="feat-note">A partir de 500 alunos, ou nos planos semestral e anual. Liberado no teste grátis.</p>
       </div>
       <div class="feat-media"><div class="phone"><img src="img/materiais.webp" width="600" height="1298" loading="lazy" alt="Tela Revistas e Materiais: totais do trimestre e a turma de Adultos com quem pagou e quem já recebeu a revista"></div></div>
     </article>
@@ -375,18 +376,22 @@
     </div>
 
     <div class="cycle rv" role="group" aria-label="Forma de cobrança">
-      <button type="button" aria-pressed="true" data-cycle="mensal">Mensal</button>
-      <button type="button" aria-pressed="false" data-cycle="anual">Anual</button>
+      <button type="button" aria-pressed="false" data-cycle="mensal">Mensal</button>
+      <button type="button" aria-pressed="false" data-cycle="semestral">Semestral <small>−10%</small></button>
+      <button type="button" aria-pressed="true" data-cycle="anual">Anual <small class="cycle-selo">2 meses grátis</small></button>
     </div>
 
+    <p class="oferta rv" data-oferta-ate="2027-01-01T00:00:00-03:00"><svg width="20" height="20" aria-hidden="true"><use href="#i-gift"/></svg><span><b>Planejamento 2027:</b> feche o anual até 31/12 e ganhe +1 mês. São 13 meses pelo preço de 10.</span></p>
+    <p class="oferta oferta-teste rv" hidden><svg width="20" height="20" aria-hidden="true"><use href="#i-gift"/></svg><span><b>Fechou o anual até o fim do teste grátis?</b> Ganha +1 mês: 13 meses pelo preço de 10.</span></p>
+
     <div class="tiers">
-      <div class="tier rv" data-m="34,90" data-a="418,80"><div class="tier-name">Até 50 alunos</div><div class="tier-price"><b>R$ 34,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,70 por aluno</div></div>
-      <div class="tier rv" data-m="64,90" data-a="778,80"><div class="tier-name">Até 200 alunos</div><div class="tier-price"><b>R$ 64,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,33 por aluno</div></div>
-      <div class="tier rv" data-m="109,90" data-a="1.318,80"><div class="tier-name">Até 500 alunos</div><div class="tier-price"><b>R$ 109,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,22 por aluno</div></div>
-      <div class="tier rv" data-m="189,90" data-a="2.278,80"><div class="tier-name">Até 1.000 alunos</div><div class="tier-price"><b>R$ 189,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,19 por aluno</div></div>
-      <div class="tier rv" data-m="319,90" data-a="3.838,80"><div class="tier-name">Até 2.000 alunos</div><div class="tier-price"><b>R$ 319,90</b> <span>/mês</span></div><div class="tier-sub">≈ R$ 0,16 por aluno</div></div>
+      <div class="tier rv" data-m="34,90" data-m-sub="≈ R$ 0,70 por aluno" data-s="31,40" data-s-total="188,40" data-s-eco="21,00" data-a="29,08" data-a-total="349,00" data-a-eco="69,80"><div class="tier-name">Até 50 alunos</div><div class="tier-price"><s class="tier-de">R$ 34,90</s><b>R$ 29,08</b> <span>/mês</span></div><div class="tier-sub">R$ 349,00 por ano · economize R$ 69,80</div></div>
+      <div class="tier rv" data-m="64,90" data-m-sub="≈ R$ 0,33 por aluno" data-s="58,40" data-s-total="350,40" data-s-eco="39,00" data-a="54,08" data-a-total="649,00" data-a-eco="129,80"><div class="tier-name">Até 200 alunos</div><div class="tier-price"><s class="tier-de">R$ 64,90</s><b>R$ 54,08</b> <span>/mês</span></div><div class="tier-sub">R$ 649,00 por ano · economize R$ 129,80</div></div>
+      <div class="tier rv" data-m="109,90" data-m-sub="≈ R$ 0,22 por aluno" data-s="98,90" data-s-total="593,40" data-s-eco="66,00" data-a="91,58" data-a-total="1.099,00" data-a-eco="219,80"><div class="tier-name">Até 500 alunos</div><div class="tier-price"><s class="tier-de">R$ 109,90</s><b>R$ 91,58</b> <span>/mês</span></div><div class="tier-sub">R$ 1.099,00 por ano · economize R$ 219,80</div></div>
+      <div class="tier rv" data-m="189,90" data-m-sub="≈ R$ 0,19 por aluno" data-s="170,90" data-s-total="1.025,40" data-s-eco="114,00" data-a="158,25" data-a-total="1.899,00" data-a-eco="379,80"><div class="tier-name">Até 1.000 alunos</div><div class="tier-price"><s class="tier-de">R$ 189,90</s><b>R$ 158,25</b> <span>/mês</span></div><div class="tier-sub">R$ 1.899,00 por ano · economize R$ 379,80</div></div>
+      <div class="tier rv" data-m="319,90" data-m-sub="≈ R$ 0,16 por aluno" data-s="287,90" data-s-total="1.727,40" data-s-eco="192,00" data-a="266,58" data-a-total="3.199,00" data-a-eco="639,80"><div class="tier-name">Até 2.000 alunos</div><div class="tier-price"><s class="tier-de">R$ 319,90</s><b>R$ 266,58</b> <span>/mês</span></div><div class="tier-sub">R$ 3.199,00 por ano · economize R$ 639,80</div></div>
     </div>
-    <p class="pay-note">Valor por aluno com a faixa completa. Pagamento por Pix, boleto ou cartão. No plano anual, o preço mensal é o mesmo e o ano é pago de uma vez.</p>
+    <p class="pay-note">Valor por aluno com a faixa completa. Pagamento por Pix, boleto ou cartão. No semestral e no anual, o período é pago de uma vez, todos os recursos ficam liberados e há garantia de 30 dias: se não servir para a sua escola, devolvemos o valor.</p>
 
     <div class="incl rv">
       <div>
@@ -401,9 +406,9 @@
       </div>
       <div class="incl-note">
         <h3>Recursos por faixa</h3>
-        <p><b>Aniversariantes:</b> a partir de 200 alunos.</p>
-        <p><b>Relatório financeiro e revistas e materiais:</b> a partir de 500 alunos.</p>
-        <p><b>No plano anual,</b> todos os recursos ficam liberados em qualquer faixa, com suporte prioritário.</p>
+        <p><b>No mensal:</b> aniversariantes a partir de 200 alunos; relatório financeiro e revistas e materiais a partir de 500 alunos.</p>
+        <p><b>No semestral e no anual,</b> todos os recursos ficam liberados em qualquer faixa.</p>
+        <p><b>Só no anual:</b> suporte prioritário, onboarding de 20 minutos com a equipe e preço garantido na renovação.</p>
         <a class="btn btn-brand" style="margin-top:6px;width:fit-content" href="https://app.ebdclass.com.br/cadastro" data-cta="planos">Começar o teste grátis <svg width="18" height="18" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </div>
@@ -429,8 +434,9 @@
       <details><summary>Como minha igreja pode começar?</summary><div class="ans"><p>Crie a conta de teste e cadastre as turmas, os alunos e os professores. O app mostra um passo a passo com vídeo curto para cada etapa. No domingo, o professor já faz a chamada pelo celular.</p></div></details>
       <details><summary>Qual plano atende à minha realidade?</summary><div class="ans"><p>O plano vai pelo total de alunos da EBD, somando sede e congregações: até 50, 200, 500, 1.000 ou 2.000 alunos. Durante o teste não há limite, então você vê quantos alunos tem e escolhe a faixa depois. Acima de 2.000, temos o plano personalizado.</p><p>Na dúvida, <a href="https://wa.me/5586988197951" target="_blank" rel="noopener" data-track="whatsapp_click" data-where="faq_plano">fale com a gente no WhatsApp</a>.</p></div></details>
       <details><summary>Existe período de teste?</summary><div class="ans"><p>Sim. São 15 dias com todos os recursos liberados, sem cartão de crédito. Se você não contratar ao final, nada é cobrado e o acesso é pausado.</p></div></details>
-      <details><summary>Como funciona o cancelamento?</summary><div class="ans"><p>Não há fidelidade nem multa. Você cancela pelo próprio sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional; exceções são analisadas caso a caso, em até 7 dias do pagamento. Veja os <a href="termos.html">Termos de uso</a>.</p></div></details>
-      <details><summary>O EBD Class controla as revistas da EBD?</summary><div class="ans"><p>Sim. O secretário cadastra o catálogo com o preço de cada revista e material, inclui os pedidos por turma com os alunos e professores já cadastrados e marca quem pagou e quem já recebeu. Os pagamentos entram no relatório financeiro.</p><p>O recurso está incluso a partir de 500 alunos ou no plano anual, e liberado no teste grátis.</p></div></details>
+      <details><summary>Como funciona o cancelamento?</summary><div class="ans"><p>Não há fidelidade nem multa. Você cancela pelo próprio sistema (Configurações, Assinatura) ou pelo WhatsApp e mantém o acesso até o fim do período já pago. Não há reembolso proporcional. No semestral e no anual há garantia de 30 dias: se não servir para a sua escola, devolvemos o valor pago. Veja os <a href="termos.html">Termos de uso</a>.</p></div></details>
+      <details><summary>Qual a diferença entre mensal, semestral e anual?</summary><div class="ans"><p><b>Mensal:</b> preço cheio, renovado todo mês, com os recursos da faixa.</p><p><b>Semestral:</b> 6 meses pagos de uma vez, com 10% de desconto e todos os recursos liberados em qualquer faixa.</p><p><b>Anual:</b> 12 meses pelo preço de 10 (2 meses grátis), com todos os recursos, suporte prioritário, onboarding de 20 minutos com a equipe e preço garantido na renovação.</p><p>No semestral e no anual há garantia de 30 dias. Pague por Pix, boleto ou cartão.</p></div></details>
+      <details><summary>O EBD Class controla as revistas da EBD?</summary><div class="ans"><p>Sim. O secretário cadastra o catálogo com o preço de cada revista e material, inclui os pedidos por turma com os alunos e professores já cadastrados e marca quem pagou e quem já recebeu. Os pagamentos entram no relatório financeiro.</p><p>O recurso está incluso a partir de 500 alunos ou nos planos semestral e anual, e liberado no teste grátis.</p></div></details>
       <details><summary>Os professores precisam criar conta?</summary><div class="ans"><p>Não. O secretário cadastra cada professor com usuário e senha e entrega o acesso pronto. O professor abre no celular, entra e já vê a chamada da turma dele.</p></div></details>
       <details><summary>Posso ter várias congregações na mesma conta?</summary><div class="ans"><p>Sim. A sede cadastra as congregações e acompanha tudo no mesmo painel, com relatório de campo. O limite do plano é a soma dos alunos de todo o campo.</p></div></details>
       <details><summary>Os dados da igreja ficam seguros?</summary><div class="ans"><p>A conexão é criptografada, os dados ficam em servidores no Brasil e cada igreja só enxerga os próprios dados. O tratamento segue a LGPD. Veja a <a href="privacidade.html">Política de Privacidade</a>.</p></div></details>

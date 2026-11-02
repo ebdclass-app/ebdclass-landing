@@ -311,9 +311,18 @@ ul,ol{list-style:none}
 }
 
 /* ---------- Planos ---------- */
-.cycle{display:inline-flex;padding:4px;background:#EBF0FF;border-radius:999px;margin-bottom:22px}
-.cycle button{border:0;background:transparent;font:800 15px/1 var(--font);color:var(--muted);padding:12px 22px;border-radius:999px;cursor:pointer;min-height:44px;transition:background .2s,color .2s}
+.cycle{display:inline-flex;padding:4px;background:#EBF0FF;border-radius:999px;margin:12px 0 18px}
+.cycle button{position:relative;border:0;background:transparent;font:800 14px/1 var(--font);color:var(--muted);padding:10px 14px;border-radius:999px;cursor:pointer;min-height:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:background .2s,color .2s}
+.cycle button small{font-size:11.5px;font-weight:800;color:var(--green-ink)}
 .cycle button[aria-pressed="true"]{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(9,47,125,.3)}
+.cycle button[aria-pressed="true"] small{color:var(--green)}
+.cycle button small.cycle-selo{position:absolute;top:-11px;left:50%;transform:translateX(-50%);white-space:nowrap;background:#FFC83D;color:var(--navy);font-size:10px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px}
+.cycle button[aria-pressed="true"] small.cycle-selo{color:var(--navy)}
+.oferta{display:flex;gap:10px;align-items:flex-start;background:#FFF7E0;border:1.5px solid #FFC83D;border-radius:var(--r);padding:12px 16px;margin-bottom:16px;font-size:15px;color:var(--ink);max-width:720px}
+.oferta svg{flex-shrink:0;color:#B45309;margin-top:2px}
+.oferta[hidden]{display:none}
+.tier-de{display:block;font-size:13px;color:var(--muted);font-weight:600;margin-bottom:4px}
+.tier-de[hidden]{display:none}
 .tiers{display:grid;gap:10px;grid-template-columns:1fr}
 .tier{display:grid;grid-template-columns:1fr auto;gap:2px 16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 18px}
 .tier-name{font-weight:800;font-size:16.5px;white-space:nowrap}

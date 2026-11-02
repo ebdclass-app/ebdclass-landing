@@ -6,7 +6,7 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 |---|---|
 | `index.html` | A landing page. Textos, seções e dados estruturados (JSON-LD) ficam aqui |
 | `landing.css` | Estilos da landing (`index.html`) |
-| `landing.js` | Menu mobile, alternância mensal/anual, carrossel da demonstração no celular, animações e rastreamento de cliques |
+| `landing.js` | Menu mobile, alternância mensal/semestral/anual (e a troca da oferta do anual depois de 31/12/2026), carrossel da demonstração no celular, animações e rastreamento de cliques |
 | `style.css` | Estilos das páginas internas: `ajuda`, `termos`, `privacidade`, `exclusao-conta` |
 | `img/` | Telas reais do app (WebP) e a imagem de compartilhamento `og-ebdclass.jpg` |
 | `robots.txt`, `sitemap.xml` | SEO. Atualize o `lastmod` do `sitemap.xml` quando mudar uma página |
@@ -32,7 +32,7 @@ Os eventos também vão para `window.dataLayer` e, se existirem, para `gtag()` o
 |---|---|
 | `cta_click` | Clique em qualquer botão com `data-cta` (`cta_id`, `cta_text`, `destination` = `signup` ou `anchor`, `section`) |
 | `login_click`, `whatsapp_click`, `play_store_click` | Cliques nesses links (`where` diz o lugar) |
-| `plan_cycle_toggle` | Troca entre mensal e anual |
+| `plan_cycle_toggle` | Troca entre mensal, semestral e anual (`cycle`) |
 | `faq_open` | Abertura de uma pergunta |
 | `section_view` | Primeira vez que cada seção passa pelo meio da tela |
 

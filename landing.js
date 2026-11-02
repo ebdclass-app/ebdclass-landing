@@ -195,11 +195,37 @@
     }
   });
 
-  /* ---------- Planos: mensal / anual ---------- */
+  /* ---------- Planos: mensal / semestral / anual ---------- */
+  // O HTML já vem no anual (o destaque). Os valores de cada ciclo ficam nos
+  // data-* de cada faixa e seguem lib/faixas.ts do app: semestral com 10% de
+  // desconto e anual com 12 meses pelo preço de 10.
   var cycleBtns = doc.querySelectorAll('.cycle button');
   var tiers = doc.querySelectorAll('.tier[data-m]');
   function setCycle(c) {
     cycleBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cycle === c ? 'true' : 'false'); });
+    tiers.forEach(function (t) {
+      var d = t.dataset;
+      var de = t.querySelector('.tier-de');
+      var sub = t.querySelector('.tier-sub');
+      var preco = c === 'anual' ? d.a : c === 'semestral' ? d.s : d.m;
+      t.querySelector('.tier-price b').textContent = 'R$ ' + preco;
+      de.hidden = c === 'mensal';
+      if (c === 'anual') sub.textContent = 'R$ ' + d.aTotal + ' por ano · economize R$ ' + d.aEco;
+      else if (c === 'semestral') sub.textContent = 'R$ ' + d.sTotal + ' a cada 6 meses · economize R$ ' + d.sEco;
+      else sub.textContent = d.mSub;
+    });
+  }
+
+  // Oferta do anual: a campanha "Planejamento 2027" some depois de 31/12 e fica a
+  // do fim do teste grátis (a mesma regra de lib/oferta.ts no app).
+  var oferta = doc.querySelector('.oferta[data-oferta-ate]');
+  var ofertaTeste = doc.querySelector('.oferta-teste');
+  if (oferta && ofertaTeste && Date.now() >= Date.parse(oferta.dataset.ofertaAte)) {
+    oferta.hidden = true;
+    ofertaTeste.hidden = false;
+  }
+
+  cycleBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cycle === c ? 'true' : 'false'); });
     tiers.forEach(function (t) {
       var price = c === 'anual' ? t.dataset.a : t.dataset.m;
       t.querySelector('.tier-price b').textContent = 'R$ ' + price;
