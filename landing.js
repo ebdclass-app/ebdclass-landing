@@ -6,7 +6,8 @@
  * UMAMI_WEBSITE_ID está preenchido — veja o README, seção "Medição".
  *
  * Eventos: cta_click, login_click, whatsapp_click, play_store_click,
- *          plan_cycle_toggle, faq_open, section_view, demo_tab, demo_video.
+ *          plan_cycle_toggle, preco_faixa, planos_detalhes, faq_open,
+ *          section_view, demo_tab, demo_video.
  * O funil continua no app (tela de cadastro): cadastro_inicio, cadastro_codigo_ok,
  * cadastro_conta_criada e cadastro_igreja_criada (lib/funil.ts no ebdclass-app).
  */
@@ -251,6 +252,46 @@
       track('plan_cycle_toggle', { cycle: b.dataset.cycle });
     });
   });
+
+  /* ---------- Preços: um preço por vez ----------
+   * A pessoa escolhe a faixa de alunos e vê só aquele preço. Os valores vêm dos data-*
+   * das faixas da tabela completa (dentro de "Ver todos os planos"), que seguem
+   * lib/faixas.ts do app: assim há um lugar só para mudar preço. */
+  var faixasBox = doc.querySelector('.faixas');
+  var precoMes = doc.getElementById('preco-mes');
+  var precoSub = doc.getElementById('preco-sub');
+  var precoDe = doc.querySelector('.preco-de');
+  if (faixasBox && precoMes && precoSub && tiers.length) {
+    var botoesFaixa = faixasBox.querySelectorAll('button[data-faixa]');
+    var mostrarFaixa = function (i) {
+      var t = tiers[i];
+      if (!t) return;
+      var d = t.dataset;
+      botoesFaixa.forEach(function (b, k) { b.setAttribute('aria-checked', k === i ? 'true' : 'false'); b.tabIndex = k === i ? 0 : -1; });
+      precoMes.textContent = 'R$ ' + d.m;
+      var porAluno = (d.mSub || '').replace('≈', 'cerca de').trim();
+      precoSub.textContent = t.querySelector('.tier-name').textContent + ': ' + porAluno + '. No plano anual, R$ ' + d.a + ' por mês.';
+    };
+    botoesFaixa.forEach(function (b, i) {
+      b.addEventListener('click', function () {
+        if (precoDe) precoDe.hidden = true;
+        mostrarFaixa(i);
+        track('preco_faixa', { faixa: b.textContent.trim() });
+      });
+      b.addEventListener('keydown', function (e) {
+        var n = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+        if (!n) return;
+        e.preventDefault();
+        var j = (i + n + botoesFaixa.length) % botoesFaixa.length;
+        botoesFaixa[j].focus();
+        botoesFaixa[j].click();
+      });
+    });
+    faixasBox.hidden = false;
+    mostrarFaixa(0);
+  }
+  var detalhe = doc.getElementById('planos-detalhe');
+  if (detalhe) detalhe.addEventListener('toggle', function () { if (detalhe.open) track('planos_detalhes', {}); });
 
   /* ---------- FAQ ---------- */
   doc.querySelectorAll('.faq details').forEach(function (d) {

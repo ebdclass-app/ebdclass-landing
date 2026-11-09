@@ -17,11 +17,24 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 
 A ordem das seções segue o caminho de quem chega do anúncio do Instagram, quase sempre pelo celular:
 
-1. **Capa:** o que é (gestão da EBD, não só a caderneta), o botão verde "Quero experimentar na minha igreja" e as condições (15 dias, sem cartão, sem fidelidade).
-2. **Perguntas:** seis perguntas que o secretário não sabe responder sem juntar cadernetas, cada uma com a resposta no EBD Class.
-3. **Recursos:** os oito pilares da gestão (turmas, alunos, frequência, histórico, relatórios, professores, visão administrativa, congregações).
-4. **Ver funcionando:** o vídeo da chamada e as cinco telas.
-5. **Antes e depois**, **perfis** (secretário, superintendente, professor, pastor, campo), **teste grátis** (o que fazer em cada um dos dois domingos), **confiança**, **planos**, **dúvidas** (as objeções primeiro) e o **convite final**.
+1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular.", o botão verde "Quero experimentar na minha igreja" e as condições (15 dias grátis, sem cartão, você decide no fim). Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
+2. **Perguntas:** seis perguntas que o pastor faz e a caderneta não responde, cada uma com a resposta no EBD Class.
+3. **Recursos:** oito tarefas da secretaria que saem do papel (turmas, ficha do aluno, frequência, lições, relatório, professores, ofertas e revistas, congregações).
+4. **Gravação real:** o vídeo da chamada e as cinco telas.
+5. **O que sai da lista de domingo** (antes e depois), **quem usa**, **teste grátis** (dois domingos, e o bloco para quem precisa da aprovação do pastor), **regras claras**, **preços**, **dúvidas** e o **convite final**.
+
+### Preço sem assustar quem ainda vai testar
+
+O preço continua à vista (é um valor da marca, e o anúncio já diz "a partir de R$ 34,90"), mas a decisão de testar fica separada da decisão de comprar:
+
+- A seção se chama "Quanto custa depois do teste" e pergunta **"Quantos alunos tem a sua EBD?"**: aparece um preço por vez, não 15 números. Os valores vêm dos `data-*` da tabela completa, que fica recolhida em "Ver todos os planos e o que cada um libera".
+- O texto repete que a escolha é no fim do teste, que testar não obriga a assinar e que não há cartão.
+- O secretário quase nunca é quem paga. O bloco "Precisa da aprovação do pastor ou da tesouraria?" e a pergunta das dúvidas dizem: teste antes de pedir e leve o relatório da sua própria EBD para a conversa.
+- Para conferir: `preco_faixa` (faixa escolhida) e `planos_detalhes` (abriu a tabela completa), junto com `section_view` de `planos` e os `cta_click` com `section = planos`.
+
+### Textos
+
+A voz é a das legendas do Instagram (`marketing/artes/legendas.txt` no app): cenas do domingo, perguntas que a secretaria ouve, números concretos. Evite as frases que qualquer pessoa reconhece como texto genérico de site: "num só lugar", "num só painel", "tudo o que você precisa", "muito mais que", "sob controle", "em poucos cliques/toques", "simples e completo", "transforme", "descomplique", "pode confiar", "feito para você". Prefira dizer o que acontece: "Salvou, a secretaria já vê", "A soma fica pronta antes de você sair da igreja".
 
 Regras que valem para a página inteira: um botão verde por tela (Brand Book); a **barra fixa** do celular só aparece depois da capa e some quando outro botão verde, o menu, o aviso de cookies ou o rodapé estão à vista; o **vídeo** só baixa quando aparece na tela e não toca sozinho para quem pediu menos movimento ou economia de dados; o **aviso de cookies** aparece no primeiro movimento de rolagem ou depois de 5 segundos, para a capa ser vista inteira (nada da Meta carrega antes da escolha).
 
@@ -47,7 +60,9 @@ Os eventos também vão para `window.dataLayer` e, se existirem, para `gtag()` o
 |---|---|
 | `cta_click` | Clique em qualquer botão com `data-cta` (`cta_id`, `cta_text`, `destination` = `signup` ou `anchor`, `section`) |
 | `login_click`, `whatsapp_click`, `play_store_click` | Cliques nesses links (`where` diz o lugar) |
-| `plan_cycle_toggle` | Troca entre mensal, semestral e anual (`cycle`) |
+| `plan_cycle_toggle` | Troca entre mensal, semestral e anual na tabela completa (`cycle`) |
+| `preco_faixa` | Escolheu uma faixa em "Quantos alunos tem a sua EBD?" (`faixa`) |
+| `planos_detalhes` | Abriu "Ver todos os planos e o que cada um libera" |
 | `faq_open` | Abertura de uma pergunta |
 | `section_view` | Primeira vez que cada seção passa pelo meio da tela |
 | `demo_tab` | Troca de tela na demonstração do computador (`screen`) |
