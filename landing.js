@@ -6,7 +6,9 @@
  * UMAMI_WEBSITE_ID está preenchido — veja o README, seção "Medição".
  *
  * Eventos: cta_click, login_click, whatsapp_click, play_store_click,
- *          plan_cycle_toggle, faq_open, section_view.
+ *          plan_cycle_toggle, faq_open, section_view, demo_tab, demo_video.
+ * O funil continua no app (tela de cadastro): cadastro_inicio, cadastro_codigo_ok,
+ * cadastro_conta_criada e cadastro_igreja_criada (lib/funil.ts no ebdclass-app).
  */
 (function () {
   'use strict';
@@ -16,12 +18,14 @@
   w.dataLayer = w.dataLayer || [];
 
   // ID do site no Umami Cloud (cloud.umami.is > Settings > Websites). Vazio = não carrega nada.
+  // O app usa o mesmo ID na tela de cadastro, para o funil ficar num painel só.
   var UMAMI_WEBSITE_ID = 'c4eb020a-d33b-4696-b059-3e939a637ae1';
   // ID do Pixel da Meta (Meta Business > Gerenciador de Eventos > Fontes de dados). Só números.
   // Vazio = não carrega nada. Antes de preencher, veja "Pixel da Meta" no README (cookies e Política).
   var META_PIXEL_ID = '1123546126807480';
   var APP_SIGNUP = 'https://app.ebdclass.com.br/cadastro';
   var debug = /[?&]ebd_debug=1/.test(location.search);
+  var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   function track(name, params) {
     params = params || {};
@@ -47,7 +51,7 @@
   }
 
   /* ---------- Cookies e Pixel da Meta ----------
-   * O Pixel só carrega depois de o visitante clicar em "Aceitar" no aviso. A escolha
+   * O Pixel só carrega depois de o visitante clicar em "OK, aceito" no aviso. A escolha
    * fica no cookie ebd_cookies (sim/nao), do domínio ebdclass.com.br, e vale também
    * para o app (lib/consentimento-cookies.ts no ebdclass-app). Sem META_PIXEL_ID não
    * há aviso, nem cookie, nem link "Cookies" no rodapé. */
@@ -106,6 +110,7 @@
       var v = b.getAttribute('data-escolha');
       gravarEscolha(v);
       box.remove();
+      atualizarBarra();
       if (v === 'sim') {
         if (typeof w.fbq !== 'function') carregarPixel();
       } else if (anterior === 'sim' || typeof w.fbq === 'function') {
@@ -115,11 +120,28 @@
       }
     });
     doc.body.appendChild(box);
+    atualizarBarra();
+  }
+
+  // Quem chega do anúncio vê a capa inteira primeiro: o aviso aparece no primeiro
+  // movimento de rolagem ou depois de 5 segundos. Nada da Meta carrega antes da escolha,
+  // e os dois botões continuam iguais e visíveis.
+  function agendarAviso() {
+    var feito = false;
+    function abrir() {
+      if (feito) return;
+      feito = true;
+      w.removeEventListener('scroll', aoRolar);
+      mostrarAviso();
+    }
+    function aoRolar() { if (w.scrollY > 80) abrir(); }
+    w.addEventListener('scroll', aoRolar, { passive: true });
+    setTimeout(abrir, 5000);
   }
 
   if (PIXEL_ON) {
     if (lerEscolha() === 'sim') carregarPixel();
-    else if (lerEscolha() === '') mostrarAviso();
+    else if (lerEscolha() === '') agendarAviso();
     var prefs = doc.getElementById('cookie-prefs');
     if (prefs) {
       prefs.hidden = false;
@@ -128,7 +150,7 @@
   }
 
   // Só dois eventos vão à Meta: o clique no WhatsApp (Contact) e o clique em
-  // "teste grátis" (evento próprio, para montar público de remarketing).
+  // "experimentar" (evento próprio, para montar público de remarketing).
   // O cadastro em si é registrado dentro do app (CompleteRegistration).
   function metaTrack(name, params) {
     if (typeof w.fbq !== 'function') return;
@@ -138,7 +160,9 @@
 
   function sectionOf(el) {
     var s = el.closest('[data-section]');
-    return s ? s.getAttribute('data-section') : (el.closest('header') ? 'nav' : (el.closest('footer') ? 'footer' : ''));
+    if (s) return s.getAttribute('data-section');
+    if (el.closest('#sticky-cta')) return 'barra_fixa';
+    return el.closest('header') ? 'nav' : (el.closest('footer') ? 'footer' : '');
   }
 
   /* ---------- Menu mobile ---------- */
@@ -150,6 +174,7 @@
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     burger.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
     menu.classList.toggle('open', open);
+    atualizarBarra();
   }
   if (burger) {
     burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true'); });
@@ -175,6 +200,9 @@
     }
     // utm_content identifica qual botão da página originou o cadastro
     if (!url.searchParams.has('utm_content') && a.dataset.cta) url.searchParams.set('utm_content', a.dataset.cta);
+    // O clique do anúncio (fbclid) segue junto, para a Meta ligar o cadastro ao anúncio
+    // quando o visitante aceitar os cookies na tela de cadastro.
+    if (incoming.has('fbclid')) url.searchParams.set('fbclid', incoming.get('fbclid'));
     a.href = url.toString();
   });
 
@@ -231,9 +259,75 @@
     });
   });
 
-  /* ---------- Entrada suave e visualização de seções ---------- */
-  var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Demonstração: no celular, carrossel de arrastar com pontos; no computador, abas ao lado de uma tela por vez.
+  /* ---------- Vídeo da chamada ----------
+   * Só baixa quando aparece na tela (325 KB). Toca sem som, em repetição, enquanto
+   * estiver visível. Com "menos movimento" ou economia de dados, espera o toque no botão. */
+  var video = doc.getElementById('video-chamada');
+  if (video) {
+    var playBtn = video.parentNode.querySelector('.video-play');
+    var economia = !!(navigator.connection && navigator.connection.saveData);
+    var carregado = false;
+    var contou = false;
+    var tocar = function (modo) {
+      if (!carregado) { carregado = true; video.src = video.dataset.src; }
+      var p = video.play();
+      if (p && typeof p.catch === 'function') p.catch(function () { if (playBtn) playBtn.hidden = false; });
+      if (!contou) { contou = true; track('demo_video', { modo: modo }); }
+    };
+    video.addEventListener('playing', function () { if (playBtn) playBtn.hidden = true; });
+    if (playBtn) playBtn.addEventListener('click', function () { playBtn.hidden = true; tocar('toque'); });
+    if (reduced || economia || !('IntersectionObserver' in w)) {
+      if (playBtn) playBtn.hidden = false;
+    } else {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) tocar('auto');
+          else if (!video.paused) video.pause();
+        });
+      }, { threshold: 0.5 }).observe(video);
+    }
+  }
+
+  /* ---------- Barra fixa do celular ----------
+   * Aparece depois que o botão da capa sai da tela e some quando outro botão verde
+   * está à vista (um botão verde por tela, Brand Book), com o menu aberto, com o
+   * aviso de cookies na tela ou no rodapé. */
+  var barra = doc.getElementById('sticky-cta');
+  var heroCta = doc.getElementById('cta-hero');
+  var verdesVisiveis = new Set();
+  var rodapeVisivel = false;
+  var barraLigada = false;
+  function atualizarBarra() {
+    if (!barra || !heroCta) return;
+    var passouCapa = heroCta.getBoundingClientRect().bottom < 0;
+    var menuAberto = menu && menu.classList.contains('open');
+    var on = passouCapa && verdesVisiveis.size === 0 && !rodapeVisivel && !menuAberto && !doc.getElementById('aviso-cookies');
+    if (on === barraLigada) return;
+    barraLigada = on;
+    barra.classList.toggle('on', on);
+    barra.inert = !on;
+    barra.setAttribute('aria-hidden', on ? 'false' : 'true');
+  }
+  if (barra && heroCta && 'IntersectionObserver' in w) {
+    barra.hidden = false;
+    barra.inert = true;
+    barra.setAttribute('aria-hidden', 'true');
+    var vo = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.target.tagName === 'FOOTER') rodapeVisivel = en.isIntersecting;
+        else if (en.isIntersecting) verdesVisiveis.add(en.target);
+        else verdesVisiveis.delete(en.target);
+      });
+      atualizarBarra();
+    });
+    doc.querySelectorAll('main .btn-primary').forEach(function (b) { vo.observe(b); });
+    var rodape = doc.querySelector('footer');
+    if (rodape) vo.observe(rodape);
+    w.addEventListener('scroll', atualizarBarra, { passive: true });
+  }
+
+  /* ---------- Demonstração ---------- */
+  // No celular, carrossel de arrastar com pontos; no computador, abas ao lado de uma tela por vez.
   // (Não chamar a variável de "track": ela apagaria a função track() acima e quebraria os eventos.)
   var demoTrack = doc.getElementById('demo-track');
   var demoNav = doc.getElementById('demo-nav');
@@ -242,11 +336,11 @@
   if (demoTrack && demoBox && tabsBox) {
     var telas = demoTrack.querySelectorAll('.feat');
     var abas = [];
-    function abrirTela(i, foco) {
+    var abrirTela = function (i, foco) {
       telas.forEach(function (t, k) { t.classList.toggle('is-on', k === i); });
       abas.forEach(function (a, k) { a.setAttribute('aria-current', k === i ? 'true' : 'false'); });
       if (foco) abas[i].focus();
-    }
+    };
     telas.forEach(function (tela, i) {
       var b = doc.createElement('button');
       b.type = 'button';
@@ -286,18 +380,19 @@
       dots.push(b);
     });
     var atual = -1;
-    function marcar() {
+    var marcar = function () {
       var passo = cards.length > 1 ? cards[1].offsetLeft - cards[0].offsetLeft : 1;
       var i = Math.max(0, Math.min(cards.length - 1, Math.round(demoTrack.scrollLeft / passo)));
       if (i === atual) return;
       atual = i;
       dots.forEach(function (d, k) { d.setAttribute('aria-current', k === i ? 'true' : 'false'); });
-    }
+    };
     demoTrack.addEventListener('scroll', marcar, { passive: true });
     demoNav.hidden = false;
     marcar();
   }
 
+  /* ---------- Entrada suave e visualização de seções ---------- */
   if ('IntersectionObserver' in w) {
     if (!reduced) {
       var io = new IntersectionObserver(function (entries) {
