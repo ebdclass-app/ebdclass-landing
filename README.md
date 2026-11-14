@@ -46,7 +46,7 @@ A fonte dos preços é `lib/faixas.ts` no repositório `ebdclass-app`. Se mudar 
 
 ## Telas do app em `img/`
 
-São quadros extraídos dos vídeos de passo a passo do app (`public/videos/` no `ebdclass-app`), com a "Igreja Exemplo" e alunos fictícios. Quando o visual do app mudar, grave de novo e troque os arquivos mantendo os nomes e as proporções (600×1298 no celular, 1120×700 no computador).
+São capturas do app com a "Igreja Exemplo" e alunos fictícios, geradas pelo `docs/videos/gravar/telas-da-lp.sh` do `ebdclass-app` (veja o `LEIAME.md` de lá). O mesmo script refaz `video/chamada.mp4` e `img/og-ebdclass.jpg` (imagem de compartilhamento). Quando o visual do app mudar, rode-o de novo e troque os arquivos mantendo os nomes e as proporções (600×1298 no celular, 1120×700 no computador, 1200×630 na imagem de compartilhamento).
 
 ## Medição
 
