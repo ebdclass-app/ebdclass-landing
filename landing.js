@@ -5,7 +5,7 @@
  * usa cookies (não exige aviso de cookies). Ele só é carregado quando
  * UMAMI_WEBSITE_ID está preenchido — veja o README, seção "Medição".
  *
- * Eventos: cta_click, login_click, whatsapp_click, play_store_click,
+ * Eventos: cta_click, login_click, whatsapp_click, play_store_click, rolagem, saida,
  *          plan_cycle_toggle, preco_faixa, planos_detalhes, faq_open,
  *          section_view, demo_tab, demo_video.
  * O funil continua no app (tela de cadastro): cadastro_inicio, cadastro_codigo_ok,
@@ -502,4 +502,57 @@
   } else {
     doc.querySelectorAll('.rv').forEach(function (el) { el.classList.add('in'); });
   }
+
+  /* ---------- Até onde a pessoa leu, e por quanto tempo ----------
+   * Responde "onde as pessoas param" sem gravar a sessão de ninguém: só a marca de
+   * rolagem e, ao sair, a seção mais distante e a faixa de tempo. Nada identifica
+   * o visitante, nada vai para o aparelho dele (o Umami não usa cookies).
+   * As gravações de sessão do Umami custam US$ 200/mês (plano Business); isto é de graça.
+   * Eventos: rolagem (até 4 por visita) e saida (1 por visita). */
+  var marcos = [25, 50, 75, 100];
+  var marcado = {};
+  var maisLonge = 0;
+  var entrou = Date.now();
+
+  function alturaRolavel() {
+    return Math.max(doc.documentElement.scrollHeight - w.innerHeight, 1);
+  }
+  function medirRolagem() {
+    var pct = Math.min(100, Math.round((w.scrollY / alturaRolavel()) * 100));
+    if (pct > maisLonge) maisLonge = pct;
+    for (var i = 0; i < marcos.length; i++) {
+      var m = marcos[i];
+      if (pct >= m && !marcado[m]) { marcado[m] = 1; track('rolagem', { marco: m + '%' }); }
+    }
+  }
+  var pendente = false;
+  w.addEventListener('scroll', function () {
+    if (pendente) return;
+    pendente = true;
+    w.requestAnimationFrame(function () { pendente = false; medirRolagem(); });
+  }, { passive: true });
+  medirRolagem();
+
+  // Faixas, não o segundo exato: o que interessa é "saiu na hora" ou "leu com calma".
+  function faixaDeTempo(seg) {
+    return seg < 5 ? 'ate 5s' : seg < 15 ? '5 a 15s' : seg < 60 ? '15 a 60s' : seg < 180 ? '1 a 3min' : 'mais de 3min';
+  }
+  var saiuJa = false;
+  function aoSair() {
+    if (saiuJa) return;
+    saiuJa = true;
+    var ultima = 'hero';
+    doc.querySelectorAll('[data-section]').forEach(function (el) {
+      if (el.getBoundingClientRect().top < w.innerHeight * 0.55) ultima = el.getAttribute('data-section');
+    });
+    track('saida', {
+      ate: ultima,
+      rolou: Math.min(100, Math.round(maisLonge / 10) * 10) + '%',
+      tempo: faixaDeTempo(Math.round((Date.now() - entrou) / 1000))
+    });
+  }
+  // pagehide cobre o fechar e o voltar; visibilitychange cobre trocar de aba e o
+  // navegador dentro do Instagram, que às vezes não dispara pagehide.
+  w.addEventListener('pagehide', aoSair);
+  doc.addEventListener('visibilitychange', function () { if (doc.visibilityState === 'hidden') aoSair(); });
 })();
