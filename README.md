@@ -13,15 +13,22 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 | `robots.txt`, `sitemap.xml` | SEO. Atualize o `lastmod` do `sitemap.xml` quando mudar uma página |
 | `llms.txt` | Resumo do produto para buscadores de IA (ChatGPT, Claude, Gemini, Perplexity). Confira preços e recursos quando mudar o plano |
 
-## Como a página vende (09/11/2026)
+## Como a página vende (24/11/2026)
 
-A ordem das seções segue o caminho de quem chega do anúncio do Instagram, quase sempre pelo celular:
+A ordem das seções segue o caminho de quem chega do anúncio do Instagram, quase sempre pelo celular. A página foi encurtada de 17,7 para 13,3 telas de celular em 24/11/2026: três seções diziam as mesmas oito ideias em 36 cartões.
 
-1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular.", o botão verde "Quero experimentar na minha igreja" e as condições (4 domingos grátis, sem cartão, você decide no fim). Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
-2. **Perguntas:** seis perguntas que o pastor faz e a caderneta não responde, cada uma com a resposta no EBD Class.
-3. **Recursos:** oito tarefas da secretaria que saem do papel (turmas, ficha do aluno, frequência, lições, relatório, professores, ofertas e revistas, congregações).
-4. **Gravação real:** o vídeo da chamada e as cinco telas.
-5. **O que sai da lista de domingo** (antes e depois), **quem usa**, **teste grátis** (dois domingos, e o bloco para quem precisa da aprovação do pastor), **regras claras**, **preços**, **dúvidas** e o **convite final**.
+1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular." No formato das capas de SaaS que convertem (Linear, Plausible, Notion, Stripe): pouco texto antes do botão e **dois caminhos**, o verde "Quero experimentar na minha igreja" e o de contorno "Ver funcionando no WhatsApp", para quem ainda não quer criar conta. As condições fecham o bloco numa linha só, com o preço ("4 domingos grátis · Sem cartão · Depois, a partir de R$ 34,90/mês"). No celular, "Entrar" do topo é o link discreto "Já uso · Entrar" (`login_click` com `where = nav_celular`), porque o botão disputava a atenção com o teste grátis. Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
+2. **Faixa de garantias:** sem internet, celular ou computador, dados no Brasil, suporte humano.
+3. **Perguntas:** quatro perguntas que o pastor faz e a caderneta não responde, cada uma com a resposta no EBD Class.
+4. **Recursos:** seis tarefas da secretaria que saem do papel (turmas, frequência, relatório, professores, financeiro e revistas, congregações).
+5. **Gravação real:** o vídeo da chamada e as cinco telas no carrossel. É a seção com mais interação no Umami (17 trocas de tela e 15 vídeos em 30 dias); não encurtar sem olhar esses números.
+6. **Quem usa:** cinco papéis, um ganho em uma linha cada.
+7. **Teste grátis**, com a linha do tempo dos quatro domingos e o bloco para quem precisa da aprovação do pastor.
+8. **Regras claras**, **preços**, **dúvidas** (oito) e o **convite final**.
+
+**O que foi cortado em 24/11/2026, e por quê.** A seção "Antes e depois" saiu inteira: repetia pela terceira vez o que as perguntas e os recursos já dizem. As perguntas foram de 6 para 4, os recursos de 8 para 6, "quem usa" perdeu as três sub-linhas de cada papel, "regras claras" foi de 6 para 4 itens (a Google Play já está no rodapé) e as dúvidas de 14 para 8 — saíram as que a própria página responde. O JSON-LD do FAQ acompanha as perguntas visíveis; mudar uma, mudar a outra.
+
+Motivo (Umami, 30 dias até 24/11/2026): 1.160 visitantes, 85% de rejeição, 8 s por visita, só 121 passaram da capa e 6 chegaram ao cadastro; "Entrar" teve 26 cliques contra 3 do teste grátis.
 
 ### Preço sem assustar quem ainda vai testar
 
@@ -53,6 +60,8 @@ São capturas do app com a "Igreja Exemplo" e alunos fictícios, geradas pelo `d
 A análise é o **Umami Cloud** (cloud.umami.is): gratuito para este volume, sem cookies (o aviso de cookies do site é só por causa do Pixel da Meta, veja a seção abaixo). O script só é carregado quando `UMAMI_WEBSITE_ID` (no topo de `landing.js`) está preenchido; vazio, a página não envia nada a ninguém.
 
 Para ativar: crie a conta no Umami Cloud, adicione o site `ebdclass.com.br`, copie o *Website ID* e cole em `UMAMI_WEBSITE_ID`. O script ignora acessos de outros domínios (localhost, prévias) e respeita o "Não rastrear" do navegador.
+
+Eventos disparados antes de o script do Umami carregar ficam numa fila e são enviados quando ele chega (antes, a vista da capa se perdia). Nos cliques que saem do site na mesma aba (cadastro e login), a saída espera até 300 ms o envio do evento, para o clique não se perder.
 
 Os eventos também vão para `window.dataLayer` e, se existirem, para `gtag()` ou `plausible()`:
 
