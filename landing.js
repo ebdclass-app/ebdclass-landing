@@ -306,7 +306,9 @@
   var faixasBox = doc.querySelector('.faixas');
   var precoMes = doc.getElementById('preco-mes');
   var precoSub = doc.getElementById('preco-sub');
-  var precoDe = doc.querySelector('.preco-de');
+  // O limite de alunos anda junto com o preço: "R$ 34,90 por mês até 50 alunos".
+  // Sem isso, quem é de campo lê o 34,90 como o preço do campo inteiro.
+  var precoFaixa = doc.getElementById('preco-faixa');
   if (faixasBox && precoMes && precoSub && tiers.length) {
     var botoesFaixa = faixasBox.querySelectorAll('button[data-faixa]');
     var mostrarFaixa = function (i) {
@@ -315,12 +317,14 @@
       var d = t.dataset;
       botoesFaixa.forEach(function (b, k) { b.setAttribute('aria-checked', k === i ? 'true' : 'false'); b.tabIndex = k === i ? 0 : -1; });
       precoMes.textContent = 'R$ ' + d.m;
-      var porAluno = (d.mSub || '').replace('≈', 'cerca de').trim();
-      precoSub.textContent = t.querySelector('.tier-name').textContent + ': ' + porAluno + '. No plano anual, R$ ' + d.a + ' por mês.';
+      // "Até 50 alunos" → "até 50 alunos", ao lado do preço.
+      var nome = t.querySelector('.tier-name').textContent.trim();
+      if (precoFaixa) precoFaixa.textContent = nome.charAt(0).toLowerCase() + nome.slice(1);
+      var porAluno = (d.mSub || '').replace('≈', 'Cerca de').trim();
+      precoSub.textContent = porAluno + ', somando sede e congregações. No plano anual, R$ ' + d.a + ' por mês.';
     };
     botoesFaixa.forEach(function (b, i) {
       b.addEventListener('click', function () {
-        if (precoDe) precoDe.hidden = true;
         mostrarFaixa(i);
         track('preco_faixa', { faixa: b.textContent.trim() });
       });
