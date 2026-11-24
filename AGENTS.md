@@ -10,7 +10,7 @@ O que mais aparece no site (o manual tem os detalhes e o porquê):
 - **Contraste:** texto com pelo menos 4,5 : 1 sobre o fundo; verde `#00C896` nunca como texto sobre branco.
 - **Tipografia:** Nunito Sans em tudo (400 a 900). Playfair Display itálico 600 só para uma a cinco palavras de destaque nos títulos (`<em>` dentro de `h1`/`h2`). A Antenna é só do logotipo.
 - **Forma:** botões em pílula com altura mínima de 48 px, um botão verde por tela; rótulos de seção com o traço (`.kicker`); sombras puxadas para o azul.
-- **Voz:** a língua da EBD (chamada, turma, aluno, secretário). "Painel", não "dashboard"; "teste grátis", não "trial". Frases curtas e números concretos (15 dias, 3 minutos).
+- **Voz:** a língua da EBD (chamada, turma, aluno, secretário). "Painel", não "dashboard"; "teste grátis", não "trial". Frases curtas e números concretos (4 domingos, 3 minutos).
 - **Imagens:** telas reais do app com a "Igreja Exemplo" e alunos fictícios (veja o README).
 
 Mudou algo da marca? A mudança começa no Brand Book do `ebdclass-app` (nova versão no capítulo 17) e depois vem para cá.

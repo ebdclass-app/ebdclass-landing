@@ -17,7 +17,7 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 
 A ordem das seções segue o caminho de quem chega do anúncio do Instagram, quase sempre pelo celular:
 
-1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular.", o botão verde "Quero experimentar na minha igreja" e as condições (15 dias grátis, sem cartão, você decide no fim). Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
+1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular.", o botão verde "Quero experimentar na minha igreja" e as condições (4 domingos grátis, sem cartão, você decide no fim). Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
 2. **Perguntas:** seis perguntas que o pastor faz e a caderneta não responde, cada uma com a resposta no EBD Class.
 3. **Recursos:** oito tarefas da secretaria que saem do papel (turmas, ficha do aluno, frequência, lições, relatório, professores, ofertas e revistas, congregações).
 4. **Gravação real:** o vídeo da chamada e as cinco telas.
