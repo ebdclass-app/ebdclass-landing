@@ -16,7 +16,7 @@ Não confundir com outros produtos de nome parecido: o EBD Class é só para a g
 ## O que o sistema faz
 
 - Chamada digital por turma, pelo celular, que funciona sem internet e envia os dados quando a conexão volta.
-- Cadastro de alunos, turmas e professores. A lista de alunos pode ser colada, lida de uma planilha (Excel ou CSV) ou de uma foto da caderneta.
+- Cadastro de alunos, turmas e professores. A lista de alunos pode ser colada ou lida de uma planilha (Excel ou CSV).
 - Relatórios por aula, mês, trimestre e ano, em PDF.
 - Alertas de ausência e de faltas seguidas, e ranking de presença.
 - Aniversariantes, a partir de 200 alunos.
