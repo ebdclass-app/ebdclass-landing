@@ -57,6 +57,8 @@ São capturas do app com a "Igreja Exemplo" e alunos fictícios, geradas pelo `d
 
 ## Medição
 
+**Onde as pessoas param.** Os eventos `rolagem` e `saida` respondem isso sem gravar a sessão de ninguém: quantos passam de cada quarto da página, em que seção saem e quanto tempo ficam. As gravações de sessão e os mapas de calor do Umami fazem o mesmo, mas só existem no plano **Business, a US$ 200 por mês** (o Hobby e o Pro não têm) — por isso não são usados aqui.
+
 A análise é o **Umami Cloud** (cloud.umami.is): gratuito para este volume, sem cookies (o aviso de cookies do site é só por causa do Pixel da Meta, veja a seção abaixo). O script só é carregado quando `UMAMI_WEBSITE_ID` (no topo de `landing.js`) está preenchido; vazio, a página não envia nada a ninguém.
 
 Para ativar: crie a conta no Umami Cloud, adicione o site `ebdclass.com.br`, copie o *Website ID* e cole em `UMAMI_WEBSITE_ID`. O script ignora acessos de outros domínios (localhost, prévias) e respeita o "Não rastrear" do navegador.
@@ -74,6 +76,8 @@ Os eventos também vão para `window.dataLayer` e, se existirem, para `gtag()` o
 | `planos_detalhes` | Abriu "Ver todos os planos e o que cada um libera" |
 | `faq_open` | Abertura de uma pergunta |
 | `section_view` | Primeira vez que cada seção passa pelo meio da tela |
+| `rolagem` | Marcas de 25%, 50%, 75% e 100% da página (`marco`), no máximo uma vez cada |
+| `saida` | Ao sair ou trocar de aba: a seção mais distante (`ate`), quanto rolou (`rolou`, de 10 em 10%) e a faixa de tempo (`tempo`) |
 | `demo_tab` | Troca de tela na demonstração do computador (`screen`) |
 | `demo_video` | O vídeo da chamada começou a tocar (`modo`: `auto` ou `toque`) |
 

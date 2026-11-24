@@ -20,7 +20,7 @@ Não confundir com outros produtos de nome parecido: o EBD Class é só para a g
 - Relatórios por aula, mês, trimestre e ano, em PDF.
 - Alertas de ausência e de faltas seguidas, e ranking de presença.
 - Aniversariantes, a partir de 200 alunos.
-- Relatório financeiro (ofertas, entradas e saídas) e controle de revistas e materiais, a partir de 500 alunos ou nos planos semestral e anual.
+- Relatório financeiro (ofertas, entradas e saídas) e controle de revistas e materiais, em todos os planos e faixas.
 - Sede e congregações no mesmo painel.
 - Passo a passo com vídeos curtos dentro do app.
 
@@ -34,7 +34,7 @@ Teste grátis de 4 domingos (28 dias), com todos os recursos liberados e sem car
 - Até 1.000 alunos: R$ 189,90 por mês, R$ 1.025,40 no semestral ou R$ 1.899,00 no anual
 - Até 2.000 alunos: R$ 319,90 por mês, R$ 1.727,40 no semestral ou R$ 3.199,00 no anual
 
-Acima de 2.000 alunos há plano personalizado. O semestral são 6 meses pagos de uma vez, com 10% de desconto. O anual são 12 meses pelo preço de 10 (2 meses grátis). No semestral e no anual, todos os recursos ficam liberados em qualquer faixa, com garantia de 30 dias; o anual inclui ainda suporte prioritário, configuração de 20 minutos com a equipe e preço garantido na renovação. Pagamento por Pix, boleto ou cartão. Sem fidelidade nem multa.
+Acima de 2.000 alunos há plano personalizado. O semestral são 6 meses pagos de uma vez, com 10% de desconto. O anual são 12 meses pelo preço de 10 (2 meses grátis). O preço só muda o limite de alunos: o relatório financeiro e o controle de revistas e materiais entram em todas as faixas, inclusive na de até 50 alunos. No semestral e no anual, todos os recursos ficam liberados em qualquer faixa (inclusive os aniversariantes na faixa de até 50), com garantia de 30 dias; o anual inclui ainda suporte prioritário, configuração de 20 minutos com a equipe e preço garantido na renovação. Pagamento por Pix, boleto ou cartão. Sem fidelidade nem multa.
 
 ## Links
 
