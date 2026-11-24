@@ -17,7 +17,7 @@ Site de `ebdclass.com.br` (GitHub Pages, domínio em `CNAME`). HTML e CSS estát
 
 A ordem das seções segue o caminho de quem chega do anúncio do Instagram, quase sempre pelo celular:
 
-1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular.", o botão verde "Quero experimentar na minha igreja" e as condições (4 domingos grátis, sem cartão, você decide no fim). Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
+1. **Capa:** a pergunta "Quantos alunos vieram domingo? A resposta está no celular.", o botão verde "Quero experimentar na minha igreja" e as condições (4 domingos grátis, sem cartão, você decide no fim). Embaixo, o preço de partida ("a partir de R$ 34,90 por mês") e um caminho mais leve para quem ainda não quer criar conta: "Prefere ver antes? Fale com a gente no WhatsApp" (24/11/2026: no Umami, 85% saíam na capa em 8 segundos, e só 6 de 1.160 visitantes chegavam ao cadastro). No celular, "Entrar" do topo virou o link discreto "Já uso · Entrar" (`login_click` com `where = nav_celular`). Os cartões "Relatório em PDF" e "Chamada salva · o painel já somou" são os mesmos do anúncio "Imagem | Telas", para quem clicou reconhecer a página.
 2. **Perguntas:** seis perguntas que o pastor faz e a caderneta não responde, cada uma com a resposta no EBD Class.
 3. **Recursos:** oito tarefas da secretaria que saem do papel (turmas, ficha do aluno, frequência, lições, relatório, professores, ofertas e revistas, congregações).
 4. **Gravação real:** o vídeo da chamada e as cinco telas.
@@ -53,6 +53,8 @@ São capturas do app com a "Igreja Exemplo" e alunos fictícios, geradas pelo `d
 A análise é o **Umami Cloud** (cloud.umami.is): gratuito para este volume, sem cookies (o aviso de cookies do site é só por causa do Pixel da Meta, veja a seção abaixo). O script só é carregado quando `UMAMI_WEBSITE_ID` (no topo de `landing.js`) está preenchido; vazio, a página não envia nada a ninguém.
 
 Para ativar: crie a conta no Umami Cloud, adicione o site `ebdclass.com.br`, copie o *Website ID* e cole em `UMAMI_WEBSITE_ID`. O script ignora acessos de outros domínios (localhost, prévias) e respeita o "Não rastrear" do navegador.
+
+Eventos disparados antes de o script do Umami carregar ficam numa fila e são enviados quando ele chega (antes, a vista da capa se perdia). Nos cliques que saem do site na mesma aba (cadastro e login), a saída espera até 300 ms o envio do evento, para o clique não se perder.
 
 Os eventos também vão para `window.dataLayer` e, se existirem, para `gtag()` ou `plausible()`:
 

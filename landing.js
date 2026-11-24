@@ -28,12 +28,23 @@
   var debug = /[?&]ebd_debug=1/.test(location.search);
   var reduced = w.matchMedia && w.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  var filaUmami = [];
+  function umamiPronto() { return !!(w.umami && typeof w.umami.track === 'function'); }
+  function esvaziarFila() {
+    if (!umamiPronto()) return false;
+    while (filaUmami.length) { var ev = filaUmami.shift(); try { w.umami.track(ev[0], ev[1]); } catch (e) {} }
+    return true;
+  }
+
   function track(name, params) {
     params = params || {};
     var payload = { event: name };
     for (var k in params) payload[k] = params[k];
     w.dataLayer.push(payload);
-    try { if (w.umami && typeof w.umami.track === 'function') w.umami.track(name, params); } catch (e) {}
+    // Antes de o script do Umami carregar, o evento espera na fila (sem isso, a vista da
+    // capa e o que acontece nos primeiros segundos se perdiam).
+    if (umamiPronto()) { try { w.umami.track(name, params); } catch (e) {} }
+    else filaUmami.push([name, params]);
     try { metaTrack(name, params); } catch (e) {}
     try { if (typeof w.gtag === 'function') w.gtag('event', name, params); } catch (e) {}
     try { if (typeof w.plausible === 'function') w.plausible(name, { props: params }); } catch (e) {}
@@ -48,6 +59,11 @@
     u.setAttribute('data-website-id', UMAMI_WEBSITE_ID);
     u.setAttribute('data-domains', 'ebdclass.com.br'); // ignora localhost e prévias
     u.setAttribute('data-do-not-track', 'true');
+    u.onload = function () {
+      // O tracker cria window.umami logo depois de carregar; tenta por até 3 segundos.
+      var tentativas = 0;
+      (function tentar() { if (!esvaziarFila() && ++tentativas < 30) setTimeout(tentar, 100); })();
+    };
     doc.head.appendChild(u);
   }
 
@@ -208,9 +224,39 @@
   });
 
   /* ---------- Cliques ---------- */
+  // Clique que sai do site na mesma aba (cadastro, login): a página troca antes de o
+  // evento chegar ao Umami. Segura a saída por até 300 ms enquanto o evento é enviado.
+  function saiNaMesmaAba(e, a) {
+    var href = a.getAttribute('href') || '';
+    return /^https?:/.test(href) && a.host !== w.location.host && !a.target &&
+      e.button === 0 && !e.metaKey && !e.ctrlKey && !e.shiftKey && !e.altKey;
+  }
+  function seguirDepois(a, nome, params) {
+    var foi = false;
+    var ir = function () { if (!foi) { foi = true; w.location.href = a.href; } };
+    try {
+      var p = umamiPronto() ? w.umami.track(nome, params) : null;
+      if (p && typeof p.then === 'function') p.then(ir, ir);
+    } catch (err) {}
+    setTimeout(ir, 300);
+  }
+
   doc.addEventListener('click', function (e) {
     var a = e.target.closest('a');
     if (!a) return;
+    if (saiNaMesmaAba(e, a) && (a.dataset.cta || a.dataset.track) && umamiPronto()) {
+      e.preventDefault();
+      var nome = a.dataset.cta ? 'cta_click' : a.dataset.track;
+      var params = a.dataset.cta
+        ? { cta_id: a.dataset.cta, cta_text: (a.textContent || '').replace(/\s+/g, ' ').trim(), destination: (a.getAttribute('href') || '').indexOf(APP_SIGNUP) === 0 ? 'signup' : 'anchor', section: sectionOf(a) }
+        : { where: a.dataset.where || sectionOf(a) };
+      var payload = { event: nome };
+      for (var k in params) payload[k] = params[k];
+      w.dataLayer.push(payload);
+      try { metaTrack(nome, params); } catch (err) {}
+      seguirDepois(a, nome, params);
+      return;
+    }
     if (a.dataset.cta) {
       var dest = a.getAttribute('href') || '';
       track('cta_click', {
